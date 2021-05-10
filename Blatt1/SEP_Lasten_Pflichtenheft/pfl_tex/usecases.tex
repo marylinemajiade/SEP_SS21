@@ -90,20 +90,6 @@ Die Systemgrenze wird in der Abbildung~\ref{fig:sys} dargestellt\footnote{Weiter
 		\item [Systemfunktionen:]\ref{funk:spielverw}.
 	\end{lhp}
 	
-	\begin{lhp}{uc}{UC}{uc:botspielzug}
-		\item [Name:]Spielzug Bot
-		\item [Ziel:]Bot schließt Spielzug ab.
-		\item [Akteure:]System 
-		\item [Vorbedingungen:]Ein Bot ist in einem aktiven Spiel an der Reihe.
-		\item [Eingabedaten:] 
-		\ref{daten:handkarten}, \ref{daten:stapelkarten}, \ref{daten:ablagestapel} 
-		\item [Beschreibung:] Ein Bot fügt einen gültigen Spielzug aus.
-		\item [Ausnahmen:]Keine. 
-		\item [Ergebnisse und Outputdaten:]Spielzug wird ausgeführt und der nächste Spieler oder Bot ist an der Reihe. \ref{daten:handkarten}, \ref{daten:stapelkarten}, \ref{daten:ablagestapel} 
-		\ref{daten:botniveau}
-		\item [Systemfunktionen:] \ref{funk:spielverw}, \ref{funk:bots}
-	\end{lhp}
-	
 	\begin{lhp}{uc}{UC}{uc:botaktivieren}
 		\item [Name:]Bot hinzufügen
 		\item [Ziel:]Ein Bot wird einem Spielraum hinzugefügt.
@@ -176,30 +162,6 @@ Die Systemgrenze wird in der Abbildung~\ref{fig:sys} dargestellt\footnote{Weiter
 		\item [Systemfunktionen:]  \ref{funk:chat}, \ref{funk:spielraum}.
 	\end{lhp}
 	
-	\begin{lhp}{uc}{UC}{uc:spielabgeschlossen}
-		\item [Name:]Spielende
-		\item [Ziel:]Ein aktives Spiel wird nach den Spielregeln abgeschlossen.
-		\item [Akteure:]System.
-		\item [Vorbedingungen:] Ein Spieler hat 40 oder mehr Minuspunkte (vrgl. Spielregeln).
-		\item [Eingabedaten:] \ref{daten:minuspunkte}
-		\item [Beschreibung:] Sobald ein Spieler 40 oder mehr Minuspunkte hat, wird das Spiel automatisch beendet. In einer Meldung wird der Gewinner des Spiels genannt. Anschließend wird die Bestenliste aktualisiert.
-		\item [Ausnahmen:]Keine.
-		\item [Ergebnisse und Outputdaten:]Spiel wird beendet, Bestenliste wird aktualisiert.\ref{daten:bestenliste}
-		\item [Systemfunktionen:] \ref{funk:bestenliste}, \ref{funk:spielverw}
-	\end{lhp}
-	
-		\begin{lhp}{uc}{UC}{uc:rundeabgeschlossen}
-		\item [Name:]Ende des Durchgangs
-		\item [Ziel:]Abschluss eines Spieldurchgangs.
-		\item [Akteure:]System
-		\item [Vorbedingungen:]Alle Spieler sind ausgestiegen oder ein Spieler hat alle Handkarten abgelegt (vrgl. Regelwerk).
-		\item [Eingabedaten:] \ref{daten:handkarten}
-		\item [Beschreibung:] Sobald eine der Vorbedingungen eingetreten ist, wird der Spieldurchgang beendet und die Minuspunktechips entsprechend des Regelwerks verteilt.
-		\item [Ausnahmen:]Keine.
-		\item [Ergebnisse und Outputdaten:]Minuspunkte werden verteilt und ein neuer Durchgang wird gestartet. \ref{daten:minuspunkte}
-		\item [Systemfunktionen:] \ref{funk:spielverw} 
-	\end{lhp}
-	
 	\begin{lhp}{uc}{UC}{uc:chipabgeben}
 		\item [Name:]Minuspunktechip abgeben
 		\item [Ziel:]Ein Spieler entfernt einen seiner Minuspunktechips.
@@ -247,6 +209,24 @@ Die Systemgrenze wird in der Abbildung~\ref{fig:sys} dargestellt\footnote{Weiter
 				
 			\end{itemize}
 		\item [Ergebnisse und Outputdaten:] Spieler ist in der Lobby und sieht die Bestenliste.	
+		\item [Systemfunktionen:] \ref{funk:zugriff}.
+	\end{lhp}
+	
+	\begin{lhp}{uc}{UC}{uc:registrieren}
+		\item [Name:] Spieler registrieren
+		\item [Ziel:] Spieler wird im System registriert.
+		\item [Akteure:] Spieler.
+		\item [Vorbedingungen] Spieler ist im Vorraum.
+		\item [Eingabedaten:] Zugriffsdaten~\ref{daten:benutzername}~\ref{daten:passwort}.
+		\item [Beschreibung:] Spieler registriert sich im System.							
+		\item [Ausnahmen:] \hfill
+			\begin{itemize} 
+				\item[] \textit{Benutzername ist bereits vergeben:} Das System zeigt eine Fehlermeldung an, der agierenede Spieler kann erneut einen gewünschten Benutzernamen eingeben.
+				
+				\item[] \textit{Passwort ist zu kurz:} Das System zeigt eine Fehlermeldung an, der agierende Spieler kann erneut ein gewünschtes Passwort eingeben.
+				
+			\end{itemize}
+		\item [Ergebnisse und Outputdaten:] Spieler ist im System registriert und gelangt in die Lobby. \ref{daten:benutzername}~\ref{daten:passwort}	
 		\item [Systemfunktionen:] \ref{funk:zugriff}.
 	\end{lhp}
 	
