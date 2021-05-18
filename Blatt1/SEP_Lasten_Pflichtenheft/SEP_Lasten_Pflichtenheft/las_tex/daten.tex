@@ -1,0 +1,76 @@
+
+\section{Produktdaten}\label{section:productdaten}
+
+
+\newcounter{ld}\setcounter{ld}{10}
+
+\begin{description}[leftmargin=5em, style=sameline]
+	
+	\begin{lhp}{ld}{LD}{daten:benutzername}
+		\item [Name:] Benutzername*\footnote{``*'' bedeutet hier, dass die Daten in der Datenbank zu speichern sind}
+		\item [Fachliche Beschreibung:] Benutzername des Spielers
+		\item [Relevante Systemfunktionen:] \ref{funk:spielverw}, \ref{funk:zugriff}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:passwort}
+		\item [Name:] Passwort*
+		\item [Fachliche Beschreibung:] Passwort des Spielers
+		\item [Relevante Systemfunktionen:] \ref{funk:zugriff}
+	\end{lhp}
+	
+		\begin{lhp}{ld}{LD}{daten:spielräume}
+		\item [Name:]Aktive Spielräume
+		\item [Fachliche Beschreibung:]Sammlung aller aktuell aktiven Spielräume
+		\item [Relevante Systemfunktionen:]\ref{funk:spielraum}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:handkarten}
+		\item [Name:]Handkarten
+		\item [Fachliche Beschreibung:]Karten auf der Hand eines Spielers oder Bots
+		\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\end{lhp}
+	
+		\begin{lhp}{ld}{LD}{daten:stapelkarten}
+		\item [Name:]Nachziehkartenstapel
+		\item [Fachliche Beschreibung:]Karten die sich aktuell auf dem Nachziehstapel eines Spiels befinden (vrgl. Regelwerk)
+		\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:ablagestapel}
+		\item [Name:]Ablagestabel
+		\item [Fachliche Beschreibung:]Karten die sich aktuell auf dem Ablagestapel eines Spiels befinden (vrgl. Regelwerk)
+		\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:minuspunkte}
+		\item [Name:] Minuspunktechips
+		\item [Fachliche Beschreibung:] Menge der Minuspunktechips eines Spielers
+		\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:botniveau}
+		\item [Name:] Spielniveau Bots
+		\item [Fachliche Beschreibung:] Strategie, die ein Bot verfolgt
+		\item [Relevante Systemfunktionen:] \ref{funk:bots}
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:chatverlauf}
+		\item [Name:] Chatnachrichten
+		\item [Fachliche Beschreibung:]Verlauf von Nachrichten im Chat
+		\item [Relevante Systemfunktionen:] \ref{funk:chat} 
+	\end{lhp}
+	
+	\begin{lhp}{ld}{LD}{daten:bestenliste}
+		\item [Name:]Bestenlliste
+		\item [Fachliche Beschreibung:] Auflistung der Spieler mit den meisten gewonnenen Spielen
+		\item [Relevante Systemfunktionen:] \ref{funk:bestenliste}
+	\end{lhp}
+	
+		\begin{lhp}{ld}{LD}{daten:spielregeln}
+		\item [Name:]Spielregeln
+		\item [Fachliche Beschreibung:]Dokument, in dem das gesamte LAMA-Regelwerk aufgeführt ist.
+		\item [Relevante Systemfunktionen:] \ref{funk:regelwerk}
+	\end{lhp}
+	
+	
+\end{description}

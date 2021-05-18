@@ -1,0 +1,368 @@
+\chapter{Systemtestfälle}
+
+Hier sollen verschiedene Szenarien beschrieben werden, mithilfe deren Sie später Systemtests ausführen und die erwarteten Ergebnisse darstellen.
+
+\newcounter{tf}\setcounter{tf}{10}
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:anmelden}
+	\item [Name:] Spieler anmelden.
+	\item [Motivation:] Testet, ob die Anmeldung in das System korrekt funktioniert.
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Zugriffsdaten sind vorhanden und richtig} \\ $\implies$ Spieler wird in die Lobby bewegt.
+			\item \textit{Benutzername ist registriert, Passwort ist falsch} \\ $\implies$ Fehlermeldung wird angezeigt.
+			\item \textit{Benutzername ist nicht registriert} \\ $\implies$ Fehlermeldung wird angezeigt.
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:zugriff}
+	\item [Relevante Use Cases:] \ref{uc:anmeld}
+\end{lhp}
+
+\end{description}
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:srerstellen}
+	\item [Name:] Spielraum erstellen
+	\item [Motivation:] Testet ob ein Spielraum erstellt werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Spieler kann den Spielraum erstellen} \\ $\implies$ Spieler betritt den Spielraum
+			\item \textit{ Spieler kann keinen Spielraum erstellen} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielraum}
+	\item [Relevante Use Cases:] \ref{uc:srerstellen}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:srbeitreten}
+	\item [Name:] Spielraum beitreten
+	\item [Motivation:] Testet ob der Spieler einem Spielraum beitreten kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Spieler kann dem Spielraum beitreten } \\ $\implies$ Spieler betritt den Spielraum
+			\item \textit{ Spieler kann dem Spielraum nicht beitreten} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielraum}
+	\item [Relevante Use Cases:] \ref{uc:srbeitreten}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:sr}
+	\item [Name:] Spielregeln einsehen
+	\item [Motivation:] Testet ob der Spieler die Spielregeln einsehen kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Spieler kann Spielregeln einsehen} \\ $\implies$ Die Regeln werden angezeigt
+			
+			\item \textit{Spieler kann die Spielregeln nicht einsehen } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:regelwerk}
+	\item [Relevante Use Cases:] \ref{uc:spielregeln}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:srverlassen}
+	\item [Name:] Spielraum verlassen
+	\item [Motivation:] Testet ob der Spieler den Spielraum verlassen kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Spieler kann den Spielraum verlassen } \\ $\implies$ Der Spieler befindet sich in der Lobby
+			\item \textit{Spieler kann den Spielraum nicht verlassen } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw} \ref{funk:spielraum} \ref{funk:bots}
+	\item [Relevante Use Cases:] \ref{uc:srverlassen}
+\end{lhp}
+
+\end{description}
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:spielzug}
+	\item [Name:] Spielzug
+	\item [Motivation:] Testet ob der Spielzug korrekt ausgeführt werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Spielzug kann ausgeführt werden} \\ $\implies$ Der Spieler wartet auf seinen nächsten Spielzug
+			
+			\item \textit{Spielzug kann nicht ausgeführt werden } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\item [Relevante Use Cases:] \ref{uc:spielzug}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:botspielzug}
+	\item [Name:] Bot Spielzug
+	\item [Motivation:] Testet ob der Bot korrekt spielt
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Der Bot führt einen korrekten Spielzug aus } \\ $\implies$  Der nächste Bot oder Spieler ist an der Reihe
+			
+			\item \textit{ Der Bot führt keinen korrekten Spielzug aus } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw} \ref{funk:bots}
+	\item [Relevante Use Cases:] \ref{uc:botspielzug}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:boterstellen}
+	\item [Name:] Bot erstellen
+	\item [Motivation:] Testet ob ein Bot erstellt werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Bot kann erstellt werden } \\ $\implies$ Bot wird als Spieler zum Spiel hinzugefügt
+			
+			\item \textit{ Bot kann nicht erstellt werden} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw} \ref{funk:bots}
+	\item [Relevante Use Cases:] \ref{uc:botaktivieren}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:botloeschen}
+	\item [Name:] Bot löschen
+	\item [Motivation:] Testet ob ein Bot gelöscht werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Bot wird korrekt gelöscht } \\ $\implies$ Bot wird als Spieler aus dem Spiel und der Datenbank entfernt
+			
+			\item \textit{ Bot wird nicht korrekt gelöscht} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw} \ref{funk:bots}
+	\item [Relevante Use Cases:] \ref{uc:botentfernen}
+\end{lhp}
+
+\end{description}
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:srerstellen}
+	\item [Name:] Spielstart
+	\item [Motivation:] Testet ob das Spiel korrekt gestartet wird
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Spiel wird korrekt gestartet } \\ $\implies$ Einer der Spieler ist mit dem ersten Zug dran
+			
+			\item \textit{Spiel wird nicht korrekt gestartet } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\item [Relevante Use Cases:] \ref{uc:spielstart}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:chatlobby}
+	\item [Name:] Chatnachricht Lobby
+	\item [Motivation:] Testet ob die Chatfunktion der Lobby korrekt funktioniert
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Chatnachrichten in der Lobby werden korrekt versendet} \\ $\implies$ Die Nachrichten sind für andere Spieler in der Lobby sichtbar
+			
+			\item \textit{Chatnachrichten in der Lobby werden nicht korrekt versendet } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:chat}
+	\item [Relevante Use Cases:] \ref{uc:chatnachrichtlobby}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:chatspiel}
+	\item [Name:] Chatnachricht Spielraum
+	\item [Motivation:] Testet ob die Chatfunktion des Spielraumes korrekt funktioniert
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Chatnachrichten im Spielraum werden korrekt versendet } \\ $\implies$ Die Nachrichten sind für andere Spieler im Spiel sichtbar
+			
+			\item \textit{Chatnachrichten im Spielraum werden nicht korrekt versendet } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielraum} \ref{funk:chat}
+	\item [Relevante Use Cases:] \ref{uc:chatnachrichtspielraum}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:chipabgeben}
+	\item [Name:] Minuspunktechip abgeben
+	\item [Motivation:] Testet ob ein Spieler seine Chips abgeben kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Spieler kann seine Chips korrekt abgeben} \\ $\implies$ Spieler hat weniger Chips und nächster Spieler ist dran
+			
+			\item \textit{Spieler kann seine Chips nicht korrekt abgeben } \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\item [Relevante Use Cases:] \ref{uc:chipabgeben}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:chipstauschen}
+	\item [Name:] Minuspunktechips tauschen
+	\item [Motivation:] Testet ob Chiptausch funktioniert
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{ Chiptausch funktioniert korrekt} \\ $\implies$ Der Spieler hat eine andere Punktzahl
+			
+			\item \textit{Chiptausch funktioniert nicht korrekt } \\ $\implies$ Fehlermeldung wird angezeigt 
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw}
+	\item [Relevante Use Cases:] \ref{uc:chipstauschen}
+\end{lhp}
+
+\end{description}
+
+
+
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:sploeschen}
+	\item [Name:] Spieler löschen
+	\item [Motivation:] Testet ob ein Benutzerkonto gelöscht werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Benutzerkonto kann gelöscht werden } \\ $\implies$ Spieler wird ausgeloggt
+			
+			\item \textit{ Passwort ist falsch} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:zugriff}
+	\item [Relevante Use Cases:] \ref{uc:loeschen}
+\end{lhp}
+
+\end{description}
+
+
+
+
+\begin{description}[leftmargin=5em, style=sameline]
+
+\begin{lhp}{tf}{TF}{tests:srbeenden}
+	\item [Name:] Spielraum beenden
+	\item [Motivation:] Testet ob ein Spielraum beendet werden kann
+	\item [Sczenarien:] \hfill
+		\begin{enumerate}
+			\item \textit{Spielraum kann beendet werden } \\ $\implies$ Alle Spieler gelangen in die Lobby
+			
+			\item \textit{ Spielraum kann nicht beendet werden} \\ $\implies$ Fehlermeldung wird angezeigt
+			
+			
+		\end{enumerate}
+	\item [Relevante Systemfunktionen:] \ref{funk:spielverw} \ref{funk:bestenliste}
+	\item [Relevante Use Cases:] \ref{uc:spielabgeschlossen}
+\end{lhp}
+
+\end{description}
+
+
