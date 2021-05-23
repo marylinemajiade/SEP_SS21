@@ -2,6 +2,6 @@ package JavaRMI;
 import java.rmi.*;
 
 
-public class RMIClient {
-
+public class RMIClient{
+    private Spielverwaltung spielverwaltung;
 }
