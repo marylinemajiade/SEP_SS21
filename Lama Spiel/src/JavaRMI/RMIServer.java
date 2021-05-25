@@ -17,27 +17,28 @@ public class RMIServer implements Spielverwaltung {
     }
 
     @Override
-    public void ziehen() {
+    public void ziehen(String username) throws IllegalArgumentException {
 
     }
 
     @Override
-    public void ablegen(Karte karte) {
+    public void ablegen(Karte karte, String username) throws IllegalArgumentException {
 
     }
 
     @Override
-    public void aussteigen() {
+    public void aussteigen(String username) throws IllegalArgumentException, IllegalStateException {
 
     }
 
     @Override
-    public void tauschechips(Chips chips) {
+    public void tauschechips(String username, Boolean zehnzueins) throws IllegalStateException {
 
     }
 
     @Override
-    public void chipabgeben(Chips chip) {
+    public void chipabgeben(String username, Boolean einserchip) {
 
     }
+
 }
