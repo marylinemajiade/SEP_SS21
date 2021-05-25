@@ -62,7 +62,7 @@ public class Main extends Application {
             action.setText("Sign in button pressed");
         });
 
-        scene.getStylesheets().add(Main.class.getResource("Login.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("StyleSheets/Login.css").toExternalForm());
 
         primaryStage.setTitle("LAMA Spiel");
         primaryStage.setScene(scene);

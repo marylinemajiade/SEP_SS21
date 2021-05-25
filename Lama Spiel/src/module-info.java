@@ -5,4 +5,5 @@ module Lama.Spiel {
     requires java.rmi;
 
     opens GUI;
+    opens GUI.Controllers;
 }
