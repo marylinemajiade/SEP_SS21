@@ -14,6 +14,7 @@ public class ChatGUI extends Application{
 
     Button button1;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
     primaryStage.setTitle("LAMA Chat");
