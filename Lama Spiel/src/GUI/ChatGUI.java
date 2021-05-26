@@ -25,6 +25,7 @@ public class ChatGUI extends Application{
 
 
     StackPane layout = new StackPane();
+
     layout.getChildren().add(button1);
 
 
