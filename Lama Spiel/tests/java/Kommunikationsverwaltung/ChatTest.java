@@ -24,7 +24,7 @@ public class ChatTest {
         assertEquals("Hello, this is my message",msg.message);
         assertEquals("2021-05-25-11h30",msg.dateTime);
 
-        Nachricht msg2 = new Nachricht(2,"John Doe","Hello, Maryline", "2021-05-25-11h40");
+        Nachricht msg2 = new Nachricht(2,"John Doe","Hello, Maryline", "2021-05-25-11h35");
         assertEquals(1,msg.compareTo(msg2));
         msg2.nachrichtId=0;
         assertEquals(-1,msg.compareTo(msg2));
