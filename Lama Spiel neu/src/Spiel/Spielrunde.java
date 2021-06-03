@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Spielrunde {
 
-    int spielraumId;
+    private int spielraumId;
 
     public Integer getRaumId(){
         return null;
