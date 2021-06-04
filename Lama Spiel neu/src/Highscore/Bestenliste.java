@@ -1,5 +1,10 @@
 package Highscore;
+
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
+import javafx.util.Pair;
 
 /**
  * Die Klasse verwaltet die Bestenliste mit der Anzahl der gewonnenen Spiele pro Spieler
@@ -16,7 +21,7 @@ public class Bestenliste {
      * @param benutzername Benutzername des Spielers, dessen Highscore eingetragen werden soll
      * @param isBot() überprüft, ob Spieler kein Bot ist
      */
-    public void eintragHinzufuegen(String benutzername, boolean isBot){
+    public void eintragHinzufuegen(String benutzername, int score, boolean isBot){
 
     }
 
@@ -25,17 +30,18 @@ public class Bestenliste {
      * Die Methode dient zum Abrufen des Highscores eines Spielers
      * @param benutzername Benutzername des Spielers, dessen Score abgerufen werden soll
      * @return gibt die Anzahl der gewonnenen Spiele als Integer zurück
+     * @throws NoSuchElementException Wirft Exeption, falls Eintrag nicht existiert
      */
-    public Integer getScore(String benutzername){
+    public Integer getScore(String benutzername) throws NoSuchElementException {
         return null;
     }
 
 
     /**
      * Die Methode dient zum Abrufen der zehn Spielernamen mit dem besten Score
-     * @return gibt eine HashMap mit den zehn besten Eintraegen zurueck
+     * @return gibt eine ArrayList mit den zehn besten Eintraegen zurueck
      */
-    public HashMap getTopZehn(){
+    public ArrayList getTopZehn(){
         return null;
     }
 
@@ -43,8 +49,11 @@ public class Bestenliste {
     /**
      * Die Methode entfernt einen Eintrag aus der Bestenliste, z.B. wenn das zugehoerige Konto geloescht wird
      * @param benutzername Benutzername des Spielers, dessen Eintrag entfernt werden soll
+     * @throws NoSuchElementException Wirft Exeption, falls Eintrag nicht vorhanden ist
      */
-    public void eintragLoeschen(String benutzername){
+    public void eintragLoeschen(String benutzername) throws NoSuchElementException{
 
     }
+
 }
+
