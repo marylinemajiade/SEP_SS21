@@ -1,8 +1,14 @@
 package Spiel;
-
+/**
+ * Die Klasse verwaltet den Chipstapel aus weißen und schwarzen Chips eines Spielers.
+ *
+ * @author Catharina Helten
+ */
 public class Chipstapel {
     private int white;
     private int black;
+
+
     public int getWeiss(){
         return white;
     }
@@ -12,7 +18,6 @@ public class Chipstapel {
     }
 
     public int getPunkte(){
-        // schwarz 10, weiß 1
         return white + 10*black;
     }
 
