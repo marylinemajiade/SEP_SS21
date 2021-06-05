@@ -45,5 +45,5 @@ public interface RMIServerIF extends Remote {
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void aussteigen(String benutzername, int spielraumId)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException ;
+            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException ;
 }

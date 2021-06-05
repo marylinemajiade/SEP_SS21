@@ -185,19 +185,52 @@ public class RMIServer implements RMIServerIF{
         /*
         * entfernt eine Karte mit dem übergebenen Wert aus der Hand des Spielers mit Benutzernamen benutzername im
         * Spielraum mit der übergebenen ID
+        * @param karte Integer !=0 zwischen 0 und 6, wobei 0 eine Lama-Karte repräsentiert
+        * @param benutzername String != null
+        * @param spielraumID Integer != null
+        * @throws ungueltigerSpielzugexception wenn der Spieler mit Benutzernamen benutzername keine Karte mit dem Wert
+        *   karte auf der Hand hat, oder der Wert karte nach dem Spielregeln nicht auf zum Wert der obersten Karte auf
+        *   den Ablagestapel passt
+        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn
+        *   spielraumID = 0
+        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
+        *   Benutzernamen benutzernamen befindet.
         */
 
     }
 
     @Override
-    public int karteZiehen(String benutzername, int spielraumId)
+    public int karteZiehen(String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
+        /*
+        * entfernt die oberste Karte vom Nachziehstapel im Spielraum mit der übergebenen ID und fügt diese Karte den
+        *   Handkarten des Spielers mit dem übergebenen Benutzernamen hinzu
+        * @param benutzername String != null
+        * @param spielraumID Integer != null
+        * @throws ungueltigerSpielzugexception wenn der Nachziehstapel des Spielraums mit der ID spielraumID
+        *   leer ist
+        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn
+        *   spielraumID = 0
+        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
+        *   Benutzernamen benutzernamen befindet.
+        * @return Integer (Kartenwert) zwischen 0 und 6, wobei 0 ein Lama repräsentiert
+        */
         return 0;
     }
 
     @Override
-    public void aussteigen(String benutzername, int spielraumId)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException  {
+    public void aussteigen(String benutzername, int spielraumID)
+            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
+
+        /* Markiert den Spieler mit dem übergebenen im Spielraum mit der ID spielraumID als ausgestiegen
+         * @param benutzername String != null
+         * @param spielraumID Integer != null
+         * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn
+         *   spielraumID = 0
+         * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
+         *   Benutzernamen benutzernamen befindet.
+         */
+
 
     }
 }
