@@ -39,7 +39,7 @@ public class Bestenliste {
      * @return gibt die Anzahl der gewonnenen Spiele als Integer zurück
      * @throws NoSuchElementException Wirft Exeption, falls Eintrag nicht existiert
      */
-    public Integer getScore(String benutzername) throws NoSuchElementException {
+    public static Integer getScore(String benutzername) throws NoSuchElementException {
         try {
             return (bestenliste.get(benutzername));
         } catch (NoSuchElementException e){
@@ -53,7 +53,7 @@ public class Bestenliste {
      * Die Methode dient zum Abrufen der zehn Spielernamen mit dem besten Score
      * @return gibt eine ArrayList mit den zehn besten Eintraegen zurueck
      */
-    public ArrayList getTopZehn(){
+    public static ArrayList getTopZehn(){
         Stream<Map.Entry<String,Integer>> sorted =
                 bestenliste.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
 

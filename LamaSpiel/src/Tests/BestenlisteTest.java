@@ -107,10 +107,7 @@ class BestenlisteTest {
         Bestenliste.eintragHinzufuegen("Spieler11", false);
 
 
-        Stream<Map.Entry<String,Integer>> sorted =
-                liste.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
-
-        ArrayList topten = (ArrayList) sorted.limit(10).collect(Collectors.toList());
+        ArrayList topten = Bestenliste.getTopZehn();
 
         assertEquals(10, topten.size());
         assertEquals("Spieler1=11", topten.get(0).toString());
