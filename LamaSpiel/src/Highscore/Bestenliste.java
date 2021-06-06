@@ -1,10 +1,10 @@
 package Highscore;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
-import javafx.util.Pair;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 /**
  * Die Klasse verwaltet die Bestenliste mit der Anzahl der gewonnenen Spiele pro Spieler
@@ -13,7 +13,7 @@ import javafx.util.Pair;
  */
 public class Bestenliste {
 
-    HashMap bestenliste;
+    public static HashMap<String,Integer> bestenliste = new HashMap<String,Integer>();
 
 
     /**
@@ -21,7 +21,14 @@ public class Bestenliste {
      * @param benutzername Benutzername des Spielers, dessen Highscore eingetragen werden soll
      * @param isBot() überprüft, ob Spieler kein Bot ist
      */
-    public void eintragHinzufuegen(String benutzername, int score, boolean isBot){
+    public static void eintragHinzufuegen(String benutzername, boolean isBot){
+        if (!isBot){
+            if(bestenliste.containsKey(benutzername)){
+                bestenliste.replace(benutzername, bestenliste.get(benutzername)+1);
+            } else {
+                bestenliste.put(benutzername,1);
+            }
+        }
 
     }
 
@@ -33,6 +40,11 @@ public class Bestenliste {
      * @throws NoSuchElementException Wirft Exeption, falls Eintrag nicht existiert
      */
     public Integer getScore(String benutzername) throws NoSuchElementException {
+        try {
+            return (bestenliste.get(benutzername));
+        } catch (NoSuchElementException e){
+
+        }
         return null;
     }
 
@@ -42,7 +54,12 @@ public class Bestenliste {
      * @return gibt eine ArrayList mit den zehn besten Eintraegen zurueck
      */
     public ArrayList getTopZehn(){
-        return null;
+        Stream<Map.Entry<String,Integer>> sorted =
+                bestenliste.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
+
+        ArrayList topten = (ArrayList) sorted.limit(10).collect(Collectors.toList());
+
+        return topten;
     }
 
 
@@ -51,7 +68,12 @@ public class Bestenliste {
      * @param benutzername Benutzername des Spielers, dessen Eintrag entfernt werden soll
      * @throws NoSuchElementException Wirft Exeption, falls Eintrag nicht vorhanden ist
      */
-    public void eintragLoeschen(String benutzername) throws NoSuchElementException{
+    public static void eintragLoeschen(String benutzername) throws NoSuchElementException{
+        try {
+            bestenliste.remove(benutzername);
+        } catch (NoSuchElementException e){
+
+        }
 
     }
 

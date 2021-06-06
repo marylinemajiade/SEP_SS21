@@ -58,7 +58,7 @@ class BestenlisteTest {
         Bestenliste.eintragHinzufuegen("Spieler1", false);
         assertEquals(3, liste.get("Spieler1"));
 
-        Assertions.assertThrows(NoSuchElementException.class, () -> liste.get("Spieler2"));
+        assertThrows(NoSuchElementException.class, () -> liste.get("Spieler2"));
     }
 
     @Test
@@ -141,7 +141,7 @@ class BestenlisteTest {
         assertEquals(1, liste.size());
 
         assertFalse(liste.containsKey("Spieler2"));
-        Assertions.assertThrows(NoSuchElementException.class, () -> eintragLoeschen("Spieler2"));
+        assertThrows(NoSuchElementException.class, () -> Bestenliste.eintragLoeschen("Spieler2"));
 
     }
 }
