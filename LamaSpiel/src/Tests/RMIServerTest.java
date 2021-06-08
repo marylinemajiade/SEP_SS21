@@ -5,6 +5,7 @@ import RMI.RMIClientIF;
 import RMI.RMIServer;
 import org.junit.Assert;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RMIServerTest {
 
     @org.junit.jupiter.api.Test
-    void registriereClient() {
+    void registriereClient() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
         RMIClientIF client1 = new RMIClient();
         RMIClientIF client2 = new RMIClient();

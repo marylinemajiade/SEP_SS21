@@ -4,7 +4,7 @@ package Spiel;
  *
  * @author Catharina Helten
  */
-public class Chipstapel {
+class Chipstapel {
     private int white;
     private int black;
 

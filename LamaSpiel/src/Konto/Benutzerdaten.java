@@ -9,8 +9,13 @@ package Konto;
  */
 public class Benutzerdaten {
 
-    String benutzername;
+    private String benutzername;
     private String Passwort;
+
+    public Benutzerdaten(String benutzername, String passwort) {
+        this.benutzername = benutzername;
+        this.Passwort = passwort;
+    }
 
     /**
      * this methode is used to register a new Player in the game.
@@ -37,10 +42,18 @@ public class Benutzerdaten {
     boolean ueberpruefeBenutzerdaten(String benutzername, String passwort){return false;}
 
     /**
-     * These are the Setter and the Getter for the password.
-     * (it is declared as private, to prevent access from other classes).
+     * These are the Setters and the Getters for the username and password.
+     * (they are declared as private, to prevent access from other classes).
      *
      */
+
+    public String getBenutzername() {
+        return benutzername;
+    }
+
+    public void setBenutzername(String benutzername) {
+        this.benutzername = benutzername;
+    }
     public String getPasswort() {
         return Passwort;
     }

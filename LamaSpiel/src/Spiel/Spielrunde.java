@@ -14,7 +14,7 @@ import java.util.Stack;
  * @author Catharina Helten
  */
 
-public class Spielrunde {
+public class Spielrunde extends Chipstapel {
 
     private int spielraumId;
     private HashSet<Integer> handkarten;

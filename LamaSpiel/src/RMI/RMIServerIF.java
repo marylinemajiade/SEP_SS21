@@ -3,47 +3,49 @@ package RMI;
 import fachlicheExceptions.*;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /*Remote Interface für RMI.RMIServer. Für die Dokumentation der Methoden siehe RMI.RMIServer*/
 public interface RMIServerIF extends Remote {
 
-    void registriereClient(RMIClientIF client);
+    void registriereClient(RMIClientIF client) throws RemoteException;
 
-    boolean benutzerdatenPruefen(String benutzername, String passwort);
+    boolean benutzerdatenPruefen(String benutzername, String passwort) throws RemoteException;
 
-    void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException;
+    void benutzerRegistrieren(String benutzername, String passwort) throws RemoteException, benutzerNameVergebenException;
 
-    void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException;
+    void benutzerLoeschen(String benutzername) throws RemoteException, ungueltigerBenutzernameException;
 
     void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void spielraumBeitreten(String benutzername, int spielraumID)
-            throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException;
+            throws RemoteException, spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException;
 
     void spielraumVerlassen(String benutzername, int spielraumID)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void botHinzufuegen(boolean easybot, int spielraumID)
-            throws ungueltigeSpielraumIDException, spielraumVollException;
+            throws RemoteException, ungueltigeSpielraumIDException, spielraumVollException;
 
     void botEntfernen(String botname, int spielraumID)
-                throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+                throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void spielStarten(int spielraumID)
-            throws ungueltigeSpielraumIDException, spielLaeuftBereitsException;
+            throws RemoteException, ungueltigeSpielraumIDException, spielLaeuftBereitsException;
 
     void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void chipAbgeben(boolean einserchip, String benutzername, int spielraumID)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void karteAblegen(int karte, String benutzername, int spielraumID)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     int karteZiehen(String benutzername, int spielraumId)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void aussteigen(String benutzername, int spielraumId)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException ;
+            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException ;
 }
