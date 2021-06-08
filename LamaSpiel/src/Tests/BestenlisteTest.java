@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BestenlisteTest {
 
+
     public HashMap<String,Integer> liste;
 
     @BeforeEach
