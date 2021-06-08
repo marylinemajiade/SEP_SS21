@@ -128,6 +128,7 @@ class BestenlisteTest {
     @Test
     void eintragLoeschen(String spieler) {
 
+
         assertTrue(liste.isEmpty());
         assertEquals(0, liste.size());
 
