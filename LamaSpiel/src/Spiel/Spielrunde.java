@@ -26,6 +26,11 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Abrufen der Spielraum-ID
      * @return gibt die ID als Integer zurück
      */
+
+    public Spielrunde(int Id){
+        this.spielraumId = Id;
+    }
+
     public int getRaumId(){
         return spielraumId;
     }
