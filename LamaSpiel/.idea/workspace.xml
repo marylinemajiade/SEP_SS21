@@ -20,10 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/RMI/RMIClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpiel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpiel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServerIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServerIF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Chipstapel.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Chipstapel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/RMIServerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/RMIServerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/ChipstapelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/ChipstapelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/SpielrundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/SpielrundeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +82,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -131,7 +143,10 @@
       <updated>1622994494851</updated>
       <workItem from="1622994499005" duration="3062000" />
       <workItem from="1622997608332" duration="1224000" />
-      <workItem from="1622999714872" duration="2803000" />
+      <workItem from="1622999714872" duration="3089000" />
+      <workItem from="1623074837095" duration="60000" />
+      <workItem from="1623146992618" duration="2695000" />
+      <workItem from="1623180245898" duration="3683000" />
     </task>
     <servers />
   </component>
@@ -163,38 +178,38 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="499" y="187" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.814@0.0.1536.814" timestamp="1622996983592" />
-    <state x="445" y="116" key="FileChooserDialogImpl" timestamp="1622999994954">
+    <state x="445" y="116" key="FileChooserDialogImpl" timestamp="1623180946834">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="445" y="116" key="FileChooserDialogImpl/0.0.1536.814@0.0.1536.814" timestamp="1622999994954" />
-    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623001834773">
+    <state x="445" y="116" key="FileChooserDialogImpl/0.0.1536.814@0.0.1536.814" timestamp="1623180946834" />
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623188472385">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
-    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623001456551" />
-    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623001834773">
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623188472385" />
+    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623188472385">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
-    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623001456551" />
-    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623001834773">
+    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623188472385" />
+    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623188472385">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
-    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623001456551" />
-    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623001834773">
+    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623188472385" />
+    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623188472385">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
-    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623001456551" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1623000054162">
+    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623188472385" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1623186903267">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623000054162" />
-    <state x="487" y="303" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1622997021018">
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623186903267" />
+    <state x="487" y="303" width="561" height="226" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1623186899611">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="487" y="303" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.814@0.0.1536.814" timestamp="1622997021018" />
+    <state x="487" y="303" width="561" height="226" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.814@0.0.1536.814" timestamp="1623186899611" />
     <state x="533" y="80" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1622996984543">
       <screen x="0" y="0" width="1536" height="814" />
     </state>

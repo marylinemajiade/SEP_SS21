@@ -1,10 +1,14 @@
 package Tests;
 
-import RMI.RMIClient;
+
 import RMI.RMIClientIF;
 import RMI.RMIServer;
+import Spiel.Spielrunde;
 import org.junit.Assert;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
+import static org.mockito.Mockito.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -14,27 +18,7 @@ class RMIServerTest {
 
     @org.junit.jupiter.api.Test
     void registriereClient() throws RemoteException {
-        RMIServer rmiserver = new RMIServer();
-        RMIClientIF client1 = new RMIClient();
-        RMIClientIF client2 = new RMIClient();
-        rmiserver.registriereClient(client1);
-        ArrayList<RMIClientIF> clientListe = rmiserver.getRMIClients();
-        boolean clientGefunden = false;
-        for (RMIClientIF client: clientListe){
-            if (client == client1) {
-                clientGefunden = true;
-                break;
-            }
-        }
-        assertTrue(clientGefunden);
-        clientGefunden=false;
-        for (RMIClientIF client: clientListe){
-            if (client == client2) {
-                clientGefunden = true;
-                break;
-            }
-        }
-        assertTrue(clientGefunden);
+        
     }
 
     @org.junit.jupiter.api.Test
@@ -50,7 +34,11 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void benutzerRegistrieren() {
+    void benutzerRegistrieren() throws RemoteException {
+        Spielrunde sp = mock(Spielrunde.class);
+        RMIServer server = new RMIServer();
+        sp.getHandkarten("Test");
+        Mockito.verify(sp).getHandkarten("Test");
     }
 
     @org.junit.jupiter.api.Test
@@ -95,6 +83,7 @@ class RMIServerTest {
 
     @org.junit.jupiter.api.Test
     void karteZiehen() {
+
     }
 
     @org.junit.jupiter.api.Test
