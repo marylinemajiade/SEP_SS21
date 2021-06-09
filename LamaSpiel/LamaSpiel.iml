@@ -35,5 +35,6 @@
     </orderEntry>
     <orderEntry type="library" name="org.mockito:android:2.20.0" level="application" />
     <orderEntry type="library" name="org.mockito:junit-jupiter:2.20.0" level="application" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
