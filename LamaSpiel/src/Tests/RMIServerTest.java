@@ -1,18 +1,15 @@
 package Tests;
 
 
-import RMI.RMIClientIF;
 import RMI.RMIServer;
 import Spiel.Spielrunde;
-import org.junit.Assert;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import static org.mockito.Mockito.*;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
 class RMIServerTest {
 

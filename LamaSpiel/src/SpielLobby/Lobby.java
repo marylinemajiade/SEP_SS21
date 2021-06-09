@@ -7,6 +7,7 @@ public class Lobby {
     private ArrayList<Integer> spielraum_Ids;
     private ArrayList<List<String>> spieler;
 
+
     public ArrayList<Integer> getSpielraum_Ids(){
     return spielraum_Ids;
     }

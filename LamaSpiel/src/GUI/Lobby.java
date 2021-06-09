@@ -7,9 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-
-
-
 public class Lobby extends Application {
 
     @Override
