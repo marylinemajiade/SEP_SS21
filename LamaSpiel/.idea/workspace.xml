@@ -19,19 +19,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="Javafx-Library integriert">
-      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="module-info file integriert">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_controls.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_swt.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LamaSpiel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpiel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spiel/Chipstapel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spiel/Chipstapel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/GUI/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/GUI/Lobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/SpielLobby/Lobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/RMIServerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/RMIServerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/SpielrundeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/SpielrundeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Lobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpielLobby/Lobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/SpielrundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/SpielrundeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +43,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="module-info" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
-        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -80,27 +82,41 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="Tests" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="SpielLobby" />
+      <recent name="Tests" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Chat">
     <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
       <module name="LamaSpiel" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Workspace/javafx-sdk-11.0.2/lib --add-modules=javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -109,11 +125,22 @@
     <configuration name="Lobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Lobby" />
       <module name="LamaSpiel" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Workspace/javafx-sdk-11.0.2/lib --add-modules=javafx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,6 +172,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LobbyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpiel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.LobbyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LobbyTest.getSpielraum_Ids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpiel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.LobbyTest" />
+      <option name="METHOD_NAME" value="getSpielraum_Ids" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RMIServerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="LamaSpiel" />
       <extension name="coverage">
@@ -160,10 +218,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Chat" />
+      <item itemvalue="Application.Lobby" />
+      <item itemvalue="JUnit.RMIServerTest" />
+      <item itemvalue="JUnit.BestenlisteTest" />
+      <item itemvalue="JUnit.LobbyTest" />
+      <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Chat" />
         <item itemvalue="Application.Lobby" />
+        <item itemvalue="JUnit.LobbyTest" />
+        <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
         <item itemvalue="JUnit.BestenlisteTest" />
       </list>
     </recent_temporary>
@@ -185,7 +253,7 @@
       <workItem from="1623074837095" duration="60000" />
       <workItem from="1623146992618" duration="2695000" />
       <workItem from="1623180245898" duration="3683000" />
-      <workItem from="1623242019450" duration="3310000" />
+      <workItem from="1623242019450" duration="11430000" />
     </task>
     <task id="LOCAL-00001" summary="Javafx-Library integriert">
       <created>1623243835257</created>
@@ -201,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623243866059</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="module-info file integriert">
+      <created>1623257739669</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623257739669</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +296,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Javafx-Library integriert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javafx-Library integriert" />
+    <MESSAGE value="module-info file integriert" />
+    <option name="LAST_COMMIT_MESSAGE" value="module-info file integriert" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpiel$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1623001456523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
