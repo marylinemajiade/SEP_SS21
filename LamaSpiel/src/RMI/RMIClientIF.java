@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 
 public interface RMIClientIF extends Remote {
 
-    void aktualisiereSpielstatus(Spielraum spielraum) throws RemoteException;
+   /* void aktualisiereSpielstatus(Spielraum spielraum) throws RemoteException;*/
 
     void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException, ungueltigerBenutzernameException, ZustellungNachrichtNichtMoeglichException ;
 
