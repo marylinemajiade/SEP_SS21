@@ -12,10 +12,10 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF {
         super();
     }
 
-    @Override
+    /*@Override
     public void aktualisiereSpielstatus(Spielraum spielraum) throws RemoteException {
 
-    }
+    }*/
 
     @Override
     public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {
