@@ -1,13 +1,14 @@
 package RMI;
 
 import Highscore.Bestenliste;
+import Spiel.Spielrunde;
 import fachlicheExceptions.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RMIClientIF extends Remote {
 
-   /* void aktualisiereSpielstatus(Spielraum spielraum) throws RemoteException;*/
+    void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException;
 
     void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException, ungueltigerBenutzernameException, ZustellungNachrichtNichtMoeglichException ;
 

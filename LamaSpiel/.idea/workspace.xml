@@ -19,19 +19,131 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="Javafx-Library integriert">
-      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_11_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-console-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-datetime-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-debug-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-errorhandling-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-file-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-file-l1-2-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-file-l2-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-handle-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-heap-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-interlocked-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-libraryloader-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-localization-l1-2-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-memory-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-namedpipe-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-processenvironment-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-processthreads-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-processthreads-l1-1-1.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-profile-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-rtlsupport-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-string-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-synch-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-synch-l1-2-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-sysinfo-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-timezone-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-core-util-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-conio-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-convert-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-environment-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-filesystem-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-heap-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-locale-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-math-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-multibyte-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-private-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-process-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-runtime-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-stdio-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-string-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-time-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/api-ms-win-crt-utility-l1-1-0.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/concrt140.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/decora_sse.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/fxplugins.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/glass.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/glib-lite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/gstreamer-lite.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/javafx_font.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/javafx_iio.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/jfxmedia.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/jfxwebkit.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/msvcp140.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/prism_common.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/prism_d3d.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/prism_sw.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/ucrtbase.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/bin/vcruntime140.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.base/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.base/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.base/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.controls/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.controls/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.fxml/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.fxml/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.graphics/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.graphics/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.graphics/jpeg_fx.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/applecoreaudio.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/glib.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/gstreamer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.media/libffi.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.swing/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.swing/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/icu_web.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/libxml2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/libxslt.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/legal/javafx.web/webkit.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx-swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.base.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.controls.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.fxml.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.graphics.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.media.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.swing.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/javafx.web.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib/src.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LamaSpiel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpiel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Highscore/Bestenliste.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Konto/Benutzerdaten.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIClientIF.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/RMI/RMIServerIF.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Chipstapel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Spiel/Spielrunde.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/SpielLobby/Lobby.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/BestenlisteTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/ChipstapelTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/Tests/RMIServerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/benutzerNameVergebenException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/spielLaeuftBereitsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/spielraumVollException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/ungueltigeSpielraumIDException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/ungueltigerBenutzernameException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compilation results/production/LamaSpiel/fachlicheExceptions/ungueltigerSpielzugException.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Spiel/Chipstapel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spiel/Chipstapel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +155,6 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Class" />
-        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -56,12 +167,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ta5jYDExHaeq6yG5i3WdC0qc0f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -74,15 +188,17 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../javafx-sdk-11.0.2/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -92,20 +208,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Chat">
-    <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
-      <module name="LamaSpiel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Lobby">
     <configuration name="Lobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Lobby" />
       <module name="LamaSpiel" />
@@ -115,17 +218,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -162,13 +254,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Chat" />
         <item itemvalue="Application.Lobby" />
         <item itemvalue="JUnit.BestenlisteTest" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -184,28 +274,22 @@
       <workItem from="1622999714872" duration="3089000" />
       <workItem from="1623074837095" duration="60000" />
       <workItem from="1623146992618" duration="2695000" />
-      <workItem from="1623180245898" duration="3683000" />
-      <workItem from="1623242019450" duration="3310000" />
+      <workItem from="1623180245898" duration="4327000" />
+      <workItem from="1623240690164" duration="114000" />
+      <workItem from="1623262777800" duration="5830000" />
     </task>
-    <task id="LOCAL-00001" summary="Javafx-Library integriert">
-      <created>1623243835257</created>
+    <task id="LOCAL-00001" summary="Mockito-Bibiliothek integriert">
+      <created>1623189353988</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1623243835257</updated>
+      <updated>1623189353988</updated>
     </task>
-    <task id="LOCAL-00002" summary="Javafx-Library integriert">
-      <created>1623243866059</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1623243866059</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -220,8 +304,71 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Javafx-Library integriert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javafx-Library integriert" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Mockito-Bibiliothek integriert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mockito-Bibiliothek integriert" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="654" y="274" key="#Notifications" timestamp="1622998118361">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="654" y="274" key="#Notifications/0.0.1536.814@0.0.1536.814" timestamp="1622998118360" />
+    <state x="249" y="0" key="#Project_Structure" timestamp="1622999768591">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.814@0.0.1536.814" timestamp="1622999768591" />
+    <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623264535794">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.814@0.0.1536.814" timestamp="1623264535794" />
+    <state x="499" y="187" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1622996983592">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="499" y="187" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.814@0.0.1536.814" timestamp="1622996983592" />
+    <state x="445" y="116" key="FileChooserDialogImpl" timestamp="1623264384929">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="445" y="116" key="FileChooserDialogImpl/0.0.1536.814@0.0.1536.814" timestamp="1623264384929" />
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623189382543">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623189382543" />
+    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623189382542">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
+    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623189382542" />
+    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623189382542">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
+    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623189382542" />
+    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623189382543">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623001834773" />
+    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623189382543" />
+    <state x="147" y="68" key="MergeDialog" timestamp="1623263032402">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="147" y="68" key="MergeDialog/0.0.1536.814@0.0.1536.814" timestamp="1623263032402" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1623264397322">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623264397322" />
+    <state x="487" y="303" width="561" height="226" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1623263361680">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="487" y="303" width="561" height="226" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.814@0.0.1536.814" timestamp="1623263361680" />
+    <state x="579" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623262783444">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="579" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623262783444" />
+    <state x="533" y="80" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1622996984543">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="533" y="80" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.814@0.0.1536.814" timestamp="1622996984543" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpiel$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1623001456523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

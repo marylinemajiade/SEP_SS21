@@ -5,7 +5,8 @@ module LamaSpiel {
     requires org.junit.jupiter.api;
     requires junit;
     requires java.rmi;
-    requires mockito.core;
+    requires org.mockito;
+
     exports GUI;
 
 
