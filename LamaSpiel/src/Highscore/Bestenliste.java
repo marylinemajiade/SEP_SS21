@@ -4,6 +4,7 @@ package Highscore;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import RMI.RMIClient;
 
 
 
