@@ -1,12 +1,11 @@
 package Tests;
 
 import Highscore.Bestenliste;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -15,11 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class BestenlisteTest {
 
 
-    public HashMap<String,Integer> liste;
+    private HashMap<String,Integer> liste;
+    Bestenliste bestenliste;
 
     @BeforeEach
     void setup() {
-        Bestenliste bestenliste = new Bestenliste();
+        this.bestenliste = new Bestenliste();
         this.liste = Bestenliste.bestenliste;
     }
 
@@ -119,8 +119,8 @@ class BestenlisteTest {
         assertEquals("Spieler6=6", topten.get(5).toString());
         assertEquals("Spieler7=5", topten.get(6).toString());
         assertEquals("Spieler8=4", topten.get(7).toString());
-        assertEquals("Spieler9=2", topten.get(8).toString());
-        assertEquals("Spieler10=1", topten.get(9).toString());
+        assertEquals("Spieler9=3", topten.get(8).toString());
+        assertEquals("Spieler10=2", topten.get(9).toString());
 
     }
 
