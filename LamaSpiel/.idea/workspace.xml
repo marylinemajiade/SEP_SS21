@@ -26,8 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/RMI/RMIClientDriver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RMI/RMIServerDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIClientIF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RMI/RMIServerIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIServerIF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +99,7 @@
       <recent name="Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Chat">
+  <component name="RunManager" selected="Application.RMIServerDriver">
     <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
       <module name="LamaSpiel" />
@@ -144,17 +148,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BestenlisteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RMIServerDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RMI.RMIServerDriver" />
       <module name="LamaSpiel" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.*" />
+          <option name="PATTERN" value="RMI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.BestenlisteTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,17 +211,17 @@
       <item itemvalue="Application.Chat" />
       <item itemvalue="Application.Lobby" />
       <item itemvalue="JUnit.RMIServerTest" />
-      <item itemvalue="JUnit.BestenlisteTest" />
       <item itemvalue="JUnit.LobbyTest" />
       <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
+      <item itemvalue="Application.RMIServerDriver" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RMIServerDriver" />
         <item itemvalue="Application.Chat" />
         <item itemvalue="Application.Lobby" />
         <item itemvalue="JUnit.LobbyTest" />
         <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
-        <item itemvalue="JUnit.BestenlisteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -242,6 +244,7 @@
       <workItem from="1623180245898" duration="3683000" />
       <workItem from="1623242019450" duration="11430000" />
       <workItem from="1623271499875" duration="1734000" />
+      <workItem from="1623349959623" duration="6117000" />
     </task>
     <task id="LOCAL-00001" summary="Javafx-Library integriert">
       <created>1623243835257</created>
@@ -271,18 +274,37 @@
       <option name="project" value="LOCAL" />
       <updated>1623330372221</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Weitere Tests RMIServer implementiert&#10;Methode aktualisiereSpielraeme zu RMIClientIF hinzugefügt">
+      <created>1623332059964</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623332059964</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Abgabe3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -294,13 +316,14 @@
     <MESSAGE value="Javafx-Library integriert" />
     <MESSAGE value="module-info file integriert" />
     <MESSAGE value="Mockito wieder hergestellt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mockito wieder hergestellt" />
+    <MESSAGE value="Weitere Tests RMIServer implementiert&#10;Methode aktualisiereSpielraeme zu RMIClientIF hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weitere Tests RMIServer implementiert&#10;Methode aktualisiereSpielraeme zu RMIClientIF hinzugefügt" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1623330813103">
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1623355602530">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623330813103" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623355602530" />
     <state x="578" y="118" key="RollbackChangesDialog" timestamp="1623330397091">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
@@ -309,10 +332,10 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623329975755" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623330380799">
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623332126066">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623330380799" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623332126066" />
     <state x="487" y="308" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1623329967885">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
@@ -321,6 +344,10 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623330388094" />
+    <state x="431" y="135" width="672" height="678" key="search.everywhere.popup" timestamp="1623350485821">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="431" y="135" width="672" height="678" key="search.everywhere.popup/0.0.1536.814@0.0.1536.814" timestamp="1623350485821" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpiel$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1623001456523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

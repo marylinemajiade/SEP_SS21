@@ -4,6 +4,7 @@ package Tests;
 import RMI.*;
 import RMI.RMIServer;
 import Spiel.Spielrunde;
+import SpielLobby.Lobby;
 import fachlicheExceptions.ZustellungNachrichtNichtMoeglichException;
 import fachlicheExceptions.benutzerNameVergebenException;
 import fachlicheExceptions.ungueltigeSpielraumIDException;
@@ -12,6 +13,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,7 +43,7 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void benutzerdatenPruefen() {
+    void benutzerdatenPruefen() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
         try {
             rmiserver.benutzerRegistrieren("LAMAKönig123", "s3cr3tP4ssw0rd");
@@ -52,7 +55,7 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void benutzerRegistrieren() {
+    void benutzerRegistrieren() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
         try {
             rmiserver.benutzerRegistrieren("Andi", "12345678");
@@ -69,7 +72,7 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void benutzerLoeschen() throws benutzerNameVergebenException, ungueltigerBenutzernameException {
+    void benutzerLoeschen() throws benutzerNameVergebenException, ungueltigerBenutzernameException, RemoteException {
         RMIServer rmiserver = new RMIServer();
             rmiserver.benutzerRegistrieren("LamaKönig123", "dorwssaP");
         assertTrue(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
@@ -81,7 +84,8 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void sendeChatnachricht() throws RemoteException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException, ZustellungNachrichtNichtMoeglichException {
+    void sendeChatnachricht() throws RemoteException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException,
+            ZustellungNachrichtNichtMoeglichException {
         RMIServer rmiserver = new RMIServer();
         RMIClientIF client1 = mock(RMIClientIF.class);
         RMIClientIF client2 = mock(RMIClientIF.class);
@@ -100,61 +104,86 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void spielraumErstellen() {
+    void spielraumErstellen() throws RemoteException, ungueltigerBenutzernameException {
         RMIServer rmiserver = new RMIServer();
         RMIClientIF client1 = mock(RMIClientIF.class);
-        ArgumentCaptor<Spielrunde> captor = ArgumentCaptor.forClass(Spielrunde.class);
-        Mockito.verify(client1).aktualisiereSpielräume(captor.capture());
+        RMIClientIF client2 = mock(RMIClientIF.class);
+        RMIClientIF client3 = mock(RMIClientIF.class);
+        Mockito.when(client1.getBenutzername()).thenReturn("client1");
+        Mockito.when(client2.getBenutzername()).thenReturn("client2");
+        Mockito.when(client3.getBenutzername()).thenReturn("client3");
+        rmiserver.registriereClient(client1);
+        rmiserver.registriereClient(client2);
+        rmiserver.registriereClient(client3);
+        rmiserver.spielraumErstellen("client1");
+        Mockito.verify(client1, never()).aktualisiereSpielraeume(any(Lobby.class));
+        Mockito.verify(client2, never()).aktualisiereSpielraeume(any(Lobby.class));
+        Mockito.verify(client3, never()).aktualisiereSpielraeume(any(Lobby.class));
+        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
+                ()->{rmiserver.spielraumErstellen("client4");});
     }
 
     @org.junit.jupiter.api.Test
-    void spielraumBeitreten() {
+    void spielraumBeitreten() throws RemoteException, ungueltigerBenutzernameException {
+        RMIServer rmiserver = new RMIServer();
+        RMIClientIF client1 = mock(RMIClientIF.class);
+        RMIClientIF client2 = mock(RMIClientIF.class);
+        RMIClientIF client3 = mock(RMIClientIF.class);
+        Mockito.when(client1.getBenutzername()).thenReturn("client1");
+        Mockito.when(client2.getBenutzername()).thenReturn("client2");
+        Mockito.when(client3.getBenutzername()).thenReturn("client3");
+        rmiserver.registriereClient(client1);
+        rmiserver.registriereClient(client2);
+        rmiserver.registriereClient(client3);
+        rmiserver.spielraumErstellen("client1");
+        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
+                ()->{rmiserver.spielraumBeitreten("client4",1);});
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void spielraumVerlassen() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void spielraumVerlassen() {
+    void botHinzufuegen() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void botHinzufuegen() {
+    void botEntfernen() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void botEntfernen() {
+    void spielStarten() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void spielStarten() {
+    void chipsTauschen() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void chipsTauschen() {
+    void chipAbgeben() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void chipAbgeben() {
+    void karteAblegen() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
     @org.junit.jupiter.api.Test
-    void karteAblegen() {
-        RMIServer rmiserver = new RMIServer();
-    }
-
-    @org.junit.jupiter.api.Test
-    void karteZiehen() {
+    void karteZiehen() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
 
     }
 
     @org.junit.jupiter.api.Test
-    void aussteigen() {
+    void aussteigen() throws RemoteException{
         RMIServer rmiserver = new RMIServer();
     }
 
