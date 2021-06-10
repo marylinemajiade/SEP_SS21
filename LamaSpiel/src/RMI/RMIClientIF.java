@@ -2,6 +2,7 @@ package RMI;
 
 import Highscore.Bestenliste;
 import Spiel.Spielrunde;
+import SpielLobby.Lobby;
 import fachlicheExceptions.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -15,6 +16,8 @@ public interface RMIClientIF extends Remote {
     String getBenutzername() throws RemoteException, ungueltigerBenutzernameException;
 
     void akutalisiereBestenliste(Bestenliste bestenliste) throws RemoteException;
+
+    void aktualisiereSpielraeume(Lobby lobby)t hrows RemoteException;
 
     void setSpielraum() throws RemoteException;
 

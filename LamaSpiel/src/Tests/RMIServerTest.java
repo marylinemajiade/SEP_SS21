@@ -4,8 +4,11 @@ package Tests;
 import RMI.*;
 import RMI.RMIServer;
 import Spiel.Spielrunde;
+import fachlicheExceptions.ZustellungNachrichtNichtMoeglichException;
 import fachlicheExceptions.benutzerNameVergebenException;
+import fachlicheExceptions.ungueltigeSpielraumIDException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 import java.rmi.RemoteException;
@@ -78,16 +81,30 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void sendeChatnachricht() {
+    void sendeChatnachricht() throws RemoteException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException, ZustellungNachrichtNichtMoeglichException {
         RMIServer rmiserver = new RMIServer();
         RMIClientIF client1 = mock(RMIClientIF.class);
         RMIClientIF client2 = mock(RMIClientIF.class);
         RMIClientIF client3 = mock(RMIClientIF.class);
-        RMIClientIF client4 = mock(RMIClientIF.class);
         rmiserver.registriereClient(client1);
         rmiserver.registriereClient(client2);
-        rmiserver.registriereClient(client3);
-        rmiserver.registriereClient(client4);
+        Mockito.when(client1.getBenutzername()).thenReturn("client1");
+        Mockito.when(client2.getBenutzername()).thenReturn("client2");
+        Mockito.when(client3.getBenutzername()).thenReturn("client3");
+        rmiserver.spielraumErstellen("client1");
+        rmiserver.sendeChatnachricht("client2", 0, "Test");
+        Mockito.verify(client1, never()).uebertrageChatnachricht("client1","Test");
+        Mockito.verify(client3).uebertrageChatnachricht("client1","Test");
+
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void spielraumErstellen() {
+        RMIServer rmiserver = new RMIServer();
+        RMIClientIF client1 = mock(RMIClientIF.class);
+        ArgumentCaptor<Spielrunde> captor = ArgumentCaptor.forClass(Spielrunde.class);
+        Mockito.verify(client1).aktualisiereSpielräume(captor.capture());
     }
 
     @org.junit.jupiter.api.Test

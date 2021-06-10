@@ -1,6 +1,9 @@
 package RMI;
 
 import fachlicheExceptions.*;
+
+import java.rmi.RemoteException;
+
 /**
 * @author Nick Jochum
 * Zentraler Server des Spiels. Alle aktiven Clients haben eine Referenz auf RMI.RMIServer-Instanz, über die sie mit anderen
@@ -66,6 +69,18 @@ public class RMIServer implements RMIServerIF{
     @Override
     public void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
+
+    }
+
+    /**
+     * Erstellt einen neuen Spielraum, der für alle Spieler in der Lobby sichtbar ist. Der Spieler mit dem Benutzernamen
+     * benutzernamen tritt automatisch dem erstellten Spielraum bei
+     * @param benutzername String != null
+     * @throws RemoteException wenn Server nicht erreichbar ist (RMI)
+     * @throws ungueltigerBenutzernameException wenn kein Spieler mit dem Benutzernamen benutzername registriert ist
+     */
+    @Override
+    public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
 
     }
 
