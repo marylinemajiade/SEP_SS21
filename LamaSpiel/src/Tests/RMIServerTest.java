@@ -6,13 +6,9 @@ import RMI.RMIServer;
 import Spiel.Spielrunde;
 import fachlicheExceptions.benutzerNameVergebenException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
-import org.junit.Assert;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import static org.mockito.Mockito.*;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,7 +72,8 @@ class RMIServerTest {
         assertTrue(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
         rmiserver.benutzerLoeschen("LamaKönig123");
         assertFalse(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
-        assertDoesNotThrow(()->{rmiserver.benutzerRegistrieren("LamaKönig123", "dsfasdfasdf");});
+        try{rmiserver.benutzerRegistrieren("LamaKönig123", "dsfasdfasdf");}
+        catch(benutzerNameVergebenException ignored){fail("Benutzername sollte wieder frei sein");}
 
     }
 
