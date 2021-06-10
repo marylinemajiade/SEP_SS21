@@ -16,14 +16,19 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Abgabe3" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="Wiederherstellung von BestenlisteTest und Bestenliste">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpiel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpiel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Highscore/Bestenliste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Highscore/Bestenliste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/BestenlisteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/BestenlisteTest.java" afterDir="false" />
+    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RMI/RMIServerIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RMI/RMIServerIF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/RMIServerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ta5jYDExHaeq6yG5i3WdC0qc0f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -66,7 +73,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Uni/Informatik/4. Semester/SEP/Javafx/javafx-sdk-11.0.2/lib/javafx.web.jar" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Uni/Informatik/4. Semester/SEP/Javafx/javafx-sdk-11.0.2/lib/javafx.web.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -74,7 +81,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -133,17 +140,6 @@
           <ENTRY IS_ENABLED="true" PARSER="runconfig" />
         </ENTRIES>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -227,7 +223,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -268,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623257739669</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Mockito wieder hergestellt">
+      <created>1623330372221</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623330372221</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,9 +290,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
     <MESSAGE value="Javafx-Library integriert" />
     <MESSAGE value="module-info file integriert" />
-    <option name="LAST_COMMIT_MESSAGE" value="module-info file integriert" />
+    <MESSAGE value="Mockito wieder hergestellt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mockito wieder hergestellt" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1623330813103">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623330813103" />
+    <state x="578" y="118" key="RollbackChangesDialog" timestamp="1623330397091">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="578" y="118" key="RollbackChangesDialog/0.0.1536.814@0.0.1536.814" timestamp="1623330397091" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1623329975755">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623329975755" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623330380799">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623330380799" />
+    <state x="487" y="308" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1623329967885">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="487" y="308" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.814@0.0.1536.814" timestamp="1623329967885" />
+    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623330388094">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623330388094" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpiel$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1623001456523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

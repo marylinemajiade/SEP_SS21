@@ -19,6 +19,7 @@ public interface RMIServerIF extends Remote {
     void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
             throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
+    void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException;
     void spielraumBeitreten(String benutzername, int spielraumID)
             throws RemoteException, spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException;
 
