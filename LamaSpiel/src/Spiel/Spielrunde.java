@@ -1,8 +1,8 @@
 package Spiel;
 
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Stack;
+import fachlicheExceptions.*;
 
 
 
@@ -40,16 +40,16 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Karte ablegen eines Spielers
      * @param benutzername Benutzername des Spielers, dessen Karte abgelegt werden soll
      * @param karte Karte, die abgelegt werden soll dargestellt als Integer-Wert
+     * @throws stapelLeerException
      */
-    public void karteAblegen(String benutzername, int karte){
-        // throws Spielraum-Exception wenn zu wenig Karten
+    public void karteAblegen(String benutzername, int karte) throws stapelLeerException{
         try {
             handkarten = getHandkarten(benutzername);
             handkarten.remove(karte);
             ablagestapel = getAblagestapel();
             ablagestapel.push(karte);
         }
-        catch (Exception e){
+        catch(Exception e){
 
         }
     }
@@ -59,9 +59,11 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Ziehen einer Karte
      * @param benutzername Benutzername des Spielers, der die Karte zieht
      * @return gibt die gezogene Karte als Integer-Wert zurück
+     * @throws ungueltigeKarteException
+     * @throws stapelLeerException
+     *
      */
-    public int karteZiehen(String benutzername){
-        //throws Spielraum-Exception
+    public int karteZiehen(String benutzername) throws ungueltigeKarteException, stapelLeerException{
         try {
             nachziehstapel = getNachziehstapel();
             handkarten = getHandkarten(benutzername);
@@ -80,8 +82,10 @@ public class Spielrunde extends Chipstapel {
     /**
      * Die Methode dient zum Aussteigen bei einer Runde
      * @param benutzername Benutzername des Spielers, der aussteigen möchte
+     * @throws ungueltigerSpielzugException
+     * @throws ungueltigerBenutzernameException
      */
-    public void aussteigen(String benutzername){
+    public void aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
 
     }
 
@@ -92,11 +96,12 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Tauschen von Chips
      * @param zehngegeneins stell dar, ob ein Zehnerchip gegen einen Einserchip getauscht wird oder andersrum
      * @param benutzername Benutzername des Spielers, der die Chips tauschen möchte
+     * @throws ungueltigerBenutzernameException
+     * @throws ungueltigerChipException
+     * @throws stapelLeerException
+     * @throws ungueltigerSpielzugException
      */
-    public void chipsTauschen(boolean zehngegeneins, String benutzername) {
-        // throws Spielraum-Exception: Stapel ist leer, Chipabgabe nicht möglich ->
-        // wenn entweder zu wenig weiße oder zu wenig schwarze
-    chipstapel = getChipstapel(benutzername);
+    public void chipsTauschen(boolean zehngegeneins, String benutzername) throws ungueltigerBenutzernameException, ungueltigerChipException, stapelLeerException, ungueltigerSpielzugException {
     int white = chipstapel.getWeiss();
     int black = chipstapel.getSchwarz();
     try {
@@ -118,10 +123,12 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Abgeben eines Chips
      * @param zehnerchip stellt dar, ob ein Zehner oder Einserchip abgegeben wird
      * @param benutzername Benutzername des Spielers, der den Chip abgeben möchte
+     * @throws ungueltigerBenutzernameException
+     * @throws ungueltigerChipException
+     * @throws stapelLeerException
+     * @throws ungueltigerSpielzugException
      */
-    public void chipAbgeben(boolean zehnerchip, String benutzername){
-        // throws Spielraum-Exception: Stapel ist leer, Chipabgabe nicht möglich ->
-        // wenn zu wenig weiße oder zu wenig schwarze
+    public void chipAbgeben(boolean zehnerchip, String benutzername) throws ungueltigerBenutzernameException, ungueltigerChipException, stapelLeerException, ungueltigerSpielzugException{
         chipstapel = getChipstapel(benutzername);
         int white = chipstapel.getWeiss();
         int black = chipstapel.getSchwarz();
@@ -147,8 +154,9 @@ public class Spielrunde extends Chipstapel {
 
     /**
      * Die Methode dient zum Starten des Spiels
+     * @throws spielLaeuftBereitsException
      */
-    public void spielStarten(){
+    public void spielStarten() throws spielLaeuftBereitsException{
 
     }
 
@@ -157,17 +165,20 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zur Verwaltung des Handkartenstapels
      * @param benutzername Benutzername des Spielers, dessen Stapel verwaltet wird
      * @return gibt den Stapel als ungeordnetes HashSet aus Integer-Werten der Karten zurück
+     * @throws stapelLeerException
+     * @throws ungueltigerBenutzernameException
      */
-    public HashSet<Integer> getHandkarten(String benutzername){
+    public HashSet<Integer> getHandkarten(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
         return handkarten;
     }
 
     /**
      * Die Methode dient zur Verwaltung des Ablagestapels
      * @return gibt den Stapel als Stack aus Integer-Werten der Karten zurück
+     * @throws stapelLeerException
      */
 
-    public Stack<Integer> getAblagestapel(){
+    public Stack<Integer> getAblagestapel() throws stapelLeerException{
         return ablagestapel;
     }
 
@@ -175,8 +186,9 @@ public class Spielrunde extends Chipstapel {
     /**
      * Die Methode dient zur Verwaltung des Nachziehstapels
      * @return gibt den Stapel als Stack aus Integer-Werten der Karten zurück
+     * @throws stapelLeerException
      */
-    public Stack<Integer> getNachziehstapel(){
+    public Stack<Integer> getNachziehstapel() throws stapelLeerException{
         return nachziehstapel;
     }
 
@@ -184,9 +196,11 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zur Verwaltung des Chipstapels
      * @param benutzername Benutzername des Spielers, dessen Chipstapel verwaltet wird
      * @return gibt den Chipstapel mit der richtigen Anzahl weißer und schwarzer Chips zurück
+     * @throws stapelLeerException
+     * @throws ungueltigerBenutzernameException
      */
 
-    public Chipstapel getChipstapel(String benutzername){
+    public Chipstapel getChipstapel(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
 
         int white = chipstapel.getWeiss();
         int black = chipstapel.getSchwarz();
@@ -200,8 +214,9 @@ public class Spielrunde extends Chipstapel {
     /**
      * Die Methode dient zum Verlassen des Spielraumes
      * @param benutzername Benutzername des Spielers, der verlassen möchte
+     * @throws ungueltigerBenutzernameException
      */
-    public void spielraumVerlassen(String benutzername){
+    public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException{
 
     }
 
