@@ -26,7 +26,7 @@ class BestenlisteTest {
         try {
             b.eintragHinzufuegen("Bot1", true);
             b.getScore("Bot1");
-        } catch (NullPointerException | NoSuchElementException ignored){}
+        } catch (NullPointerException ignored){}
 
     }
 
@@ -43,7 +43,7 @@ class BestenlisteTest {
 
         try{
             b.getScore("Spieler2");
-        } catch (NullPointerException | NoSuchElementException ignored) {}
+        } catch (NullPointerException ignored) {}
     }
 
     @Test
@@ -123,11 +123,11 @@ class BestenlisteTest {
 
         try{
             b.getScore("Spieler2");
-        } catch (NullPointerException | NoSuchElementException ignored) {}
+        } catch (NullPointerException ignored) {}
 
         try{
             b.eintragLoeschen("Spieler3");
-        } catch (NullPointerException | NoSuchElementException ignored) {}
+        } catch (NullPointerException ignored) {}
 
     }
 }
