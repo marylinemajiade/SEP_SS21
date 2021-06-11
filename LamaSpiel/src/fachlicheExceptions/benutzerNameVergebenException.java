@@ -6,4 +6,8 @@ public class benutzerNameVergebenException extends Exception{
     public benutzerNameVergebenException(String errorMessage) {
         super(errorMessage);
     }
+
+    public benutzerNameVergebenException() {
+        super("Benutzername schon vergeben");
+    }
 }
