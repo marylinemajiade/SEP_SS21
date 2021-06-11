@@ -26,31 +26,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Chat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Lobby.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Highscore/Bestenliste.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Konto/Benutzer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Konto/BenutzerVerwalten.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/EmailVergebenException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/benutzerNameVergebenException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/spielLaeuftBereitsException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/spielraumVollException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/stapelLeerException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigeKarteException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigeSpielraumIDException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerBenutzernameException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerChipException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerSpielzugException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientDriver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerDriver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Spiel/Chipstapel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/SpielLobby/LobbyIF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/BestenlisteTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/ChipstapelTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/LobbyTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/SpielrundeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Chat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Lobby.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Highscore/Bestenliste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Konto/Benutzer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Konto/BenutzerVerwalten.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServerDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServerIF.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Spiel/Chipstapel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Spiel/Spielrunde.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/LobbyIF.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/EmailVergebenException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/benutzerNameVergebenException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielLaeuftBereitsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielraumVollException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/stapelLeerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeKarteException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeSpielraumIDException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerBenutzernameException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerChipException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerSpielzugException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BenutzerVerwaltenTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BestenlisteTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LobbyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RMIServerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +82,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Abgabe3" />
+        <entry key="$PROJECT_DIR$/.." value="48254bf635f83d89fb0c8447f65151bd235579a2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -135,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1623429580363</updated>
-      <workItem from="1623429581553" duration="3566000" />
+      <workItem from="1623429581553" duration="4043000" />
     </task>
     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
       <created>1623429985046</created>
@@ -151,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623430621517</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Error behoben">
+      <created>1623433505487</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623433505487</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,25 +220,25 @@
       <screen x="0" y="0" width="1536" height="814" />
     </state>
     <state x="831" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623432756360" />
-    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623433032958">
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623433291159">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
-    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623433032958">
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623433291159" />
+    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623433291158">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
-    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623433032957">
+    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623433291158" />
+    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623433291157">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623433032957" />
-    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623433032958">
+    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623433291157" />
+    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623433291159">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623430628821">
+    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623433291159" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623433533234">
       <screen x="0" y="0" width="1536" height="814" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623430628821" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623433533234" />
   </component>
 </project>
