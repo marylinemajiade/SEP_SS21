@@ -25,7 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="Interface LobbyIF erstellt + JavaDocs von Lobby">
+    <list default="true" id="5b951f7d-92af-49d6-b978-34d1d889f2ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +80,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -220,7 +220,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -240,7 +240,7 @@
       <workItem from="1623242019450" duration="11430000" />
       <workItem from="1623271499875" duration="1734000" />
       <workItem from="1623349959623" duration="6117000" />
-      <workItem from="1623424144091" duration="323000" />
+      <workItem from="1623414494518" duration="920000" />
     </task>
     <task id="LOCAL-00001" summary="Javafx-Library integriert">
       <created>1623243835257</created>
@@ -277,18 +277,11 @@
       <option name="project" value="LOCAL" />
       <updated>1623332059964</updated>
     </task>
-    <task id="LOCAL-00006" summary="Interface LobbyIF erstellt + JavaDocs von Lobby">
-      <created>1623398160162</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1623398160162</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -320,8 +313,21 @@
     <MESSAGE value="module-info file integriert" />
     <MESSAGE value="Mockito wieder hergestellt" />
     <MESSAGE value="Weitere Tests RMIServer implementiert&#10;Methode aktualisiereSpielraeme zu RMIClientIF hinzugefügt" />
-    <MESSAGE value="Interface LobbyIF erstellt + JavaDocs von Lobby" />
-    <option name="LAST_COMMIT_MESSAGE" value="Interface LobbyIF erstellt + JavaDocs von Lobby" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weitere Tests RMIServer implementiert&#10;Methode aktualisiereSpielraeme zu RMIClientIF hinzugefügt" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="546" y="118" key="RollbackChangesDialog" timestamp="1623414520128">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="546" y="118" key="RollbackChangesDialog/0.0.1536.814@0.0.1536.814" timestamp="1623414520128" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1623421674659">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.814@0.0.1536.814" timestamp="1623421674659" />
+    <state x="487" y="308" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1623414900750">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="487" y="308" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.814@0.0.1536.814" timestamp="1623414900750" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpiel$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1623001456523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
