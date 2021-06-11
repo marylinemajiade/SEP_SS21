@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Abgabe3" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Chat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Lobby.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Highscore/Bestenliste.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Konto/Benutzer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Konto/BenutzerVerwalten.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/EmailVergebenException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/benutzerNameVergebenException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/spielLaeuftBereitsException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/spielraumVollException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/stapelLeerException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigeKarteException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigeSpielraumIDException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerBenutzernameException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerChipException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fachlicheExceptions/ungueltigerSpielzugException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Abgabe3" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1toJbZRKC1xX9Ky6WDmUyQvas5N" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager" selected="JUnit.BestenlisteTest">
+    <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
+      <module name="LamaSpielMaven" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BestenlisteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BestenlisteTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BestenlisteTest" />
+        <item itemvalue="Application.Chat" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+        <item itemvalue="JUnit.BestenlisteTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="" />
+      <created>1623429580363</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623429580363</updated>
+      <workItem from="1623429581553" duration="3566000" />
+    </task>
+    <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
+      <created>1623429985046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623429985046</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Libaries installiert (hoffentlich:D) pom.xml">
+      <created>1623430621517</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623430621517</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Abgabe3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Libaries installiert (hoffentlich:D)" />
+    <MESSAGE value="Libaries installiert (hoffentlich:D) pom.xml" />
+    <MESSAGE value="Error behoben" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error behoben" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="831" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1623432756360">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="831" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623432756360" />
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623433032958">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
+    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623433032958">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
+    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623433032957">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623433032957" />
+    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623433032958">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623433032958" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623430628821">
+      <screen x="0" y="0" width="1536" height="814" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623430628821" />
+  </component>
+</project>
