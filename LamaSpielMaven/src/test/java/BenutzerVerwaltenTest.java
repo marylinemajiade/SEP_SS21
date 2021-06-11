@@ -1,4 +1,3 @@
-package Tests;
 
 import Konto.Benutzer;
 import org.junit.jupiter.api.BeforeEach;

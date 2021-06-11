@@ -1,4 +1,3 @@
-package Tests;
 
 import SpielLobby.Lobby;
 import org.junit.jupiter.api.Test;

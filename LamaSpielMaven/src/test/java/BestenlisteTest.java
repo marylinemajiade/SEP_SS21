@@ -1,4 +1,3 @@
-package Tests;
 
 import Highscore.Bestenliste;
 import org.junit.jupiter.api.Test;
