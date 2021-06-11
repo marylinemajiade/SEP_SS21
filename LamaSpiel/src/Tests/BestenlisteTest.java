@@ -125,5 +125,9 @@ class BestenlisteTest {
             b.getScore("Spieler2");
         } catch (NullPointerException | NoSuchElementException ignored) {}
 
+        try{
+            b.eintragLoeschen("Spieler3");
+        } catch (NullPointerException | NoSuchElementException ignored) {}
+
     }
 }
