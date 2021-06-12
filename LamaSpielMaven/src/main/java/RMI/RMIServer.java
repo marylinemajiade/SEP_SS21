@@ -2,14 +2,17 @@ package RMI;
 
 import fachlicheExceptions.*;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
 * @author Nick Jochum
 * Zentraler Server des Spiels. Alle aktiven Clients haben eine Referenz auf RMI.RMIServer-Instanz, über die sie mit anderen
 * Clients kommunizieren können
 */
-public class RMIServer implements RMIServerIF{
+public class RMIServer implements RMIServerIF, Serializable {
+    ArrayList<RMIClientIF> clientlist = new ArrayList<>();
 
     @Override
     public void registriereClient(RMIClientIF client) {
@@ -18,6 +21,8 @@ public class RMIServer implements RMIServerIF{
         * richten an Client senden zu können
         * @params RMIServerIF != null also ein Objekt der Klasse RMIClient, BotSchwer oder BotEinfach
         */
+        clientlist.add(client);
+        System.out.println("Client registriert");
     }
 
     @Override
@@ -68,6 +73,11 @@ public class RMIServer implements RMIServerIF{
         * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
         *   Benutzernamen benutzernamen befindet.
         */
+        try{
+            for(RMIClientIF c:clientlist) {
+                c.uebertrageChatnachricht(benutzername, nachricht);
+            }
+        }catch (Exception ignored){};
 
     }
 

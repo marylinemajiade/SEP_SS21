@@ -4,6 +4,7 @@ import Highscore.Bestenliste;
 import Spiel.Spielrunde;
 import SpielLobby.Lobby;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -11,11 +12,13 @@ import java.rmi.server.UnicastRemoteObject;
  * This Class
  */
 
-public class RMIClient extends UnicastRemoteObject implements RMIClientIF {
+public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Serializable {
 
+    RMIServerIF rmiserver;
 
-    public RMIClient() throws RemoteException {
+    public RMIClient(RMIServerIF rmiserver) throws RemoteException {
         super();
+        this.rmiserver = rmiserver;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF {
      */
     @Override
     public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {
-
+        System.out.print("["+benutzername+"] "+nachricht);
     }
 
     /**
