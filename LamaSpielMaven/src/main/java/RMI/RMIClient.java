@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import static GUI.Chat.outputArea;
+
 /**
  * This Class
  */
@@ -38,7 +40,10 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
      */
     @Override
     public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {
-        System.out.print("["+benutzername+"] "+nachricht+"\n");
+       // System.out.print("["+benutzername+"] "+nachricht+"\n");
+
+        outputArea.setText(benutzername + ": " + nachricht + "\n");
+
     }
 
     /**
