@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 /*Remote Interface für RMI.RMIServer. Für die Dokumentation der Methoden siehe RMI.RMIServer*/
 public interface RMIServerIF extends Remote {
 
-    void registriereClient(RMIClientIF client) throws RemoteException;
+    void registriereClient(RMIClientIF client) throws RemoteException, ungueltigerBenutzernameException;
 
     boolean benutzerdatenPruefen(String benutzername, String passwort) throws RemoteException;
 

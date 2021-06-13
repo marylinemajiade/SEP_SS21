@@ -11,10 +11,10 @@ import java.security.CodeSource;
 import java.security.PermissionCollection;
 import java.security.Policy;
 import java.util.Scanner;
+import fachlicheExceptions.*;
 
 public class RMIClientDriver {
-    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, InterruptedException {
-        Thread.sleep(1000);
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, InterruptedException, ungueltigerBenutzernameException {
         // Security Manager einrichten
         class MyPolicy extends Policy {
             @Override
@@ -24,16 +24,30 @@ public class RMIClientDriver {
         }
         Policy.setPolicy(new MyPolicy());
 
+        //Verbindungsaufbau zum Server
         Registry registry = LocateRegistry.getRegistry("LAPTOP-AM7GPH86",1099);
-
         RMIServerIF rmiserver = (RMIServerIF) registry.lookup("LamaServer");
-        RMIClient client = new RMIClient(rmiserver);
-        rmiserver.registriereClient(client);
+
         Scanner sc = new Scanner(System.in);
+        String benutzername="Dummy";
+        boolean benutzerregistriert = false;
+        while(!benutzerregistriert) {
+            System.out.println("bitte gewünschter Benutzername eingeben:");
+            benutzername = sc.nextLine();
+            System.out.println("bitte gewünschtes Passwort eingeben: ");
+            String passwort = sc.nextLine();
+                try {
+                    rmiserver.benutzerRegistrieren(benutzername, passwort);
+                    benutzerregistriert = true;
+                } catch (benutzerNameVergebenException e){System.out.print("Benutzername bereits vergeben");}
+        }
+        RMIClient client = new RMIClient(rmiserver,benutzername);
+        rmiserver.registriereClient(client);
+        System.out.print("Erfolgreich registriert!\n");
         while(true){
-            String nachricht = sc.next();
+            String nachricht = sc.nextLine();
             try {
-                rmiserver.sendeChatnachricht("Test", 0, nachricht);
+                rmiserver.sendeChatnachricht(benutzername, 0, nachricht);
             }catch(Exception ignored){}
         }
 

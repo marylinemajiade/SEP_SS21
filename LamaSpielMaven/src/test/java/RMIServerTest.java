@@ -8,6 +8,7 @@ import fachlicheExceptions.ZustellungNachrichtNichtMoeglichException;
 import fachlicheExceptions.benutzerNameVergebenException;
 import fachlicheExceptions.ungueltigeSpielraumIDException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
+import org.junit.jupiter.api.Assertions;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RMIServerTest {
 
     @org.junit.jupiter.api.Test
-    void registriereClient() throws RemoteException {
+    void registriereClient() throws RemoteException, ungueltigerBenutzernameException {
         RMIServer rmiserver = new RMIServer();
         RMIClientIF client1 = mock(RMIClientIF.class);
         RMIClientIF client2 = mock(RMIClientIF.class);
@@ -46,7 +47,7 @@ class RMIServerTest {
         RMIServer rmiserver = new RMIServer();
         try {
             rmiserver.benutzerRegistrieren("LAMAKönig123", "s3cr3tP4ssw0rd");
-        }catch(Exception ignored){};
+        }catch(Exception ignored){}
         assertTrue(rmiserver.benutzerdatenPruefen("LAMAKönig123", "s3cr3tP4ssw0rd"));
         assertFalse(rmiserver.benutzerdatenPruefen("LAMAKönig123", "s3cr3tP4ssword"));
         assertFalse(rmiserver.benutzerdatenPruefen("LAMAKönig", "s3cr3tP4ssw0rd"));
@@ -61,7 +62,7 @@ class RMIServerTest {
 
         }catch(benutzerNameVergebenException ignored){}
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()->{rmiserver.benutzerRegistrieren("Andi", "dfadfadfad");});
+                ()-> rmiserver.benutzerRegistrieren("Andi", "dfadfadfad"));
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
                 ()->{rmiserver.benutzerRegistrieren("Bot", "34523452345");});
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
@@ -143,6 +144,9 @@ class RMIServerTest {
     @org.junit.jupiter.api.Test
     void spielraumVerlassen() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
+        Lobby lobby = mock(Lobby.class);
+        rmiserver.setLobby(lobby);
+
     }
 
     @org.junit.jupiter.api.Test

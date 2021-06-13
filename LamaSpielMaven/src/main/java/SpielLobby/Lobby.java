@@ -16,7 +16,7 @@ import java.util.List;
 public class Lobby extends UnicastRemoteObject implements LobbyIF{
 
 
-    protected Lobby() throws RemoteException {
+    public Lobby() throws RemoteException {
         super();
     }
 

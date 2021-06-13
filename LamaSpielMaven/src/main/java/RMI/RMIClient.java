@@ -14,11 +14,15 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Serializable {
 
+    //Attribute
     RMIServerIF rmiserver;
+    String benutzername;
 
-    public RMIClient(RMIServerIF rmiserver) throws RemoteException {
+
+    public RMIClient(RMIServerIF rmiserver,String benutzername) throws RemoteException {
         super();
         this.rmiserver = rmiserver;
+        this.benutzername = benutzername;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
      */
     @Override
     public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {
-        System.out.print("["+benutzername+"] "+nachricht);
+        System.out.print("["+benutzername+"] "+nachricht+"\n");
     }
 
     /**
@@ -44,7 +48,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
      */
     @Override
     public String getBenutzername() throws RemoteException {
-        return null;
+        return benutzername;
     }
 
     /**
