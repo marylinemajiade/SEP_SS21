@@ -8,6 +8,7 @@ import Konto.*;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
 * @author Nick Jochum
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 public class RMIServer implements RMIServerIF, Serializable {
 
     //Attribute
-    private Bestenliste bestenliste = new Bestenliste();
-    private Lobby lobby = new Lobby();
-    private BenutzerVerwalten benutzerdaten = new BenutzerVerwalten();
-    private ArrayList<Spielrunde> spielrunden = new ArrayList<>();
-    ArrayList<RMIClientIF> clientlist = new ArrayList<>();
+    private final Bestenliste bestenliste = new Bestenliste();
+    private final Lobby lobby = new Lobby();
+    private final BenutzerVerwalten benutzerdaten = new BenutzerVerwalten();
+    private final HashMap<Integer,Spielrunde> spielrunden = new HashMap<>();
+    private final ArrayList<RMIClientIF> clientliste = new ArrayList<>();
 
     public RMIServer() throws RemoteException {
     }
@@ -34,7 +35,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void registriereClient(RMIClientIF client) throws RemoteException, ungueltigerBenutzernameException {
-        clientlist.add(client);
+        clientliste.add(client);
         System.out.println("Client registriert");
         lobby.spielraumBeitreten(client.getBenutzername(),0);
     }
@@ -47,6 +48,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public boolean benutzerdatenPruefen(String benutzername, String passwort) {
+        //TODO
         return false;
     }
 
@@ -59,6 +61,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {
+        //TODO
 
     }
 
@@ -70,8 +73,15 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   registriert wurde
      */
     @Override
-    public void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException {
-
+    public void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException, RemoteException {
+        //TODO aus benutzerdaten löschen
+        bestenliste.eintragLoeschen(benutzername);
+        for(RMIClientIF client:clientliste){
+            if (client.getBenutzername().equals(benutzername)) clientliste.remove(client);
+        }
+        try {
+            for (int id : lobby.getSpielraum_Ids()) spielrunden.get(id).spielraumVerlassen(benutzername);
+        }catch (Exception ignored){}
     }
 
     /**
@@ -88,16 +98,17 @@ public class RMIServer implements RMIServerIF, Serializable {
     public void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
         try{
-            for(RMIClientIF c:clientlist) {
+            for(RMIClientIF c:clientliste) {
                 c.uebertrageChatnachricht(benutzername, nachricht);
             }
         }catch (Exception e){e.printStackTrace();};
+        //TODO
 
     }
 
     @Override
     public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
-
+        //TODO
     }
 
     /**
@@ -113,6 +124,7 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void spielraumBeitreten(String benutzername, int spielraumID)
             throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException {
+        //TODO
     }
 
     /**
@@ -125,6 +137,7 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void spielraumVerlassen(String benutzername, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
+        //TODO
     }
 
     /**
@@ -140,6 +153,7 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void botHinzufuegen(boolean easybot, int spielraumID)
             throws ungueltigeSpielraumIDException, spielraumVollException {
+        //TODO
     }
 
     /**
@@ -156,7 +170,7 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void botEntfernen(String botname, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-
+        //TODO
     }
 
     /**
@@ -260,12 +274,5 @@ public class RMIServer implements RMIServerIF, Serializable {
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
     }
 
-    /**
-     * Methode um das intern verwaltete Lobby-Objekt durch ein Mock Objekt zu ersetzen. Methode ausschließlich um
-     * Testen gedacht
-     * @param lobby Lobby-Mock-Objekt
-     */
-    public void setLobby(Lobby lobby){
 
-    }
 }

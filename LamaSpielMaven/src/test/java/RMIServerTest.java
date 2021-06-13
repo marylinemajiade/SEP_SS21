@@ -145,7 +145,6 @@ class RMIServerTest {
     void spielraumVerlassen() throws RemoteException {
         RMIServer rmiserver = new RMIServer();
         Lobby lobby = mock(Lobby.class);
-        rmiserver.setLobby(lobby);
 
     }
 
