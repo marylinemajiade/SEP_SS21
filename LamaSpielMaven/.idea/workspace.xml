@@ -20,15 +20,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RMIServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,10 +157,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RMIServerDriver" />
         <item itemvalue="Application.Chat" />
         <item itemvalue="Application.Lobby" />
         <item itemvalue="Application.Highscoreliste" />
-        <item itemvalue="Application.RMIServerDriver" />
         <item itemvalue="JUnit.BestenlisteTest" />
       </list>
     </recent_temporary>
@@ -186,7 +178,7 @@
       <workItem from="1623429581553" duration="4043000" />
       <workItem from="1623487605474" duration="13892000" />
       <workItem from="1623577975238" duration="118000" />
-      <workItem from="1623578184257" duration="5638000" />
+      <workItem from="1623578184257" duration="6032000" />
     </task>
     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
       <created>1623429985046</created>
@@ -216,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623581534577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Lobby auf Public, Methoden RMIServer implementiert">
+      <created>1623585700479</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623585700479</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +250,8 @@
     <MESSAGE value="Libaries installiert (hoffentlich:D) pom.xml" />
     <MESSAGE value="Error behoben" />
     <MESSAGE value="Kleine chat aplikation implementiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kleine chat aplikation implementiert" />
+    <MESSAGE value="Lobby auf Public, Methoden RMIServer implementiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lobby auf Public, Methoden RMIServer implementiert" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623577863356">
