@@ -1,0 +1,120 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:Abgabe3\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"48254bf635f83d89fb0c8447f65151bd235579a2\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1toJbZRKC1xX9Ky6WDmUyQvas5N\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.RMIClientDriver\">\r\n    <configuration name=\"Chat\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Chat\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"GUI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Highscoreliste\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Highscoreliste\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"GUI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Lobby\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Lobby\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"GUI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"RMIClientDriver\" type=\"Application\" factoryName=\"Application\" singleton=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"RMI.RMIClientDriver\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"RMI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"RMIServerDriver\" type=\"Application\" factoryName=\"Application\" singleton=\"false\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"RMI.RMIServerDriver\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"RMI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ServerClientRun\" type=\"CompoundRunConfigurationType\">\r\n      <toRun name=\"RMIClientDriver\" type=\"Application\" />\r\n      <toRun name=\"Server Client Run\" type=\"Application\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"CompoundRunConfigurationType\">\r\n      <toRun name=\"RMIClientDriver\" type=\"Application\" />\r\n      <toRun name=\"Server Client Run\" type=\"Application\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"BestenlisteTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"LamaSpielMaven\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"BestenlisteTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.RMIClientDriver\" />\r\n      <item itemvalue=\"Application.Chat\" />\r\n      <item itemvalue=\"Application.RMIServerDriver\" />\r\n      <item itemvalue=\"Compound.ServerClientRun\" />\r\n      <item itemvalue=\"JUnit.BestenlisteTest\" />\r\n      <item itemvalue=\"Application.Highscoreliste\" />\r\n      <item itemvalue=\"Application.Lobby\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.RMIServerDriver\" />\r\n        <item itemvalue=\"Application.Chat\" />\r\n        <item itemvalue=\"Application.Lobby\" />\r\n        <item itemvalue=\"Application.Highscoreliste\" />\r\n        <item itemvalue=\"JUnit.BestenlisteTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1623429580363</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1623429580363</updated>\r\n      <workItem from=\"1623429581553\" duration=\"4043000\" />\r\n      <workItem from=\"1623487605474\" duration=\"13892000\" />\r\n      <workItem from=\"1623577975238\" duration=\"118000\" />\r\n      <workItem from=\"1623578184257\" duration=\"6032000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Libaries installiert (hoffentlich:D)\">\r\n      <created>1623429985046</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623429985046</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Libaries installiert (hoffentlich:D) pom.xml\">\r\n      <created>1623430621517</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623430621517</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Error behoben\">\r\n      <created>1623433505487</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623433505487</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Kleine chat aplikation implementiert\">\r\n      <created>1623581534577</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623581534577</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Lobby auf Public, Methoden RMIServer implementiert\">\r\n      <created>1623585700479</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623585700479</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"Abgabe3\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D)\" />\r\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D) pom.xml\" />\r\n    <MESSAGE value=\"Error behoben\" />\r\n    <MESSAGE value=\"Kleine chat aplikation implementiert\" />\r\n    <MESSAGE value=\"Lobby auf Public, Methoden RMIServer implementiert\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Lobby auf Public, Methoden RMIServer implementiert\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"223\" y=\"69\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1623577863356\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"223\" y=\"69\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623577863356\" />\r\n    <state x=\"223\" y=\"69\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.814@0.0.1536.814\" timestamp=\"1623488832854\" />\r\n    <state x=\"831\" y=\"118\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1623432756360\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"831\" y=\"118\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814\" timestamp=\"1623432756360\" />\r\n    <state x=\"498\" y=\"204\" key=\"#com.intellij.ide.util.TreeClassChooserDialog\" timestamp=\"1623488431899\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"498\" y=\"204\" key=\"#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.814@0.0.1536.814\" timestamp=\"1623488431899\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1623583701891\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.bottom/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623578093415\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814\" timestamp=\"1623583701891\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.center\" timestamp=\"1623583701891\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.center/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623578093415\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814\" timestamp=\"1623583701891\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.left\" timestamp=\"1623583701891\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.left/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623578093415\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814\" timestamp=\"1623583701891\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.right\" timestamp=\"1623583701891\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.right/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623578093415\" />\r\n    <state width=\"1492\" height=\"120\" key=\"GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814\" timestamp=\"1623583701891\" />\r\n    <state x=\"361\" y=\"147\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1623581554334\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"361\" y=\"147\" key=\"Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814\" timestamp=\"1623581554334\" />\r\n    <state x=\"580\" y=\"328\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1623583044027\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"580\" y=\"328\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814/-1638.0.1366.974@0.0.1536.814\" timestamp=\"1623505383190\" />\r\n    <state x=\"580\" y=\"328\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814\" timestamp=\"1623583044027\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 5aa56f5af7d4438151efce77ad95937488b3b018)
++++ .idea/workspace.xml	(date 1623592369202)
+@@ -20,7 +20,9 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="" />
++    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -40,6 +42,7 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="ProjectId" id="1toJbZRKC1xX9Ky6WDmUyQvas5N" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -61,7 +64,7 @@
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+   </component>
+-  <component name="RunManager" selected="Application.RMIClientDriver">
++  <component name="RunManager" selected="Application.RMIServerDriver">
+     <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
+       <module name="LamaSpielMaven" />
+@@ -178,7 +181,7 @@
+       <workItem from="1623429581553" duration="4043000" />
+       <workItem from="1623487605474" duration="13892000" />
+       <workItem from="1623577975238" duration="118000" />
+-      <workItem from="1623578184257" duration="6032000" />
++      <workItem from="1623578184257" duration="8564000" />
+     </task>
+     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
+       <created>1623429985046</created>
+@@ -215,7 +218,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1623585700479</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Attribute als final deklariert in RMIServer">
++      <created>1623586123731</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1623586123731</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -251,7 +261,8 @@
+     <MESSAGE value="Error behoben" />
+     <MESSAGE value="Kleine chat aplikation implementiert" />
+     <MESSAGE value="Lobby auf Public, Methoden RMIServer implementiert" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Lobby auf Public, Methoden RMIServer implementiert" />
++    <MESSAGE value="Attribute als final deklariert in RMIServer" />
++    <option name="LAST_COMMIT_MESSAGE" value="Attribute als final deklariert in RMIServer" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="223" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623577863356">
+@@ -267,34 +278,34 @@
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state x="498" y="204" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.814@0.0.1536.814" timestamp="1623488431899" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.bottom" timestamp="1623583701891">
++    <state width="1492" height="121" key="GridCell.Tab.0.bottom" timestamp="1623588432191">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state width="1492" height="120" key="GridCell.Tab.0.bottom/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623578093415" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623583701891" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.center" timestamp="1623583701891">
++    <state width="1492" height="121" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623588432191" />
++    <state width="1492" height="121" key="GridCell.Tab.0.center" timestamp="1623588432190">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state width="1492" height="120" key="GridCell.Tab.0.center/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623578093415" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623583701891" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.left" timestamp="1623583701891">
++    <state width="1492" height="121" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623588432190" />
++    <state width="1492" height="121" key="GridCell.Tab.0.left" timestamp="1623588432190">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state width="1492" height="120" key="GridCell.Tab.0.left/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623578093415" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623583701891" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.right" timestamp="1623583701891">
++    <state width="1492" height="121" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623588432190" />
++    <state width="1492" height="121" key="GridCell.Tab.0.right" timestamp="1623588432190">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state width="1492" height="120" key="GridCell.Tab.0.right/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623578093415" />
+-    <state width="1492" height="120" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623583701891" />
+-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623581554334">
++    <state width="1492" height="121" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623588432190" />
++    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623586132488">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623581554334" />
+-    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623583044027">
++    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623586132488" />
++    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623592369182">
+       <screen x="0" y="0" width="1536" height="814" />
+     </state>
+     <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814/-1638.0.1366.974@0.0.1536.814" timestamp="1623505383190" />
+-    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623583044027" />
++    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623592369182" />
+   </component>
+ </project>
+\ No newline at end of file

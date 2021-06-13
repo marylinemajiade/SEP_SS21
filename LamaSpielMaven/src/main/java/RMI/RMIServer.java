@@ -1,5 +1,7 @@
 package RMI;
 
+import Bot.BotEinfach;
+import Bot.BotSchwer;
 import Highscore.Bestenliste;
 import Spiel.Spielrunde;
 import SpielLobby.Lobby;
@@ -9,6 +11,7 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
 * @author Nick Jochum
@@ -48,8 +51,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public boolean benutzerdatenPruefen(String benutzername, String passwort) {
-        //TODO
-        return false;
+        return benutzerdaten.benutzerdatenPruefen(benutzername,passwort);
     }
 
     /**
@@ -74,7 +76,8 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException, RemoteException {
-        //TODO aus benutzerdaten löschen
+
+        benutzerdaten.benutzerLoeschen(benutzername);
         bestenliste.eintragLoeschen(benutzername);
         for(RMIClientIF client:clientliste){
             if (client.getBenutzername().equals(benutzername)) clientliste.remove(client);
@@ -96,23 +99,57 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-        try{
-            for(RMIClientIF c:clientliste) {
-                c.uebertrageChatnachricht(benutzername, nachricht);
+            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException {
+        if(!lobby.getSpieler(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Kein " +
+                "Spieler mit übergebenen Benutzernamen im Spielraum mit der übergebenen ID");
+            List<String> benutzernamenInSpielrunde = lobby.getSpieler(spielraumID);
+            for (RMIClientIF client: clientliste){
+                if(benutzernamenInSpielrunde.contains(client.getBenutzername())) {
+                    try {
+                        client.uebertrageChatnachricht(client.getBenutzername(), nachricht);
+                    } catch (ZustellungNachrichtNichtMoeglichException ignored) {}
+                }
             }
-        }catch (Exception e){e.printStackTrace();};
-        //TODO
-
-    }
-
-    @Override
-    public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
-        //TODO
     }
 
     /**
-     * fügt den Spieler mit dem übegebenen Benutzernamen dem Spielraum mit der ID spielraumID hinzu
+     * Erstellt einen neuen Spielraum. Der Spieler mit dem übergebenen Benutzername tritt dem erstellten Spielraum bei.
+     * @param benutzername String != null
+     * @throws RemoteException Server-Objekt nicht erreicht werden kann
+     * @throws ungueltigerBenutzernameException Wenn kein Benutzer mit dem angegebenen Benutzername sich in der Lobby
+     * befindet
+     */
+    @Override
+    public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
+        if(!lobby.getSpieler(0).contains(benutzername)) {
+            throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
+        }
+        List<Integer> alteSpielraumIDs = lobby.getSpielraum_Ids();
+        lobby.spielraumErstellen(benutzername);
+        List<Integer> neueSpielraumIDs = lobby.getSpielraum_Ids();
+        Integer spielraumID=0;
+        for(Integer id: neueSpielraumIDs)
+        {
+            if (!alteSpielraumIDs.contains(id)) {lobby.spielraumBeitreten(benutzername,id);
+            spielraumID=id;
+            break;}
+        }
+        lobby.spielraumVerlassen(benutzername,0);
+        for(RMIClientIF client:clientliste){
+            try{
+                client.aktualisiereSpielraeume(lobby);
+            }catch(Exception ignored){}
+        }
+        for (RMIClientIF client :clientliste){
+            if (client.getBenutzername().equals(benutzername)) {
+                client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
+            }
+        }
+    }
+
+    /**
+     * fügt den Spieler mit dem übegebenen Benutzernamen dem Spielraum mit der ID spielraumID hinzu und entfernt ihn
+     * aus der Lobby
      * @param benutzername String != null
      * @param spielraumID Integer != null. spielraumID = 0 adressiert die Lobby
      * @throws spielraumVollException wenn sich im Spielraum mit der ID spielraumID bereits sechs RMIClientIF-
@@ -124,7 +161,25 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void spielraumBeitreten(String benutzername, int spielraumID)
             throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException {
-        //TODO
+        if (!lobby.getSpieler(0).contains(benutzername)) {
+            throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
+        }
+        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
+        }
+        if (lobby.getSpieler(spielraumID).size() < 6) {
+            lobby.spielraumVerlassen(benutzername,0);
+            lobby.spielraumBeitreten(benutzername, spielraumID);
+            for(RMIClientIF client:clientliste){
+                try{
+                    client.aktualisiereSpielraeume(lobby);
+                    if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())){
+                        client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
+                    }
+                }catch(Exception ignored){}
+            }
+        }else throw new spielraumVollException("Es befinden sich bereits 6 Spieler im gewählten Spielraum");
+
     }
 
     /**
@@ -137,7 +192,22 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public void spielraumVerlassen(String benutzername, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-        //TODO
+        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
+        }
+        if (!lobby.getSpieler(spielraumID).contains(benutzername)) {
+            throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
+        }
+        lobby.spielraumVerlassen(benutzername, spielraumID);
+        lobby.spielraumBeitreten(benutzername,0);
+        for(RMIClientIF client:clientliste){
+            try{
+                client.aktualisiereSpielraeume(lobby);
+                if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())) {
+                    client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
+                }
+            }catch(Exception ignored){}
+        }
     }
 
     /**
@@ -152,8 +222,20 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void botHinzufuegen(boolean easybot, int spielraumID)
-            throws ungueltigeSpielraumIDException, spielraumVollException {
-        //TODO
+            throws ungueltigeSpielraumIDException, spielraumVollException, RemoteException, ungueltigerBenutzernameException {
+        RMIClientIF bot;
+        if(easybot) bot = new BotEinfach(this);
+        else bot = new BotSchwer(this);
+        clientliste.add(bot);
+        lobby.spielraumBeitreten(bot.getBenutzername(),spielraumID);
+        for(RMIClientIF client:clientliste) {
+            try {
+                client.aktualisiereSpielraeume(lobby);
+                if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())) {
+                    client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
+                }
+            } catch (Exception ignored) {}
+        }
     }
 
     /**
@@ -162,15 +244,29 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @param spielraumID Int != null
      * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn
      *   spielraumID = 0
-     * @throws spielraumVollException wenn sich im Spielraum mit der ID spielraumID bereits sechs RMIClientIF-
-     *   Instanzen befinden, außer spielraumID = 0
      * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
     public void botEntfernen(String botname, int spielraumID)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-        //TODO
+            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException {
+        lobby.spielraumVerlassen(botname,spielraumID);
+        Spielrunde spielrunde = spielrunden.get(spielraumID);
+        spielrunde.spielraumVerlassen(botname);
+        for(RMIClientIF client:clientliste) {
+            try {
+                client.aktualisiereSpielraeume(lobby);
+                if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())) {
+                    client.aktualisiereSpielstatus(spielrunde);
+                }
+            } catch (Exception ignored) {}
+        }
+        RMIClientIF botclient = null;
+        for (RMIClientIF client :clientliste){
+            if(client.isBot() && client.getBenutzername().equals(botname))botclient = client; break;
+        }
+        if (botclient != null)clientliste.remove(botclient);
+
     }
 
     /**

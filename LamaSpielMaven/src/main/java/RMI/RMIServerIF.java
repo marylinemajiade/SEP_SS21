@@ -27,7 +27,7 @@ public interface RMIServerIF extends Remote {
             throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void botHinzufuegen(boolean easybot, int spielraumID)
-            throws RemoteException, ungueltigeSpielraumIDException, spielraumVollException;
+            throws RemoteException, ungueltigeSpielraumIDException, spielraumVollException, ungueltigerBenutzernameException;
 
     void botEntfernen(String botname, int spielraumID)
                 throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;

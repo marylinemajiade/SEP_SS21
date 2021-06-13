@@ -22,7 +22,7 @@ public class Lobby extends UnicastRemoteObject implements LobbyIF{
 
 
 
-    public List<Benutzer> getSpieler(int spielraumId){
+    public List<String> getSpieler(int spielraumId){
         return null;
     }
 
