@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)">
+      <change afterPath="$PROJECT_DIR$/LamaSpielMaven/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/GUI/Highscoreliste.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIClientDriver$1MyPolicy.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServerDriver$1MyPolicy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIClientDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIClientDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServerDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServerDriver.class" afterDir="false" />
+    </list>
+    <list id="7937b417-2c6d-4a7a-abae-324befe49a7f" name="Paar Änderung auf die Klassen Benutzer BenutzerVewalten. Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="0d9f38e27e28f356572a8192e69ac603ac7936d4" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="ProjectId" id="1toW7X2jor1WE39bx1PVu7FoCj6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SEP/g04" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.33996025" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RunManager" selected="JUnit.BenutzerVerwaltenTest">
+    <configuration name="BenutzerVerwaltenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest.benutzerLoeschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerLoeschen" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest.benutzerRegistrieren (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerRegistrieren" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest.benutzerRegistrieren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerRegistrieren(java.lang.String,java.lang.String,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest.benutzerdatenPruefen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerdatenPruefen" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerRegistrieren (1)" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerRegistrieren" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerLoeschen" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerdatenPruefen" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="" />
+      <changelist id="7937b417-2c6d-4a7a-abae-324befe49a7f" name="Paar Änderung auf die Klassen Benutzer BenutzerVewalten. Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" comment="" />
+      <created>1623435759430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623435759430</updated>
+      <workItem from="1623435767826" duration="792000" />
+      <workItem from="1623499781646" duration="19134000" />
+      <workItem from="1623581107170" duration="2355000" />
+    </task>
+    <task id="LOCAL-00001" summary="Paar Änderung auf die Klassen Benutzer &amp; BenutzerVewalten.">
+      <created>1623502815459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623502815459</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)">
+      <created>1623580509309</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623580509309</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)">
+      <created>1623580834944</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623580834944</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)">
+      <created>1623581029553</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623581029553</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Abgabe3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Paar Änderung auf die Klassen Benutzer &amp; BenutzerVewalten." />
+    <MESSAGE value="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" />
+  </component>
+</project>

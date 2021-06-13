@@ -1,0 +1,713 @@
+Index: LamaSpielMaven/src/main/java/RMI/RMIServer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package RMI;\r\n\r\nimport fachlicheExceptions.*;\r\n\r\nimport java.rmi.RemoteException;\r\n\r\n/**\r\n* @author Nick Jochum\r\n* Zentraler Server des Spiels. Alle aktiven Clients haben eine Referenz auf RMI.RMIServer-Instanz, über die sie mit anderen\r\n* Clients kommunizieren können\r\n*/\r\npublic class RMIServer implements RMIServerIF{\r\n\r\n    @Override\r\n    public void registriereClient(RMIClientIF client) {\r\n        /**\r\n        * Wird von RMIClientIF-Instanz beim Verbindungsaufbau aufgerufen. Server speichert RMIClientIF-Referenz um Nach-\r\n        * richten an Client senden zu können\r\n        * @params RMIServerIF != null also ein Objekt der Klasse RMIClient, BotSchwer oder BotEinfach\r\n        */\r\n    }\r\n\r\n    @Override\r\n    public boolean benutzerdatenPruefen(String benutzername, String passwort) {\r\n        /**\r\n        * Überprüft ob ein Benutzer mit Benutzername benutzername und Passwort passwort registgriert ist\r\n        * @param benutzername String != null\r\n        * @param passwort String != null\r\n        * @return true, wenn Benutzer mit Benutzername benutzername und Passwort passwort registgriert ist, sonst false\r\n        */\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {\r\n        /**\r\n        * Registriert einen Benutzer mit dem übergebenen Benutzernamen und Passwort\r\n        * @param benutzername String != null, der nicht mit dem Präfix \"Bot\" anfängt\r\n        * @param passwort String != null\r\n        * @throws benutzerNameVergebenException wenn ein anderer Benutzer sich bereits mit dem Benutzernamen\r\n        *   benutzername registriert hat oder wenn benutzername mit dem Präfix \"Bot\" beginnt\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException {\r\n        /**\r\n        * Löscht alle Daten des Benutzers mit dem übergebenen Benutzernamen, also sowohl aus der intern verwalteten\r\n        * Benutzerdaten- als auch aus der intern verwalteten Bestenliste-Istanz\r\n        * @param benutzername String != null\r\n        * @throws ungueltigerBenutzernameException wenn zuvor kein Benutzer mit dem Benutzernamen benutzername\r\n        *   registriert wurde\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)\r\n            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * Überträgt die übergebene Nachricht an alle gespeicherten RMIClientsIF-Instanzen, die sich im übergebenen\r\n        * Spielraum befinden\r\n        * @param benutzername String != null\r\n        * @param spielraumID Integer != null. spielraumID = 0 adressiert die Lobby\r\n        * @param nachricht String != null\r\n        * @throws ungueltigerSpielraumIDException wenn kein Spielraum mit der ID spielraumID existiert\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void spielraumBeitreten(String benutzername, int spielraumID)\r\n            throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException {\r\n        /**\r\n        * fügt den Spieler mit dem übegebenen Benutzernamen dem Spielraum mit der ID spielraumID hinzu\r\n        * @param benutzername String != null\r\n        * @param spielraumID Integer != null. spielraumID = 0 adressiert die Lobby\r\n        * @throws spielraumVollException wenn sich im Spielraum mit der ID spielraumID bereits sechs RMIClientIF-\r\n        *   Instanzen befinden, außer spielraumID = 0\r\n        * @throws ungueltigerBenutzernameException wenn keine RMIClientIF-Instanz mit dem Benutzernamen benutzernamen\r\n        *   registriert zuvor registriert wurde\r\n        * @throws ungueltigerSpielraumIDException wenn kein Spielraum mit der ID spielraumID existiert\r\n        */\r\n\r\n\r\n    }\r\n\r\n    @Override\r\n    public void spielraumVerlassen(String benutzername, int spielraumID)\r\n            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * entfernt den Spieler mit dem übegebenen Benutzernamen aus dem Spielraum mit der ID spielraumID\r\n        * @param benutzername String != null\r\n        * @param spielraumID Integer != null. spielraumID = 0 adressiert die Lobby\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void botHinzufuegen(boolean easybot, int spielraumID)\r\n            throws ungueltigeSpielraumIDException, spielraumVollException {\r\n        /**\r\n        * ertstellt eine neue Bot-Instanz und fügt diese dem Spielraum mit der übergebenen ID hinzu\r\n        * @param easybot Boolean != null wenn true wird eine BotEinfach-Instanz hinzugefügt, wenn false wird eine\r\n        *   BotSchwer-Instanz hinzugefügt\r\n        * @param spielraumID Integer != null\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws spielraumVollException wenn sich im Spielraum mit der ID spielraumID bereits sechs RMIClientIF-\r\n        *   Instanzen befinden, außer spielraumID = 0\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void botEntfernen(String botname, int spielraumID)\r\n            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * entfernt einen Bot mit dem übergebenen Benutzernamen botname aus dem Spielraum mit der übergebenen ID\r\n        * @param botname String != null, beginnend mit dem Präfix \"Bot\"\r\n        * @param spielraumID Int != null\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws spielraumVollException wenn sich im Spielraum mit der ID spielraumID bereits sechs RMIClientIF-\r\n        *   Instanzen befinden, außer spielraumID = 0\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException {\r\n        /**\r\n        * startet das Spiel im Spielraum mit der übergebenen ID\r\n        * @param spielraumID Int != null\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws spielLaeuftBereitsException wenn Spiel zuvor gestartet und noch nicht beendet wurde\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)\r\n            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * Tauscht entweder 10 weiße Chips gegen ein schwarzen Chip oder umgekehrt, auf der Chipstapel-Instanz der\r\n        *   Spielers mit dem übergebenen Benutzernamen im Spielraum mit der übergebenen ID\r\n        * @param einsergegebzehner Boolean != null, wenn true werden 10 weiße gegen ein schwarzen Chip getauscht,\r\n        *   wenn false, wird ein schwarzer gegen 10 weiße Chips getauscht\r\n        * @param spielraumID Int != null\r\n        * @param benutzername String != null\r\n        * @throws ungueltigerSpielzugexception wenn der Spieler mit Benutzernamen benutzername nicht genug weiße bzw.\r\n        *   schwarze Chips auf seinem Chipstapel hat\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void chipAbgeben(boolean einserchip, String benutzername, int spielraumID)\r\n            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n         * entfernt eine Chip vom Spieler mit dem übergebenen Benutzernamen im Spielraum mit der übergebenen ID\r\n         * @param einserchip Boolean != null wenn true wird ein weißer Chip, wenn false ein schwarzer Chip entfernt\r\n         * @param benutzername String != null\r\n         * @throws ungueltigerSpielzugexception wenn der Spieler mit Benutzernamen benutzername nicht genug weiße bzw.\r\n         *   schwarze Chips auf seinem Chipstapel hat\r\n         * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n         *   spielraumID = 0\r\n         * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n         *   Benutzernamen benutzernamen befindet.\r\n         */\r\n\r\n    }\r\n\r\n    @Override\r\n    public void karteAblegen(int karte, String benutzername, int spielraumID)\r\n            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * entfernt eine Karte mit dem übergebenen Wert aus der Hand des Spielers mit Benutzernamen benutzername im\r\n        * Spielraum mit der übergebenen ID\r\n        * @param karte Integer !=0 zwischen 0 und 6, wobei 0 eine Lama-Karte repräsentiert\r\n        * @param benutzername String != null\r\n        * @param spielraumID Integer != null\r\n        * @throws ungueltigerSpielzugexception wenn der Spieler mit Benutzernamen benutzername keine Karte mit dem Wert\r\n        *   karte auf der Hand hat, oder der Wert karte nach dem Spielregeln nicht auf zum Wert der obersten Karte auf\r\n        *   den Ablagestapel passt\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        */\r\n\r\n    }\r\n\r\n    @Override\r\n    public int karteZiehen(String benutzername, int spielraumID)\r\n            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n        * entfernt die oberste Karte vom Nachziehstapel im Spielraum mit der übergebenen ID und fügt diese Karte den\r\n        *   Handkarten des Spielers mit dem übergebenen Benutzernamen hinzu\r\n        * @param benutzername String != null\r\n        * @param spielraumID Integer != null\r\n        * @throws ungueltigerSpielzugexception wenn der Nachziehstapel des Spielraums mit der ID spielraumID\r\n        *   leer ist\r\n        * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n        *   spielraumID = 0\r\n        * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n        *   Benutzernamen benutzernamen befindet.\r\n        * @return Integer (Kartenwert) zwischen 0 und 6, wobei 0 ein Lama repräsentiert\r\n        */\r\n        return 0;\r\n    }\r\n\r\n    @Override\r\n    public void aussteigen(String benutzername, int spielraumID)\r\n            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {\r\n        /**\r\n         * Markiert den Spieler mit dem übergebenen im Spielraum mit der ID spielraumID als ausgestiegen\r\n         * @param benutzername String != null\r\n         * @param spielraumID Integer != null\r\n         * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID SpielraumID existiert, oder wenn\r\n         *   spielraumID = 0\r\n         * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem\r\n         *   Benutzernamen benutzernamen befindet.\r\n         */\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/src/main/java/RMI/RMIServer.java b/LamaSpielMaven/src/main/java/RMI/RMIServer.java
+--- a/LamaSpielMaven/src/main/java/RMI/RMIServer.java	(revision 0d9f38e27e28f356572a8192e69ac603ac7936d4)
++++ b/LamaSpielMaven/src/main/java/RMI/RMIServer.java	(date 1623580845095)
+@@ -2,14 +2,17 @@
+ 
+ import fachlicheExceptions.*;
+ 
++import java.io.Serializable;
+ import java.rmi.RemoteException;
++import java.util.ArrayList;
+ 
+ /**
+ * @author Nick Jochum
+ * Zentraler Server des Spiels. Alle aktiven Clients haben eine Referenz auf RMI.RMIServer-Instanz, über die sie mit anderen
+ * Clients kommunizieren können
+ */
+-public class RMIServer implements RMIServerIF{
++public class RMIServer implements RMIServerIF, Serializable {
++    ArrayList<RMIClientIF> clientlist = new ArrayList<>();
+ 
+     @Override
+     public void registriereClient(RMIClientIF client) {
+@@ -18,6 +21,8 @@
+         * richten an Client senden zu können
+         * @params RMIServerIF != null also ein Objekt der Klasse RMIClient, BotSchwer oder BotEinfach
+         */
++        clientlist.add(client);
++        System.out.println("Client registriert");
+     }
+ 
+     @Override
+@@ -68,6 +73,11 @@
+         * @throws ungueltigerBenutzernameException wenn sich im Spielraum mit der ID spielraumID kein Spieler mit dem
+         *   Benutzernamen benutzernamen befindet.
+         */
++        try{
++            for(RMIClientIF c:clientlist) {
++                c.uebertrageChatnachricht(benutzername, nachricht);
++            }
++        }catch (Exception ignored){};
+ 
+     }
+ 
+Index: LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package RMI;\r\n\r\nimport java.net.MalformedURLException;\r\nimport java.rmi.Naming;\r\nimport java.rmi.NotBoundException;\r\nimport java.rmi.RemoteException;\r\nimport java.rmi.registry.LocateRegistry;\r\nimport java.rmi.registry.Registry;\r\n\r\npublic class RMIClientDriver {\r\n    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {\r\n        String rmiServerURL = \"rmi://localhost/RMIServer\";\r\n        RMIServerIF rmiserver = (RMIServerIF) Naming.lookup(rmiServerURL);\r\n//        RMIClient client = new RMIClient(rmiserver);\r\n        LocateRegistry.createRegistry(1099);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java b/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java
+--- a/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java	(revision 0d9f38e27e28f356572a8192e69ac603ac7936d4)
++++ b/LamaSpielMaven/src/main/java/RMI/RMIClientDriver.java	(date 1623580845093)
+@@ -6,13 +6,37 @@
+ import java.rmi.RemoteException;
+ import java.rmi.registry.LocateRegistry;
+ import java.rmi.registry.Registry;
++import java.security.AllPermission;
++import java.security.CodeSource;
++import java.security.PermissionCollection;
++import java.security.Policy;
++import java.util.Scanner;
+ 
+ public class RMIClientDriver {
+-    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
+-        String rmiServerURL = "rmi://localhost/RMIServer";
+-        RMIServerIF rmiserver = (RMIServerIF) Naming.lookup(rmiServerURL);
+-//        RMIClient client = new RMIClient(rmiserver);
+-        LocateRegistry.createRegistry(1099);
++    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, InterruptedException {
++        Thread.sleep(1000);
++        // Security Manager einrichten
++        class MyPolicy extends Policy {
++            @Override
++            public PermissionCollection getPermissions(CodeSource codesource) {
++                return (new AllPermission()).newPermissionCollection();
++            }
++        }
++        Policy.setPolicy(new MyPolicy());
++
++        Registry registry = LocateRegistry.getRegistry("LAPTOP-AM7GPH86",1099);
++
++        RMIServerIF rmiserver = (RMIServerIF) registry.lookup("LamaServer");
++        RMIClient client = new RMIClient(rmiserver);
++        rmiserver.registriereClient(client);
++        Scanner sc = new Scanner(System.in);
++        while(true){
++            String nachricht = sc.next();
++            try {
++                rmiserver.sendeChatnachricht("Test", 0, nachricht);
++            }catch(Exception ignored){}
++        }
++
+ 
+     }
+ }
+Index: LamaSpielMaven/src/main/java/RMI/RMIClient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package RMI;\r\n\r\nimport Highscore.Bestenliste;\r\nimport Spiel.Spielrunde;\r\nimport SpielLobby.Lobby;\r\n\r\nimport java.rmi.RemoteException;\r\nimport java.rmi.server.UnicastRemoteObject;\r\n\r\n/**\r\n * This Class\r\n */\r\n\r\npublic class RMIClient extends UnicastRemoteObject implements RMIClientIF {\r\n\r\n\r\n    public RMIClient() throws RemoteException {\r\n        super();\r\n    }\r\n\r\n    @Override\r\n    public void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException {\r\n\r\n    }\r\n\r\n    /**\r\n     * with this methode the player will be able to send a message in the chat.\r\n     * @param benutzername name of player that will send the message.\r\n     * @param nachricht the actual message.\r\n     * @throws RemoteException\r\n     */\r\n    @Override\r\n    public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {\r\n\r\n    }\r\n\r\n    /**\r\n     * This Methode returns the name of the player.\r\n     * @return name of player.\r\n     * @throws RemoteException\r\n     */\r\n    @Override\r\n    public String getBenutzername() throws RemoteException {\r\n        return null;\r\n    }\r\n\r\n    /**\r\n     * This methode refreshes the Bestlist looking for a change in the ranking of Players.\r\n     * it'll be executed after every finished game.\r\n     * @param bestenliste , the bestliste that will be refreshed.\r\n     * @throws RemoteException\r\n     */\r\n    @Override\r\n    public void akutalisiereBestenliste(Bestenliste bestenliste) throws RemoteException {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void aktualisiereSpielraeume(Lobby lobby) throws RemoteException {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void setSpielraum() throws RemoteException {\r\n\r\n    }\r\n\r\n    /**\r\n     * This Methode checkes if the Player is a Bot or a User(Client).\r\n     * @return true if the Player is a Bot, false otherwise (User).\r\n     * @throws RemoteException\r\n     */\r\n    @Override\r\n    public boolean isBot() throws RemoteException {\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/src/main/java/RMI/RMIClient.java b/LamaSpielMaven/src/main/java/RMI/RMIClient.java
+--- a/LamaSpielMaven/src/main/java/RMI/RMIClient.java	(revision 0d9f38e27e28f356572a8192e69ac603ac7936d4)
++++ b/LamaSpielMaven/src/main/java/RMI/RMIClient.java	(date 1623580845092)
+@@ -4,6 +4,7 @@
+ import Spiel.Spielrunde;
+ import SpielLobby.Lobby;
+ 
++import java.io.Serializable;
+ import java.rmi.RemoteException;
+ import java.rmi.server.UnicastRemoteObject;
+ 
+@@ -11,11 +12,13 @@
+  * This Class
+  */
+ 
+-public class RMIClient extends UnicastRemoteObject implements RMIClientIF {
++public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Serializable {
+ 
++    RMIServerIF rmiserver;
+ 
+-    public RMIClient() throws RemoteException {
++    public RMIClient(RMIServerIF rmiserver) throws RemoteException {
+         super();
++        this.rmiserver = rmiserver;
+     }
+ 
+     @Override
+@@ -31,7 +34,7 @@
+      */
+     @Override
+     public void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException {
+-
++        System.out.print("["+benutzername+"] "+nachricht);
+     }
+ 
+     /**
+Index: LamaSpielMaven/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:Abgabe3\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/RMI/RMIClientDriver.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/RMI/RMIServer.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/RMI/RMIServerDriver.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/Spiel/Chipstapel.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/classes/SpielLobby/LobbyIF.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/BestenlisteTest.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/ChipstapelTest.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/LobbyTest.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/RMIServerTest.class\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/target/test-classes/SpielrundeTest.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/GUI/Chat.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/GUI/Lobby.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Highscore/Bestenliste.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Konto/Benutzer.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Konto/BenutzerVerwalten.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIClient.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIServer.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIServerDriver.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIServerIF.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Spiel/Chipstapel.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Spiel/Spielrunde.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/SpielLobby/LobbyIF.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/EmailVergebenException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/benutzerNameVergebenException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielLaeuftBereitsException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielraumVollException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/stapelLeerException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeKarteException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeSpielraumIDException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerBenutzernameException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerChipException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerSpielzugException.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/BenutzerVerwaltenTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/BestenlisteTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/ChipstapelTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/LobbyTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/RMIServerTest.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/SpielrundeTest.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"48254bf635f83d89fb0c8447f65151bd235579a2\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1toJbZRKC1xX9Ky6WDmUyQvas5N\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.BestenlisteTest\">\r\n    <configuration name=\"Chat\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Chat\" />\r\n      <module name=\"LamaSpielMaven\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"GUI.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BenutzerVerwaltenTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"LamaSpielMaven\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"BenutzerVerwaltenTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BestenlisteTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"LamaSpielMaven\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"BestenlisteTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.BestenlisteTest\" />\r\n        <item itemvalue=\"JUnit.BenutzerVerwaltenTest\" />\r\n        <item itemvalue=\"Application.Chat\" />\r\n        <item itemvalue=\"JUnit.BestenlisteTest\" />\r\n        <item itemvalue=\"Application.Chat\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1623429580363</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1623429580363</updated>\r\n      <workItem from=\"1623429581553\" duration=\"4043000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Libaries installiert (hoffentlich:D)\">\r\n      <created>1623429985046</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623429985046</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Libaries installiert (hoffentlich:D) pom.xml\">\r\n      <created>1623430621517</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623430621517</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Error behoben\">\r\n      <created>1623433505487</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1623433505487</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"Abgabe3\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D)\" />\r\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D) pom.xml\" />\r\n    <MESSAGE value=\"Error behoben\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Error behoben\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"831\" y=\"118\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1623432756360\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"831\" y=\"118\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814\" timestamp=\"1623432756360\" />\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1623433291159\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814\" timestamp=\"1623433291159\" />\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.center\" timestamp=\"1623433291158\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814\" timestamp=\"1623433291158\" />\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.left\" timestamp=\"1623433291157\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814\" timestamp=\"1623433291157\" />\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.right\" timestamp=\"1623433291159\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"205\" key=\"GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814\" timestamp=\"1623433291159\" />\r\n    <state x=\"361\" y=\"147\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1623433533234\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\r\n    </state>\r\n    <state x=\"361\" y=\"147\" key=\"Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814\" timestamp=\"1623433533234\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/.idea/workspace.xml b/LamaSpielMaven/.idea/workspace.xml
+--- a/LamaSpielMaven/.idea/workspace.xml	(revision 0d9f38e27e28f356572a8192e69ac603ac7936d4)
++++ b/LamaSpielMaven/.idea/workspace.xml	(date 1623580845087)
+@@ -1,13 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="BranchesTreeState">
+     <expand>
+       <path>
+         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-      </path>
+-      <path>
+-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+       </path>
+       <path>
+@@ -20,72 +19,34 @@
+       <path>
+         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="BRANCH:Abgabe3" type="e8cecc67:BranchNodeDescriptor" />
+       </path>
+     </select>
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientDriver.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerDriver.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/Spiel/Chipstapel.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/classes/SpielLobby/LobbyIF.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/BestenlisteTest.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/ChipstapelTest.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/LobbyTest.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/target/test-classes/SpielrundeTest.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Chat.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Lobby.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Highscore/Bestenliste.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Konto/Benutzer.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Konto/BenutzerVerwalten.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientDriver.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServerDriver.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServerIF.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Spiel/Chipstapel.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Spiel/Spielrunde.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/LobbyIF.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/EmailVergebenException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ZustellungNachrichtNichtMoeglichException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/benutzerNameVergebenException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielLaeuftBereitsException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/spielraumVollException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/stapelLeerException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeKarteException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigeSpielraumIDException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerBenutzernameException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerChipException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fachlicheExceptions/ungueltigerSpielzugException.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/BenutzerVerwaltenTest.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/BestenlisteTest.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/LobbyTest.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/RMIServerTest.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/SpielrundeTest.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$/.." value="48254bf635f83d89fb0c8447f65151bd235579a2" />
++        <entry key="$PROJECT_DIR$/.." value="f49a97b9891b510a789a2e46ed9c76a0b4550c63" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++    <option name="RESET_MODE" value="HARD" />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="ProjectId" id="1toJbZRKC1xX9Ky6WDmUyQvas5N" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -96,6 +57,7 @@
+   <component name="PropertiesComponent">
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+     <property name="node.js.detected.package.eslint" value="true" />
+@@ -106,10 +68,25 @@
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+   </component>
+-  <component name="RunManager" selected="JUnit.BestenlisteTest">
++  <component name="RunManager" selected="Application.Highscoreliste">
+     <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
+       <module name="LamaSpielMaven" />
++      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\vanes\Desktop\Uni\Informatik\4. Semester\SEP\Javafx\javafx-sdk-11.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="GUI.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Highscoreliste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="GUI.Highscoreliste" />
++      <module name="LamaSpielMaven" />
++      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\vanes\Desktop\Uni\Informatik\4. Semester\SEP\Javafx\javafx-sdk-11.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="GUI.*" />
+@@ -120,11 +97,58 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="BenutzerVerwaltenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="Lobby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="GUI.Lobby" />
++      <module name="LamaSpielMaven" />
++      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\vanes\Desktop\Uni\Informatik\4. Semester\SEP\Javafx\javafx-sdk-11.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="GUI.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="RMIClientDriver" type="Application" factoryName="Application" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="RMI.RMIClientDriver" />
++      <module name="LamaSpielMaven" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="RMI.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="ServerClientRun" type="CompoundRunConfigurationType">
++      <toRun name="RMIClientDriver" type="Application" />
++      <toRun name="Server Client Run" type="Application" />
++      <method v="2" />
++    </configuration>
++    <configuration default="true" type="CompoundRunConfigurationType">
++      <toRun name="RMIClientDriver" type="Application" />
++      <toRun name="Server Client Run" type="Application" />
++      <method v="2" />
++    </configuration>
++    <configuration name="All in LamaSpielMaven" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="LamaSpielMaven" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="TEST_OBJECT" value="package" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -138,16 +162,26 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="JUnit.BestenlisteTest" />
+-        <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+-        <item itemvalue="Application.Chat" />
+-        <item itemvalue="JUnit.BestenlisteTest" />
++    <list>
++      <item itemvalue="Application.RMIClientDriver" />
++      <item itemvalue="Application.Chat" />
++      <item itemvalue="Application.Lobby" />
++      <item itemvalue="Application.Highscoreliste" />
++      <item itemvalue="Compound.ServerClientRun" />
++      <item itemvalue="JUnit.BestenlisteTest" />
++      <item itemvalue="JUnit.All in LamaSpielMaven" />
++    </list>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.Highscoreliste" />
++        <item itemvalue="Application.Lobby" />
+         <item itemvalue="Application.Chat" />
++        <item itemvalue="JUnit.All in LamaSpielMaven" />
++        <item itemvalue="JUnit.BestenlisteTest" />
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="SvnConfiguration">
+     <configuration />
+   </component>
+@@ -159,6 +193,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1623429580363</updated>
+       <workItem from="1623429581553" duration="4043000" />
++      <workItem from="1623487605474" duration="13892000" />
+     </task>
+     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
+       <created>1623429985046</created>
+@@ -185,30 +220,19 @@
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="2" />
++    <option name="version" value="3" />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State>
+-              <option name="FILTERS">
+-                <map>
+-                  <entry key="branch">
+-                    <value>
+-                      <list>
+-                        <option value="Abgabe3" />
+-                      </list>
+-                    </value>
+-                  </entry>
+-                </map>
+-              </option>
+-            </State>
++            <State />
+           </value>
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Libaries installiert (hoffentlich:D)" />
+@@ -216,30 +240,4 @@
+     <MESSAGE value="Error behoben" />
+     <option name="LAST_COMMIT_MESSAGE" value="Error behoben" />
+   </component>
+-  <component name="WindowStateProjectService">
+-    <state x="831" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1623432756360">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state x="831" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.814@0.0.1536.814" timestamp="1623432756360" />
+-    <state width="1492" height="205" key="GridCell.Tab.0.bottom" timestamp="1623433291159">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="205" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623433291159" />
+-    <state width="1492" height="205" key="GridCell.Tab.0.center" timestamp="1623433291158">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="205" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623433291158" />
+-    <state width="1492" height="205" key="GridCell.Tab.0.left" timestamp="1623433291157">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="205" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623433291157" />
+-    <state width="1492" height="205" key="GridCell.Tab.0.right" timestamp="1623433291159">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="205" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623433291159" />
+-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1623433533234">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.814@0.0.1536.814" timestamp="1623433533234" />
+-  </component>
+ </project>
+\ No newline at end of file
+Index: LamaSpielMaven/src/main/java/GUI/Highscoreliste.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/src/main/java/GUI/Highscoreliste.java b/LamaSpielMaven/src/main/java/GUI/Highscoreliste.java
+new file mode 100644
+--- /dev/null	(date 1623580845090)
++++ b/LamaSpielMaven/src/main/java/GUI/Highscoreliste.java	(date 1623580845090)
+@@ -0,0 +1,59 @@
++package GUI;
++
++import Highscore.Bestenliste;
++import javafx.application.Application;
++import javafx.scene.Group;
++import javafx.scene.Scene;
++import javafx.scene.control.Label;
++import javafx.scene.control.ListView;
++import javafx.scene.layout.VBox;
++import javafx.scene.text.Font;
++import javafx.stage.Stage;
++
++import java.util.ArrayList;
++
++public class Highscoreliste extends Application {
++
++
++    private ListView mylist = new ListView();
++    Bestenliste b = new Bestenliste();
++    ArrayList liste = b.getTopZehn();
++
++
++    private void populateData(){
++
++        for(int i=0; i< liste.size(); i++){
++            Object x = liste.get(i);
++            int y = i+1;
++            mylist.getItems().add(y + ".\n" + x.toString());
++        }
++    }
++
++    @Override
++    public void start(Stage stage) throws Exception {
++
++        Scene scene = new Scene(new Group());
++        stage.setTitle("Bestenliste");
++        stage.setWidth(350);
++        stage.setHeight(550);
++        Label titleLabel = new Label("TopTen Bestenliste");
++        titleLabel.setFont(new Font("Lucida", 20));
++
++        populateData();
++
++        final VBox vbox = new VBox();
++        vbox.getChildren().addAll(titleLabel, mylist);
++        vbox.setMinHeight(500);
++
++        Group group = ((Group) scene.getRoot());
++        group.getChildren().addAll(vbox);
++        group.setLayoutX(40);
++
++        stage.setScene(scene);
++        stage.show();
++
++    }
++    public static void main(String[] args){
++        Application.launch(args);
++    }
++}
+Index: LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package RMI;\r\n\r\nimport java.net.MalformedURLException;\r\nimport java.rmi.Naming;\r\nimport java.rmi.RemoteException;\r\n\r\npublic class RMIServerDriver {\r\n    public static void main(String[] args) throws RemoteException, MalformedURLException {\r\n        Naming.rebind(\"RMIServer\", new RMIServer());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java b/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java
+--- a/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java	(revision 0d9f38e27e28f356572a8192e69ac603ac7936d4)
++++ b/LamaSpielMaven/src/main/java/RMI/RMIServerDriver.java	(date 1623580845096)
+@@ -3,9 +3,35 @@
+ import java.net.MalformedURLException;
+ import java.rmi.Naming;
+ import java.rmi.RemoteException;
++import java.rmi.registry.LocateRegistry;
++import java.rmi.registry.Registry;
++import java.rmi.server.UnicastRemoteObject;
++import java.security.*;
+ 
+ public class RMIServerDriver {
+-    public static void main(String[] args) throws RemoteException, MalformedURLException {
+-        Naming.rebind("RMIServer", new RMIServer());
++    public static void main(String[] args) {
++        class MyPolicy extends Policy {
++            @Override
++            public PermissionCollection getPermissions(CodeSource codesource) {
++                return (new AllPermission()).newPermissionCollection();
++            }
++        }
++        Policy.setPolicy(new MyPolicy());
++
++       try {
++           //RMIServer-Objekt exportieren
++           RMIServer obj = new RMIServer();
++           RMIServerIF stub1 = (RMIServerIF) UnicastRemoteObject.exportObject(obj, 0);
++
++           //Registry erstellen und Dienste exportieren
++           Registry registry = LocateRegistry.createRegistry(1099);
++           registry.bind("LamaServer", stub1);
++
++       } catch (Exception e){
++           System.out.println ("RMIServer exception: ");
++           e.printStackTrace();
++       }
++
+     }
+ }
++
+Index: LamaSpielMaven/.idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LamaSpielMaven/.idea/uiDesigner.xml b/LamaSpielMaven/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1623580845085)
++++ b/LamaSpielMaven/.idea/uiDesigner.xml	(date 1623580845085)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.png" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file

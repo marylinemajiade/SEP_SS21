@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]" date="1623581011980" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 13.06.2021 12:43 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="LamaSpielMaven/target/classes/RMI/RMIClientDriver.class" />
+    <option name="AFTER_PATH" value="LamaSpielMaven/target/classes/RMI/RMIClientDriver.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]/RMIClientDriver.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="LamaSpielMaven/target/classes/RMI/RMIServer.class" />
+    <option name="AFTER_PATH" value="LamaSpielMaven/target/classes/RMI/RMIServer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]/RMIServer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="LamaSpielMaven/target/classes/RMI/RMIServerDriver.class" />
+    <option name="AFTER_PATH" value="LamaSpielMaven/target/classes/RMI/RMIServerDriver.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]/RMIServerDriver.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="LamaSpielMaven/target/classes/RMI/RMIClient.class" />
+    <option name="AFTER_PATH" value="LamaSpielMaven/target/classes/RMI/RMIClient.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_12_43_[Default_Changelist]/RMIClient.class" />
+  </binary>
+</changelist>
