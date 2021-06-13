@@ -1,6 +1,8 @@
 package Konto;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
 import fachlicheExceptions.*;
 
 /**
@@ -12,7 +14,14 @@ import fachlicheExceptions.*;
 
 public class BenutzerVerwalten {
 
-    ArrayList<Benutzer> benutzerListe = new ArrayList<>();
+    @Override
+    public String toString() {
+        return "BenutzerVerwalten{" +
+                "benutzerListe=" + benutzerListe +
+                '}';
+    }
+
+    ArrayList<Benutzer> benutzerListe = new ArrayList<Benutzer>();
 
     /**
      * this methode is used to register a new Player in the game.
@@ -21,20 +30,25 @@ public class BenutzerVerwalten {
      * @param passwort passwort for the account.
      * @param email email
      */
-    void benutzerRegistrieren (String benutzername, String passwort, String email)
+    public void benutzerRegistrieren(String benutzername, String passwort, String email)
             throws benutzerNameVergebenException, EmailVergebenException {
 
         Benutzer benutzer = new Benutzer(benutzername, passwort, email);
+        boolean vergeben= false;
 
-        for (Benutzer registeredBenutzer  : benutzerListe
-             ) {
+        for (Benutzer registeredBenutzer  : benutzerListe) {
             if (registeredBenutzer.getBenutzername().equals(benutzer.getBenutzername())){
+                vergeben = true;
                 throw new benutzerNameVergebenException();
             } else if(registeredBenutzer.getEmail().equals(benutzer.getEmail())){
+                vergeben = true;
                 throw new EmailVergebenException();
             } else{
-                benutzerListe.add(benutzer);
+                vergeben = false;
             }
+        }
+        if(vergeben==false){
+            benutzerListe.add(benutzer);
         }
     }
 
@@ -43,12 +57,13 @@ public class BenutzerVerwalten {
      *
      * @param benutzername username for the player.
      */
-    void benutzerLoeschen(String benutzername){
+    public void benutzerLoeschen(String benutzername)throws ungueltigerBenutzernameException {
 
-        for (Benutzer registeredBenutzer: benutzerListe
-             ) {
+        for (Benutzer registeredBenutzer: benutzerListe) {
             if(registeredBenutzer.getBenutzername().equals(benutzername)){
                 benutzerListe.remove(registeredBenutzer);
+            } else {
+                throw new ungueltigerBenutzernameException("Benutzername existiert nicht");
             }
         }
     }
@@ -60,20 +75,26 @@ public class BenutzerVerwalten {
      * @param passwort the password to login.
      * @return a boolean, comparing the login-information with the information given during the Registration.
      */
-    boolean benutzerdatenPruefen(String benutzername, String passwort){
+    public boolean benutzerdatenPruefen(String benutzername, String passwort){
 
         boolean registered=false;
 
         for (Benutzer registeredBenutzer: benutzerListe){
-            if(registeredBenutzer.getBenutzername().equals(benutzername)
-                    && registeredBenutzer.getPasswort().equals(passwort)){
-                registered=true;
-            } else {registered=false;}
+            if(registeredBenutzer.getBenutzername().equals(benutzername)){
+                if(registeredBenutzer.getPasswort().equals(passwort)){
+                    registered=true;
+                }
+            }
         }
         return registered;
     }
 
-    ArrayList returnAllPlayer (){
-        return benutzerListe;
+    /**
+     * this methode is just for testing.
+     * @return the list of all the Players, who are registered.
+     */
+    public ArrayList<Benutzer> returnAllPlayer(){
+        return (benutzerListe) ;
     }
 }
+

@@ -15,6 +15,9 @@ public class Benutzer implements Serializable {
     private String passwort;
     private String email;
 
+    public Benutzer() {
+    }
+
     public Benutzer(String benutzername, String passwort, String email) {
         this.benutzername = benutzername;
         this.passwort = passwort;
@@ -50,4 +53,12 @@ public class Benutzer implements Serializable {
         return passwort;
     }
 
+    @Override
+    public String toString() {
+        return "Benutzer{" +
+                "benutzername='" + benutzername + '\'' +
+                ", passwort='" + passwort + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
