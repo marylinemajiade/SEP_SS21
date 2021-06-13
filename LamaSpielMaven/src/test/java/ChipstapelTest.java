@@ -61,9 +61,9 @@ public class ChipstapelTest {
 
     @Test
      void setWeiss(){
-        assertEquals(5, chipstapel.getPunkte());
+        assertEquals(35, chipstapel.getPunkte());
         chipstapel.setWeiss(2);
-        assertEquals(2, chipstapel.getPunkte());
+        assertEquals(32, chipstapel.getPunkte());
      }
 
     @Test

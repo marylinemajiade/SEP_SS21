@@ -135,7 +135,7 @@ public class Spielrunde extends Chipstapel {
         try {
             if (zehnerchip) {
                 chipstapel.setSchwarz(black - 1);
-            }
+            }else
             chipstapel.setWeiss(white - 1);
         }
         catch(Exception e){
