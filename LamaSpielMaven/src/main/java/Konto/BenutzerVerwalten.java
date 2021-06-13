@@ -14,13 +14,6 @@ import fachlicheExceptions.*;
 
 public class BenutzerVerwalten {
 
-    @Override
-    public String toString() {
-        return "BenutzerVerwalten{" +
-                "benutzerListe=" + benutzerListe +
-                '}';
-    }
-
     ArrayList<Benutzer> benutzerListe = new ArrayList<Benutzer>();
 
     /**
@@ -28,21 +21,17 @@ public class BenutzerVerwalten {
      * it saves all the registred player in an Arraylist for easy access.
      * @param benutzername username for the player.
      * @param passwort passwort for the account.
-     * @param email email
      */
-    public void benutzerRegistrieren(String benutzername, String passwort, String email)
-            throws benutzerNameVergebenException, EmailVergebenException {
+    public void benutzerRegistrieren(String benutzername, String passwort)
+            throws benutzerNameVergebenException {
 
-        Benutzer benutzer = new Benutzer(benutzername, passwort, email);
+        Benutzer benutzer = new Benutzer(benutzername, passwort);
         boolean vergeben= false;
 
         for (Benutzer registeredBenutzer  : benutzerListe) {
             if (registeredBenutzer.getBenutzername().equals(benutzer.getBenutzername())){
                 vergeben = true;
                 throw new benutzerNameVergebenException();
-            } else if(registeredBenutzer.getEmail().equals(benutzer.getEmail())){
-                vergeben = true;
-                throw new EmailVergebenException();
             } else{
                 vergeben = false;
             }

@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_78.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_7_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_jquery_3_5_1.xml" afterDir="false" />
+    <list default="true" id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="Benutzer , BenutzerVerwalten , BenutzerVerwaltenTest klassen fertig">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/LamaSpielMaven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/LamaSpielMaven.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/Benutzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/Benutzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/BenutzerVerwalten.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/BenutzerVerwalten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/fachlicheExceptions/EmailVergebenException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/BenutzerVerwaltenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/BenutzerVerwaltenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/Benutzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/Benutzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServerIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/RMI/RMIServerIF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/SpielLobby/Lobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/BenutzerVerwaltenTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/BenutzerVerwaltenTest.class" afterDir="false" />
     </list>
     <list id="7937b417-2c6d-4a7a-abae-324befe49a7f" name="Paar Änderung auf die Klassen Benutzer BenutzerVewalten. Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,20 +43,7 @@
     <property name="project.structure.side.proportion" value="0.33996025" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="JUnit.BenutzerVerwaltenTest">
-    <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
-      <module name="LamaSpielMaven" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.All in LamaSpielMaven">
     <configuration name="Highscoreliste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Highscoreliste" />
       <module name="LamaSpielMaven" />
@@ -90,15 +70,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in LamaSpielMaven" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,11 +110,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in LamaSpielMaven" />
         <item itemvalue="JUnit.BenutzerVerwaltenTest" />
         <item itemvalue="JUnit.BenutzerVerwaltenTest.sollBenutzerErstellen" />
         <item itemvalue="Application.Lobby" />
         <item itemvalue="Application.Highscoreliste" />
-        <item itemvalue="Application.Chat" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +130,8 @@
       <workItem from="1623435767826" duration="792000" />
       <workItem from="1623499781646" duration="19134000" />
       <workItem from="1623581107170" duration="2355000" />
-      <workItem from="1623583507946" duration="3661000" />
+      <workItem from="1623583507946" duration="3755000" />
+      <workItem from="1623609165417" duration="314000" />
     </task>
     <task id="LOCAL-00001" summary="Paar Änderung auf die Klassen Benutzer &amp; BenutzerVewalten.">
       <created>1623502815459</created>
@@ -188,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623583627081</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Benutzer , BenutzerVerwalten , BenutzerVerwaltenTest klassen fertig">
+      <created>1623592738171</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623592738171</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +215,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Paar Änderung auf die Klassen Benutzer &amp; BenutzerVewalten." />
     <MESSAGE value="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" />
+    <MESSAGE value="Benutzer , BenutzerVerwalten , BenutzerVerwaltenTest klassen fertig" />
+    <option name="LAST_COMMIT_MESSAGE" value="Benutzer , BenutzerVerwalten , BenutzerVerwaltenTest klassen fertig" />
   </component>
 </project>
