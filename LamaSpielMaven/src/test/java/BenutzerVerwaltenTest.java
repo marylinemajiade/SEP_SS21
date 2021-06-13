@@ -7,6 +7,7 @@ import fachlicheExceptions.ungueltigerBenutzernameException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,19 +26,28 @@ class BenutzerVerwaltenTest {
         benutzerVerwalten = new BenutzerVerwalten();
     }
 
-    /*@Test (expected = benutzerNameVergebenException.class )
-    void sollBenutzerErstellen() throws EmailVergebenException, benutzerNameVergebenException {
-        benutzerVerwalten.benutzerRegistrieren("x","x","xxx");
-        assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
-        assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
-    }*/
-
     @Test
     void benutzerRegistrieren() throws EmailVergebenException, benutzerNameVergebenException {
         benutzerVerwalten.benutzerRegistrieren("Samu","samu123","Samu@gmail.com");
         benutzerVerwalten.benutzerRegistrieren("Laura","Laurita","Laura.schmitt@gmail.com");
         assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
         assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
+    }
+
+    @Test
+    void benutzerNameVergebenExceptionTest() throws EmailVergebenException, benutzerNameVergebenException {
+        benutzerVerwalten.benutzerRegistrieren("Samu","samu123","Samu@gmail.com");
+        assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
+        assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
+        assertThrows(benutzerNameVergebenException.class , () -> benutzerVerwalten.benutzerRegistrieren("Samu","samu12","Samu1@gmail.com"));
+    }
+
+    @Test
+    void EmailVergebenExceptionTest() throws EmailVergebenException, benutzerNameVergebenException {
+        benutzerVerwalten.benutzerRegistrieren("Samu","samu123","Samu@gmail.com");
+        assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
+        assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
+        assertThrows(EmailVergebenException.class , () -> benutzerVerwalten.benutzerRegistrieren("Samu1","samu12","Samu@gmail.com"));
     }
 
     @Test
@@ -48,6 +58,14 @@ class BenutzerVerwaltenTest {
         assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
         benutzerVerwalten.benutzerRegistrieren("Samu","samu123","Samu@gmail.com");
         assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
+    }
+
+    @Test
+    void ungueltigerBenutzernameExceptionTest() throws EmailVergebenException, benutzerNameVergebenException {
+        benutzerVerwalten.benutzerRegistrieren("Samu","samu123","Samu@gmail.com");
+        assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
+        assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
+        assertThrows(ungueltigerBenutzernameException.class , () -> benutzerVerwalten.benutzerLoeschen("Samu1"));
     }
 
     @Test
