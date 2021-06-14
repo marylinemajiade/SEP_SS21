@@ -7,6 +7,7 @@ import fachlicheExceptions.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+/*Remote Interface für RMI.RMIClient. Für die Dokumentation der Methoden siehe RMI.RMIClient*/
 public interface RMIClientIF extends Remote {
 
     void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException;

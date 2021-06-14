@@ -40,7 +40,7 @@ public class SpielrundeTest{
     void getRaumId() {
         assertEquals(1, spielrunde.getRaumId());
         Spielrunde spielrunde2 = new Spielrunde(2);
-        assertEquals(2, spielrunde.getRaumId());
+        assertEquals(2, spielrunde2.getRaumId());
       }
 
 

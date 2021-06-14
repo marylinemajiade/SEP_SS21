@@ -21,6 +21,7 @@ public class BenutzerVerwalten {
      * it saves all the registred player in an Arraylist for easy access.
      * @param benutzername username for the player.
      * @param passwort passwort for the account.
+     * @throws benutzerNameVergebenException when a Player wants to register with an existing username.
      */
     public void benutzerRegistrieren(String benutzername, String passwort)
             throws benutzerNameVergebenException {
@@ -43,8 +44,8 @@ public class BenutzerVerwalten {
 
     /**
      * This methode is used to delete the player account, using just a username (the player is already registered).
-     *
      * @param benutzername username for the player.
+     * @throws ungueltigerBenutzernameException when the methode is given a wrong username to delete.
      */
     public void benutzerLoeschen(String benutzername)throws ungueltigerBenutzernameException {
 
