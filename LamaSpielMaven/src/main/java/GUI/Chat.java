@@ -91,6 +91,7 @@ public class Chat extends Application{
 
             borderpane.setRight(sendenButton);
             borderpane.setLeft(input);
+
             borderpane.setBottom(outputArea);
             outputArea.setPrefSize(100,100);
             borderpane.setCenter(inputArea);
