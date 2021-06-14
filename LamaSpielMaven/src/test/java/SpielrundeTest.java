@@ -18,6 +18,7 @@ public class SpielrundeTest{
 
     /**
      * @author Catharina Helten
+     * @author Vanessa Stein
      */
 
     private int spielraumId;
