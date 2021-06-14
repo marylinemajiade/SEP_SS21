@@ -1,4 +1,7 @@
 package SpielLobby;
+import Bot.BotEinfach;
+import Bot.BotSchwer;
+import GUI.Chat;
 import Konto.Benutzer;
 import fachlicheExceptions.spielraumVollException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
@@ -13,15 +16,20 @@ import java.util.List;
  * @author Maryline Majiade
  * Die Klasse verwaltet die Lobby des Spiels.
  */
-public class Lobby extends UnicastRemoteObject implements LobbyIF{
+public class Lobby implements LobbyIF{
+
+    ArrayList<Benutzer> benutzers;
+    ArrayList<Spielraum> spielraums;
+    Chat chat;
+    BotEinfach botEinfach;
+    BotSchwer botSchwer;
 
 
-    public Lobby() throws RemoteException {
-        super();
-    }
 
-
-
+    /**
+     * Die Methode gib die Liste aller Spieler zurück
+     * @return Liste von den Spielern
+     */
     public List<String> getSpieler(int spielraumId){
         return null;
     }
