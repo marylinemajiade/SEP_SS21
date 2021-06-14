@@ -1,8 +1,8 @@
 package GUI;
 
 import RMI.RMIClient;
-import RMI.RMIServer;
-import RMI.RMIServerIF;
+import fachlicheExceptions.ungueltigeSpielraumIDException;
+import fachlicheExceptions.ungueltigerBenutzernameException;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,17 +12,18 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public  class Chat extends Application  {
+
+public class Chat extends Application{
 
     private String benutzernameClient;
     private String nachrichtGesendet;
     private String nachrichtErhalten;
     public RMIClient client;
 
-    public RMIServer rmiserver;
+
 
     public TextField inputArea = new TextField();
 
@@ -71,6 +72,12 @@ public  class Chat extends Application  {
                     input(inputArea.getText());
                 } catch (RemoteException e) {
                     e.printStackTrace();
+                } catch (ungueltigeSpielraumIDException e) {
+                    e.printStackTrace();
+                } catch (ungueltigerBenutzernameException e) {
+                    e.printStackTrace();
+                } catch (NotBoundException e) {
+                    e.printStackTrace();
                 }
             });
 
@@ -104,9 +111,13 @@ public  class Chat extends Application  {
         outputArea.setText(benutzernameSpieler + ": " + nachrichtErhalten + "\n");
     }
 
-    public void input(String nachrichtGesendet) throws RemoteException {
-        RMIClient client = new RMIClient(rmiserver, benutzernameClient);
-        client.uebertrageChatnachricht(benutzernameClient, nachrichtGesendet);
+    public void input(String nachrichtGesendet) throws RemoteException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException, NotBoundException {
+
+
+
+        client.rmiserver.sendeChatnachricht(benutzernameClient, 0, nachrichtGesendet);
+
+
 
     }
 
