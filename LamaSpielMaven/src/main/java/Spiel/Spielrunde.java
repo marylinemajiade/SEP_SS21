@@ -20,7 +20,7 @@ public class Spielrunde extends Chipstapel {
     private HashSet<Integer> handkarten;
     private Stack<Integer> ablagestapel;
     private Stack<Integer> nachziehstapel;
-    private Chipstapel chipstapel = new Chipstapel();
+    private Chipstapel chipstapel;
 
     /**
      * Die Methode dient zum Abrufen der Spielraum-ID
@@ -85,8 +85,8 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerSpielzugException
      * @throws ungueltigerBenutzernameException
      */
-    public void aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
-
+    public boolean aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
+        return true;
     }
 
 
@@ -107,11 +107,12 @@ public class Spielrunde extends Chipstapel {
     try {
         if (zehngegeneins) {
             chipstapel.setSchwarz(black - 1);
-            chipstapel.setWeiss(white + 1);
+            chipstapel.setWeiss(white + 10);
+        } else {
+            chipstapel.setWeiss(white - 10);
+            chipstapel.setSchwarz(black + 1);
         }
-        chipstapel.setWeiss(white - 1);
-    }
-    catch(Exception e){
+    } catch(Exception e){
         }
 
     }
@@ -156,8 +157,8 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Starten des Spiels
      * @throws spielLaeuftBereitsException
      */
-    public void spielStarten() throws spielLaeuftBereitsException{
-
+    public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
+        return true;
     }
 
 
@@ -178,7 +179,7 @@ public class Spielrunde extends Chipstapel {
      * @throws stapelLeerException
      */
 
-    public Stack<Integer> getAblagestapel() throws stapelLeerException{
+    public Stack<Integer> getAblagestapel() {
         return ablagestapel;
     }
 
