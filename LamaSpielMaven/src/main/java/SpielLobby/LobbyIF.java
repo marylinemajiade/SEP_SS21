@@ -2,21 +2,18 @@ package SpielLobby;
 
 import java.rmi.RemoteException;
 import java.rmi.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /* Interface für SpielLobby.Lobby. Für die Dokumentation der Methoden siehe SpielLobby.Lobby*/
     public interface LobbyIF{
 
-    Spielraum getSpielraum(int id);
-
-    void sendeChatnachricht(String benutzername, int spielraumID, String nachricht);
-
-    void spielraumErstellen(String benutzername);
+    ArrayList<String> getSpieler(int spielraumId);
+    ArrayList<Integer> getSpielraum_Ids();
     void spielraumBeitreten(String benutzername, int spielraumID);
     void spielraumVerlassen(String benutzername, int spielraumID);
+    void spielraumLoeschen(int spielraumID);
+    void spielraumHinzufuegen(int spielraumID);
 
-    void botHinzufuegen(boolean easybot, int spielraumID);
-    void botEntfernen(String botname, int spielraumID);
-
-    void spielStarten(int spielraumID);
 
 }
