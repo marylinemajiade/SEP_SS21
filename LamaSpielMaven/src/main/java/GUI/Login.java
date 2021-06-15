@@ -26,6 +26,7 @@ import Konto.BenutzerVerwalten;
 @author Vanessa Stein
  */
 
+
 public class Login extends Application {
 
     public static void main(String[] args){
