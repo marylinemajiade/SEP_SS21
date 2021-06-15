@@ -18,18 +18,8 @@ import java.util.*;
 public class Lobby implements LobbyIF{
 
     Benutzer benutzer;
-    ArrayList<Benutzer> benutzers;
     ArrayList<Spielraum> spielraums;
 
-
-    /**
-     * Die Methode gib die Liste aller Spieler zurück, die sich in dem
-     * Spielraum mit ID spielraumId befinden
-     * @return Liste von den Spielern
-     */
-    public ArrayList<String> getSpieler(int spielraumId){
-        return null;
-    }
 
     /**
      * Die Methode gibt die Liste aller Spielraum IDs zurück
@@ -62,16 +52,40 @@ public class Lobby implements LobbyIF{
      */
     public void spielraumVerlassen(String benutzername, int spielraumId){
 
+       spielraums.get(spielraumId).spielerEntfernen(benutzername);
+
     }
 
+
+    /**
+     * Die Methode löscht den Spielraum mit dem Id spielraumId
+     * @param spielraumID Id des Spielraums, der gelöscht werden muss
+     */
     @Override
     public void spielraumLoeschen(int spielraumID) {
+        spielraums.remove(spielraumID);
 
     }
 
+
+    /**
+     * Die Methode fügt einen Spielraum mit dem Id spielraumId in die Lobby hinzu
+     * @param spielraumID Id des Spielraums, der hinzugefügt werden muss
+     */
     @Override
     public void spielraumHinzufuegen(int spielraumID) {
+        Spielraum spielraum= new Spielraum(spielraumID);
+        spielraums.add(spielraum);
 
+    }
+
+    /**
+     * Die Methode gib die Liste aller Spieler zurück, die sich in dem
+     * Spielraum mit ID spielraumId befinden
+     * @return Liste von den Spielern
+     */
+    public ArrayList<String> getSpieler(int spielraumId){
+        return null;
     }
 
 

@@ -4,57 +4,44 @@ import SpielLobby.Lobby;
 import SpielLobby.Spielraum;
 import fachlicheExceptions.ungueltigerBenutzernameException;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.*;
 
 
 /**
  * @author Maryline Majiade
  */
 
-@ExtendWith(MockitoExtension.class)
+
 class LobbyTest {
 
-    @InjectMocks
-    //Instanz of the class under test
     private Lobby lobby;
-    //Intanz of the dependencies
-    @Mock
-    private Benutzer benutzerMock;
-    @Mock
-    private Spielraum spielraumMock;
-
-
 
     @Test
     void getSpielraum_Ids() {
-        //given
-        ArrayList<Spielraum> spielraums = new ArrayList<>();
-        Spielraum raum0 = new Spielraum(1);
-        Spielraum raum1 = new Spielraum(2);
-        Spielraum raum2 = new Spielraum(3);
-        Spielraum raum3 = new Spielraum(4);
 
-        spielraums.add(raum0);
+        ArrayList<Spielraum> spielraums = new ArrayList<>();
+        Spielraum raum1 = new Spielraum(1);
+        Spielraum raum2 = new Spielraum(2);
+        Spielraum raum3 = new Spielraum(3);
+
         spielraums.add(raum1);
         spielraums.add(raum2);
         spielraums.add(raum3);
 
         assertNotNull(spielraums);
 
-        //when
-        ArrayList<Integer> actual = lobby.getSpielraum_Ids();
+        ArrayList<Integer> actual = new ArrayList<>();
+        actual.add(1);
+        actual.add(2);
+        actual.add(3);
+        ArrayList<Integer> expected = lobby.getSpielraum_Ids();
 
-        //then
-        assertEquals(spielraums.indexOf(1),actual.indexOf(1));
+        assertEquals(expected,actual);
 
     }
 
@@ -62,19 +49,17 @@ class LobbyTest {
     @Test
     void spielraumBeitreten() {
 
-        Benutzer benutzer= new Benutzer("Maryline", "testPwd123");
+        Benutzer benutzer1= new Benutzer("Maryline", "testPwd123");
+        Benutzer benutzer2= new Benutzer("Tester", "testMyCode99");
 
         ArrayList<Spielraum> spielraums = new ArrayList<>();
         Spielraum raum1 = new Spielraum(1);
-        Spielraum raum2 = new Spielraum(2);
         spielraums.add(raum1);
-        spielraums.add(raum2);
-        assertNotNull(spielraums);
 
-        lobby.spielraumBeitreten("Maryline", 1);
+        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
 
-        //assertEquals(lobby.getSpielraum(1).spielerList().size(),1);
-        verify(benutzerMock).getBenutzername();
+        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1
     }
 
     @Test
@@ -85,29 +70,70 @@ class LobbyTest {
 
         ArrayList<Spielraum> spielraums = new ArrayList<>();
         Spielraum raum1 = new Spielraum(1);
-        Spielraum raum2 = new Spielraum(2);
         spielraums.add(raum1);
-        spielraums.add(raum2);
 
-        lobby.spielraumVerlassen(benutzer1.getBenutzername(), 1);
-        lobby.spielraumVerlassen(benutzer2.getBenutzername(), 1);
-
-        /*assertEquals(lobby.getSpielraum(1).spielerList().size(),0);
-        assert(lobby.getSpielraum(1).spielerList()==null);*/
-        verify(benutzerMock).getBenutzername();
+        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
+        assertEquals(spielraums.size(),1);
+        lobby.spielraumVerlassen("Mary",1);
+        assert(spielraums.get(0).spielerList().size()==1); //Anzahl der Spieler in Raum 1
 
     }
 
 
 
     @Test
-    void spielRaumLoeschen() {}
+    void spielRaumLoeschen() {
+        ArrayList<Spielraum> spielraums = new ArrayList<>();
+        Spielraum raum1 = new Spielraum(1);
+        Spielraum raum2 = new Spielraum(2);
+        spielraums.add(raum1);
+        spielraums.add(raum2);
+
+        assert(spielraums.size()==2);
+        lobby.spielraumLoeschen(2);
+        assertEquals(spielraums.size(),1);
+
+        lobby.spielraumLoeschen(1);
+        assertEquals(spielraums.size(),0);
+
+
+    }
 
     @Test
-    void spielraumHinzufuegen(){}
+    void spielraumHinzufuegen(){
+        ArrayList<Spielraum> spielraums = new ArrayList<>();
+        Spielraum raum1 = new Spielraum(1);
+        Spielraum raum2 = new Spielraum(2);
+        spielraums.add(raum1);
+        spielraums.add(raum2);
+
+        assertEquals(spielraums.size(),2);
+        lobby.spielraumHinzufuegen(3);
+        assertEquals(spielraums.size(),3);
+    }
 
     @Test
-    void getSpieler(){}
+    void getSpieler(){
+        Benutzer benutzer1= new Benutzer("Maryline", "testPwd123");
+        Benutzer benutzer2= new Benutzer("Tester", "testMyCode99");
+
+        ArrayList<Spielraum> spielraums = new ArrayList<>();
+        Spielraum raum1 = new Spielraum(1);
+        spielraums.add(raum1);
+
+        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
+
+        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1
+
+        ArrayList<String> spielerList = new ArrayList<>();
+        spielerList.add(benutzer1.getBenutzername());
+        spielerList.add(benutzer2.getBenutzername());
+
+        assertEquals(spielerList,lobby.getSpieler(1));
+
+    }
 
 
 }

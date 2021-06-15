@@ -13,9 +13,7 @@ public class Spielraum {
     Bestenliste bestenliste;
     Benutzer benutzer;
     int id;
-    Chat chat;
     boolean started;
-
 
 
     public Spielraum(Integer id) {
@@ -23,7 +21,6 @@ public class Spielraum {
         this.bestenliste = new Bestenliste();
         this.benutzer = new Benutzer();
         this.id = id;
-        this.chat = new Chat();
         this.started = false;
 
 
@@ -40,5 +37,8 @@ public class Spielraum {
 
     public boolean spielStarten(){
         return false;
+    }
+    public void spielerEntfernen(String benutzername){
+        //ToDo
     }
 }
