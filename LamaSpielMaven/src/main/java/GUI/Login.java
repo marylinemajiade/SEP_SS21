@@ -99,6 +99,8 @@ public class Login extends Application {
             public void handle(ActionEvent actionEvent) {
                 try {
                     bv.benutzerRegistrieren(userTextField.getText(), pwBox.getText());
+                    actiontarget.setFill(Color.FORESTGREEN);
+                    actiontarget.setText("Registrierung erfolgreich");
                 } catch (benutzerNameVergebenException e) {
                     e.printStackTrace();
                     actiontarget.setFill(Color.FIREBRICK);
