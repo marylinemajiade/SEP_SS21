@@ -6,8 +6,7 @@ import java.rmi.*;
 /* Interface für SpielLobby.Lobby. Für die Dokumentation der Methoden siehe SpielLobby.Lobby*/
     public interface LobbyIF{
 
-    //SpielRaum getRoom(int id);
-
+    Spielraum getSpielraum(int id);
 
     void sendeChatnachricht(String benutzername, int spielraumID, String nachricht);
 
@@ -19,6 +18,5 @@ import java.rmi.*;
     void botEntfernen(String botname, int spielraumID);
 
     void spielStarten(int spielraumID);
-    //HashMap<Integer, SpielRaum> getRooms();
 
 }

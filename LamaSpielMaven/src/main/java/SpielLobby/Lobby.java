@@ -8,8 +8,7 @@ import fachlicheExceptions.ungueltigerBenutzernameException;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -18,6 +17,7 @@ import java.util.List;
  */
 public class Lobby implements LobbyIF{
 
+    Benutzer benutzer;
     ArrayList<Benutzer> benutzers;
     ArrayList<Spielraum> spielraums;
     Chat chat;
@@ -27,20 +27,38 @@ public class Lobby implements LobbyIF{
 
 
     /**
-     * Die Methode gib die Liste aller Spieler zurück
+     * Die Methode gib die Liste aller Spieler zurück, die sich in dem
+     * Spielraum mit ID spielraumId befinden
      * @return Liste von den Spielern
      */
     public List<String> getSpieler(int spielraumId){
-        return null;
+        return Collections.singletonList(Arrays.asList(benutzers).toString());
     }
 
     /**
-     * Die Methode erstellt einen neuen Spielraum mit einem Benutzer
-     * @return Liste von Spielraum
+     * Die Methode gibt die Liste aller Spielraum IDs zurück
+     * @return Liste von Spielraum IDs
      */
     public ArrayList<Integer> getSpielraum_Ids(){
-        return null;
+        ArrayList<Integer> spielraumsIds = null;
+        for(int i=0; i<=spielraums.size(); i++){
+            assert spielraumsIds != null;
+            spielraumsIds.add(i);
+        }
+        return spielraumsIds;
     }
+
+    /**
+     * Die Methode gib den Spielraum mit dem Index id zurück
+     * @param id Index von dem Spielraum
+     * @return Spielraum mit dem entsprechendem id (Index)
+     */
+
+    @Override
+    public Spielraum getSpielraum(int id) {
+        return spielraums.get(id);
+    }
+
 
 
     /**
@@ -72,7 +90,8 @@ public class Lobby implements LobbyIF{
      * @param spielraumId Integer != null
      */
     public void spielraumBeitreten(String benutzername, int spielraumId){
-
+        benutzername = benutzer.getBenutzername();
+        spielraums.get(spielraumId).benutzerHinzufuegen(benutzername);
     }
 
 
@@ -115,3 +134,5 @@ public class Lobby implements LobbyIF{
     }
 
 }
+
+
