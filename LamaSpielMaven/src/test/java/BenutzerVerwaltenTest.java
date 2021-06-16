@@ -44,6 +44,7 @@ class BenutzerVerwaltenTest {
         benutzerVerwalten.benutzerRegistrieren("Laura","Laurita");
         benutzerVerwalten.benutzerLoeschen("Samu");
         assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
+        assertFalse(benutzerVerwalten.benutzerdatenPruefen("Samu","samu123"));
         benutzerVerwalten.benutzerRegistrieren("Samu","samu123");
         assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
     }

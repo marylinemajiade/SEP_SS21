@@ -89,6 +89,8 @@ public class Lobby implements LobbyIF{
     }
 
 
+    public void spielraumErstellen(String benutzername) {
+    }
 }
 
 

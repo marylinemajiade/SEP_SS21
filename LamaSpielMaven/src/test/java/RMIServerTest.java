@@ -62,9 +62,9 @@ class RMIServerTest {
 
         }catch(benutzerNameVergebenException ignored){}
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()-> rmiserver.benutzerRegistrieren("Andi", "dfadfadfad"));
+                ()-> rmiserver.benutzerRegistrieren("Andi", "dfadfadfad"));//die Exception benurzerNameVergeben muss hier geworfen werden
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()->{rmiserver.benutzerRegistrieren("Bot", "34523452345");});
+                ()->{rmiserver.benutzerRegistrieren("Bot", "34523452345");});//hier muss keine Exception geworfen wird, da wir die Name von Bots nicht vor der Registrierung behandlet
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
                 ()->{rmiserver.benutzerRegistrieren("Bot122345", "5345345");});
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
@@ -74,10 +74,10 @@ class RMIServerTest {
     @org.junit.jupiter.api.Test
     void benutzerLoeschen() throws benutzerNameVergebenException, ungueltigerBenutzernameException, RemoteException {
         RMIServer rmiserver = new RMIServer();
-            rmiserver.benutzerRegistrieren("LamaKönig123", "dorwssaP");
+        rmiserver.benutzerRegistrieren("LamaKönig123", "dorwssaP");
         assertTrue(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
         rmiserver.benutzerLoeschen("LamaKönig123");
-        assertFalse(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
+        assertFalse(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));//Methode in BenutzerVerwalten geändert
         try{rmiserver.benutzerRegistrieren("LamaKönig123", "dsfasdfasdf");}
         catch(benutzerNameVergebenException ignored){fail("Benutzername sollte wieder frei sein");}
 

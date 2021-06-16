@@ -17,7 +17,7 @@ import static GUI.Chat.outputArea;
 public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Serializable {
 
     //Attribute
-    RMIServerIF rmiserver;
+    public RMIServerIF rmiserver;
     String benutzername;
 
 
@@ -34,7 +34,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
 
     /**
      * with this methode the player will be able to send a message in the chat.
-     * @param benutzername name of player that will send the message.
+     * @param benutzername name of player who will send the message.
      * @param nachricht the actual message.
      * @throws RemoteException
      */
@@ -67,6 +67,13 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
 
     }
 
+    /**
+     * This Methode refreshes the Lobby informations, when a player exit the Room,
+     * or a new Player join the Room to play a game.
+     * also when a Bot is been removed or added to the game
+     * @param lobby
+     * @throws RemoteException
+     */
     @Override
     public void aktualisiereSpielraeume(Lobby lobby) throws RemoteException {
 

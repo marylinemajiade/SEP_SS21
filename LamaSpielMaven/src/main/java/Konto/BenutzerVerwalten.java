@@ -2,6 +2,7 @@ package Konto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import fachlicheExceptions.*;
 
@@ -49,13 +50,17 @@ public class BenutzerVerwalten {
      */
     public void benutzerLoeschen(String benutzername)throws ungueltigerBenutzernameException {
 
-        for (Benutzer registeredBenutzer: benutzerListe) {
+
+
+        benutzerListe.removeIf( benutzer -> benutzer.getBenutzername().equals(benutzername));
+
+        /*for (Benutzer registeredBenutzer: benutzerListe) {
             if(registeredBenutzer.getBenutzername().equals(benutzername)){
                 benutzerListe.remove(registeredBenutzer);
             } else {
                 throw new ungueltigerBenutzernameException("Benutzername existiert nicht");
             }
-        }
+        }*/
     }
 
     /**
@@ -69,13 +74,15 @@ public class BenutzerVerwalten {
 
         boolean registered=false;
 
-        for (Benutzer registeredBenutzer: benutzerListe){
-            if(registeredBenutzer.getBenutzername().equals(benutzername)){
-                if(registeredBenutzer.getPasswort().equals(passwort)){
-                    registered=true;
+        if(!benutzerListe.isEmpty()) {
+            for (Benutzer registeredBenutzer : benutzerListe) {
+                if (registeredBenutzer.getBenutzername().equals(benutzername)) {
+                    if (registeredBenutzer.getPasswort().equals(passwort)) {
+                        registered = true;
+                    }
                 }
             }
-        }
+        } else {registered=false;}
         return registered;
     }
 

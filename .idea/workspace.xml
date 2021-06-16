@@ -4,19 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="chipsta">
+    <list default="true" id="0c949b71-872e-40a0-9209-5c02ad4fc235" name="Default Changelist" comment="Änderung auf BenutzerVerwalten,ChipstapelTest">
+      <change afterPath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/RMIClientTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/LamaSpielMaven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/LamaSpielMaven.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/BenutzerVerwalten.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/Konto/BenutzerVerwalten.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClientIF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/SpielrundeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/SpielrundeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Spiel/Spielrunde.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/ChipstapelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/ChipstapelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/RMI/RMIServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/main/java/SpielLobby/Lobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/BenutzerVerwaltenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/BenutzerVerwaltenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/RMIServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/src/test/java/RMIServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/Konto/BenutzerVerwalten.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/classes/SpielLobby/Lobby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/LobbyTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/LobbyTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/RMIServerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/RMIServerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/SpielrundeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/LamaSpielMaven/target/test-classes/SpielrundeTest.class" afterDir="false" />
     </list>
     <list id="7937b417-2c6d-4a7a-abae-324befe49a7f" name="Paar Änderung auf die Klassen Benutzer BenutzerVewalten. Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -38,86 +53,102 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SEP/g04" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.33996025" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="JUnit.SpielrundeTest.anDerReihe">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="RMI" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RMIServerTest.benutzerLoeschen">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BenutzerVerwaltenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in LamaSpielMaven" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BenutzerVerwaltenTest.benutzerLoeschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpielrundeTest.anDerReihe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LamaSpielMaven" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpielrundeTest" />
-      <option name="METHOD_NAME" value="anDerReihe" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerLoeschen" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpielrundeTest.chipsTauschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RMIServerTest.benutzerLoeschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpielrundeTest" />
-      <option name="METHOD_NAME" value="chipsTauschen" />
+      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+      <option name="METHOD_NAME" value="benutzerLoeschen" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpielrundeTest.getRaumId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RMIServerTest.benutzerRegistrieren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpielrundeTest" />
-      <option name="METHOD_NAME" value="getRaumId" />
+      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+      <option name="METHOD_NAME" value="benutzerRegistrieren" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpielrundeTest.karteAblegen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RMIServerTest.benutzerdatenPruefen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpielrundeTest" />
-      <option name="METHOD_NAME" value="karteAblegen" />
+      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+      <option name="METHOD_NAME" value="benutzerdatenPruefen" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in LamaSpielMaven" />
-      <item itemvalue="JUnit.SpielrundeTest.getRaumId" />
-      <item itemvalue="JUnit.SpielrundeTest.karteAblegen" />
-      <item itemvalue="JUnit.SpielrundeTest.anDerReihe" />
-      <item itemvalue="JUnit.SpielrundeTest.chipsTauschen" />
+      <item itemvalue="JUnit.RMIServerTest.benutzerdatenPruefen" />
+      <item itemvalue="JUnit.RMIServerTest.benutzerRegistrieren" />
+      <item itemvalue="JUnit.RMIServerTest.benutzerLoeschen" />
+      <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerLoeschen" />
+      <item itemvalue="JUnit.BenutzerVerwaltenTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SpielrundeTest.anDerReihe" />
-        <item itemvalue="JUnit.SpielrundeTest.chipsTauschen" />
-        <item itemvalue="JUnit.All in LamaSpielMaven" />
-        <item itemvalue="JUnit.SpielrundeTest.karteAblegen" />
-        <item itemvalue="JUnit.SpielrundeTest.getRaumId" />
+        <item itemvalue="JUnit.RMIServerTest.benutzerLoeschen" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerLoeschen" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+        <item itemvalue="JUnit.RMIServerTest.benutzerRegistrieren" />
+        <item itemvalue="JUnit.RMIServerTest.benutzerdatenPruefen" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +167,12 @@
       <workItem from="1623583507946" duration="3755000" />
       <workItem from="1623609165417" duration="542000" />
       <workItem from="1623612535848" duration="616000" />
-      <workItem from="1623615158297" duration="5071000" />
+      <workItem from="1623615158297" duration="5153000" />
+      <workItem from="1623672278186" duration="1755000" />
+      <workItem from="1623701003115" duration="1770000" />
+      <workItem from="1623740403010" duration="5208000" />
+      <workItem from="1623805788483" duration="2754000" />
+      <workItem from="1623829909758" duration="4519000" />
     </task>
     <task id="LOCAL-00001" summary="Paar Änderung auf die Klassen Benutzer &amp; BenutzerVewalten.">
       <created>1623502815459</created>
@@ -201,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623617347384</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Änderung auf BenutzerVerwalten,ChipstapelTest">
+      <created>1623660203407</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1623660203407</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +267,12 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="175" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="175" />
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -236,6 +285,7 @@
     <MESSAGE value="Paar Änderung auf die Klassen Benutzer BenutzerVewalten.&#10;Tests in Klasse BenutzerVerwaltenTest erstellt (alle richtig ausgeführt _ noch nicht fertig)" />
     <MESSAGE value="Benutzer , BenutzerVerwalten , BenutzerVerwaltenTest klassen fertig" />
     <MESSAGE value="chipsta" />
-    <option name="LAST_COMMIT_MESSAGE" value="chipsta" />
+    <MESSAGE value="Änderung auf BenutzerVerwalten,ChipstapelTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Änderung auf BenutzerVerwalten,ChipstapelTest" />
   </component>
 </project>

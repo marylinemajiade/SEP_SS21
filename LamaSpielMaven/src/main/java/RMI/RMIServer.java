@@ -63,7 +63,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {
-        //TODO
+        benutzerdaten.benutzerRegistrieren(benutzername,passwort);
 
     }
 
