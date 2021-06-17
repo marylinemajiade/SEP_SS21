@@ -3,6 +3,7 @@ import Bot.BotEinfach;
 import Bot.BotSchwer;
 import GUI.Chat;
 import Konto.Benutzer;
+import Spiel.Spielrunde;
 import fachlicheExceptions.spielraumVollException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
 
@@ -12,26 +13,28 @@ import java.util.*;
 
 
 /**
- * @author Maryline Majiade
+ * @author Maryline Majiade, Catharina Helten
  * Die Klasse verwaltet die Lobby des Spiels.
  */
-public class Lobby implements LobbyIF{
+public class Lobby{
 
-    Benutzer benutzer;
-    ArrayList<Spielraum> spielraums;
+    private ArrayList<Integer> spielraum_Ids = new ArrayList<>();
+    ArrayList<Spielrunde> spielrunden;
+    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();
+
+
 
 
     /**
      * Die Methode gibt die Liste aller Spielraum IDs zurück
      * @return Liste von Spielraum IDs
      */
+
+
+
     public ArrayList<Integer> getSpielraum_Ids(){
-        ArrayList<Integer> spielraumsIds = null;
-        for(int i=0; i<=spielraums.size(); i++){
-            assert spielraumsIds != null;
-            spielraumsIds.add(i);
-        }
-        return spielraumsIds;
+
+        return spielraum_Ids;
     }
 
     /**
@@ -40,8 +43,7 @@ public class Lobby implements LobbyIF{
      * @param spielraumId Integer != null
      */
     public void spielraumBeitreten(String benutzername, int spielraumId){
-        benutzername = benutzer.getBenutzername();
-        spielraums.get(spielraumId).benutzerHinzufuegen(benutzername);
+        spielerInSpielrunde.get(spielraumId).add(benutzername);
     }
 
 
@@ -52,7 +54,7 @@ public class Lobby implements LobbyIF{
      */
     public void spielraumVerlassen(String benutzername, int spielraumId){
 
-       spielraums.get(spielraumId).spielerEntfernen(benutzername);
+        spielerInSpielrunde.get(spielraumId).remove(benutzername);
 
     }
 
@@ -61,9 +63,10 @@ public class Lobby implements LobbyIF{
      * Die Methode löscht den Spielraum mit dem Id spielraumId
      * @param spielraumID Id des Spielraums, der gelöscht werden muss
      */
-    @Override
+
     public void spielraumLoeschen(int spielraumID) {
-        spielraums.remove(spielraumID);
+        spielrunden.remove(spielraumID-1);
+        spielraum_Ids.remove(spielraumID);
 
     }
 
@@ -72,11 +75,13 @@ public class Lobby implements LobbyIF{
      * Die Methode fügt einen Spielraum mit dem Id spielraumId in die Lobby hinzu
      * @param spielraumID Id des Spielraums, der hinzugefügt werden muss
      */
-    @Override
-    public void spielraumHinzufuegen(int spielraumID) {
-        Spielraum spielraum= new Spielraum(spielraumID);
-        spielraums.add(spielraum);
 
+    public void spielraumHinzufuegen(int spielraumID) {
+
+        Spielrunde spielrunde = new Spielrunde(spielraumID);
+        spielraum_Ids.add(spielraumID);
+        spielrunden.add(spielrunde);
+        spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);
     }
 
     /**
@@ -85,12 +90,9 @@ public class Lobby implements LobbyIF{
      * @return Liste von den Spielern
      */
     public ArrayList<String> getSpieler(int spielraumId){
-        return null;
+        return spielerInSpielrunde.get(spielraumId);
     }
 
-
-    public void spielraumErstellen(String benutzername) {
-    }
 }
 
 
