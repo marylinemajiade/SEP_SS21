@@ -117,7 +117,10 @@ class RMIServerTest {
 
     @org.junit.jupiter.api.Test
     void spielraumErstellen() throws RemoteException, ungueltigerBenutzernameException {
-        RMIServer rmiserver = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
+        Bestenliste bestenliste = mock(Bestenliste.class);
+        Lobby lobby = mock(Lobby.class);
+        BenutzerVerwalten benutzerVerwalten = mock(BenutzerVerwalten.class);
+        RMIServer rmiserver = new RMIServer(bestenliste,lobby,benutzerVerwalten);
         RMIClientIF client1 = mock(RMIClientIF.class);
         RMIClientIF client2 = mock(RMIClientIF.class);
         RMIClientIF client3 = mock(RMIClientIF.class);
@@ -127,6 +130,7 @@ class RMIServerTest {
         rmiserver.registriereClient(client1);
         rmiserver.registriereClient(client2);
         rmiserver.registriereClient(client3);
+
         rmiserver.spielraumErstellen("client1");
         Mockito.verify(client1, never()).aktualisiereSpielraeume(any(Lobby.class));
         Mockito.verify(client2, never()).aktualisiereSpielraeume(any(Lobby.class));

@@ -1,6 +1,7 @@
 
 import Spiel.Chipstapel;
 import Spiel.Spielrunde;
+import SpielLobby.Lobby;
 import fachlicheExceptions.stapelLeerException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
 import fachlicheExceptions.ungueltigerChipException;
@@ -28,7 +29,7 @@ public class ChipstapelTest {
 
     @BeforeEach
     void setup() throws ungueltigerBenutzernameException, stapelLeerException {
-     spielrunde = new Spielrunde(1);
+     spielrunde = new Spielrunde(1,new Lobby());
      benutzername = spielrunde.anDerReihe();
      chipstapel = spielrunde.getChipstapel(benutzername);
      chipstapel.setWeiss(5);
