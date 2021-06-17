@@ -1,14 +1,5 @@
 package SpielLobby;
-import Bot.BotEinfach;
-import Bot.BotSchwer;
-import GUI.Chat;
-import Konto.Benutzer;
 import Spiel.Spielrunde;
-import fachlicheExceptions.spielraumVollException;
-import fachlicheExceptions.ungueltigerBenutzernameException;
-
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
 
@@ -19,18 +10,33 @@ import java.util.*;
 public class Lobby{
 
     private ArrayList<Integer> spielraum_Ids = new ArrayList<>();
-    ArrayList<Spielrunde> spielrunden;
-    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();
+    ArrayList<Spielrunde> spielrunden = new ArrayList<>();
+    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<>();
 
+    public void setSpielraum_Ids(ArrayList<Integer> spielraum_Ids) {
+        this.spielraum_Ids = spielraum_Ids;
+    }
 
+    public ArrayList<Spielrunde> getSpielrunden() {
+        return spielrunden;
+    }
 
+    public void setSpielrunden(ArrayList<Spielrunde> spielrunden) {
+        this.spielrunden = spielrunden;
+    }
+
+    public HashMap<Integer, ArrayList<String>> getSpielerInSpielrunde() {
+        return spielerInSpielrunde;
+    }
+
+    public void setSpielerInSpielrunde(HashMap<Integer, ArrayList<String>> spielerInSpielrunde) {
+        this.spielerInSpielrunde = spielerInSpielrunde;
+    }
 
     /**
      * Die Methode gibt die Liste aller Spielraum IDs zurück
      * @return Liste von Spielraum IDs
      */
-
-
 
     public ArrayList<Integer> getSpielraum_Ids(){
 
@@ -44,7 +50,6 @@ public class Lobby{
      */
     public void spielraumBeitreten(String benutzername, int spielraumId){
         spielerInSpielrunde.get(spielraumId).add(benutzername);
-
 
     }
 
@@ -68,7 +73,7 @@ public class Lobby{
 
     public void spielraumLoeschen(int spielraumID) {
         spielrunden.remove(spielraumID-1);
-        spielraum_Ids.remove(spielraumID);
+        spielraum_Ids.remove(spielraumID-1);
 
     }
 
@@ -83,7 +88,7 @@ public class Lobby{
         Spielrunde spielrunde = new Spielrunde(spielraumID, this);
         spielraum_Ids.add(spielraumID);
         spielrunden.add(spielrunde);
-        spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);
+        spielerInSpielrunde.put(spielraumID, new ArrayList<>());
     }
 
     /**

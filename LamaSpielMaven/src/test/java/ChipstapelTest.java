@@ -11,11 +11,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+/**
+ * @author Catharina Helten
+ */
+
 public class ChipstapelTest {
 
-    /**
-     * @author Catharina Helten
-     */
 
 
 
@@ -29,7 +30,7 @@ public class ChipstapelTest {
 
     @BeforeEach
     void setup() throws ungueltigerBenutzernameException, stapelLeerException {
-     spielrunde = new Spielrunde(1,new Lobby());
+     spielrunde = new Spielrunde(1, new Lobby());
      benutzername = spielrunde.anDerReihe();
      chipstapel = spielrunde.getChipstapel(benutzername);
      chipstapel.setWeiss(5);
