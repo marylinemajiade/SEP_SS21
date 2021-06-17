@@ -18,9 +18,10 @@ import java.util.*;
  */
 public class Lobby{
 
-    Benutzer benutzer;
+    private ArrayList<Integer> spielraum_Ids = new ArrayList<>();
     ArrayList<Spielrunde> spielrunden;
     HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();
+
 
 
 
@@ -31,9 +32,9 @@ public class Lobby{
 
 
 
-    public int getSpielraum_Ids(){
+    public ArrayList<Integer> getSpielraum_Ids(){
 
-        return spielrunden.size();
+        return spielraum_Ids;
     }
 
     /**
@@ -65,6 +66,7 @@ public class Lobby{
 
     public void spielraumLoeschen(int spielraumID) {
         spielrunden.remove(spielraumID-1);
+        spielraum_Ids.remove(spielraumID);
 
     }
 
@@ -75,7 +77,9 @@ public class Lobby{
      */
 
     public void spielraumHinzufuegen(int spielraumID) {
+
         Spielrunde spielrunde = new Spielrunde(spielraumID);
+        spielraum_Ids.add(spielraumID);
         spielrunden.add(spielrunde);
         spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);
     }
