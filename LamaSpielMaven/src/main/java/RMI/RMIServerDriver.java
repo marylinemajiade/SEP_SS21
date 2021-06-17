@@ -1,5 +1,9 @@
 package RMI;
 
+import Highscore.Bestenliste;
+import Konto.BenutzerVerwalten;
+import SpielLobby.Lobby;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -20,7 +24,7 @@ public class RMIServerDriver {
 
        try {
            //RMIServer-Objekt exportieren
-           RMIServer obj = new RMIServer();
+           RMIServer obj = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
            RMIServerIF stub1 = (RMIServerIF) UnicastRemoteObject.exportObject(obj, 0);
 
            //Registry erstellen und Dienste exportieren
