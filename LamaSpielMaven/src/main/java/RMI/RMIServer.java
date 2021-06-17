@@ -41,7 +41,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @param client RMIServerIF != null also ein Objekt der Klasse RMIClient, BotSchwer oder BotEinfach
      */
     @Override
-    public void registriereClient(RMIClientIF client) throws RemoteException, ungueltigerBenutzernameException {
+    public synchronized void registriereClient(RMIClientIF client) throws RemoteException, ungueltigerBenutzernameException {
         clientliste.add(client);
         System.out.println("Client registriert");
         lobby.spielraumBeitreten(client.getBenutzername(),0);
@@ -54,7 +54,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @return true, wenn Benutzer mit Benutzername benutzername und Passwort passwort registgriert ist, sonst false
      */
     @Override
-    public boolean benutzerdatenPruefen(String benutzername, String passwort) {
+    public synchronized boolean benutzerdatenPruefen(String benutzername, String passwort) {
         return benutzerdaten.benutzerdatenPruefen(benutzername,passwort);
     }
 
@@ -66,7 +66,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   benutzername registriert hat oder wenn benutzername mit dem Präfix "Bot" beginnt
      */
     @Override
-    public void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {
+    public synchronized void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {
         benutzerdaten.benutzerRegistrieren(benutzername,passwort);
 
     }
@@ -79,7 +79,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   registriert wurde
      */
     @Override
-    public void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException, RemoteException {
+    public synchronized void benutzerLoeschen(String benutzername) throws ungueltigerBenutzernameException, RemoteException {
 
         benutzerdaten.benutzerLoeschen(benutzername);
         bestenliste.eintragLoeschen(benutzername);
@@ -102,7 +102,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
+    public synchronized void sendeChatnachricht(String benutzername, int spielraumID, String nachricht)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException {
         if(!lobby.getSpieler(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Kein " +
                 "Spieler mit übergebenen Benutzernamen im Spielraum mit der übergebenen ID");
@@ -124,20 +124,12 @@ public class RMIServer implements RMIServerIF, Serializable {
      * befindet
      */
     @Override
-    public void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
+    public synchronized void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException {
         if(!lobby.getSpieler(0).contains(benutzername)) {
             throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
         }
         List<Integer> alteSpielraumIDs = lobby.getSpielraum_Ids();
         lobby.spielraumHinzufuegen(naechsteSpielraumID++);
-        List<Integer> neueSpielraumIDs = lobby.getSpielraum_Ids();
-        Integer spielraumID=0;
-        for(Integer id: neueSpielraumIDs)
-        {
-            if (!alteSpielraumIDs.contains(id)) {lobby.spielraumBeitreten(benutzername,id);
-            spielraumID=id;
-            break;}
-        }
         lobby.spielraumVerlassen(benutzername,0);
         for(RMIClientIF client:clientliste){
             try{
@@ -146,7 +138,7 @@ public class RMIServer implements RMIServerIF, Serializable {
         }
         for (RMIClientIF client :clientliste){
             if (client.getBenutzername().equals(benutzername)) {
-                client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
+                client.aktualisiereSpielstatus(spielrunden.get(naechsteSpielraumID-1));
             }
         }
     }
@@ -163,7 +155,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @throws ungueltigeSpielraumIDException wenn kein Spielraum mit der ID spielraumID existiert
      */
     @Override
-    public void spielraumBeitreten(String benutzername, int spielraumID)
+    public synchronized void spielraumBeitreten(String benutzername, int spielraumID)
             throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException {
         if (!lobby.getSpieler(0).contains(benutzername)) {
             throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
@@ -194,7 +186,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void spielraumVerlassen(String benutzername, int spielraumID)
+    public synchronized void spielraumVerlassen(String benutzername, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
         if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
             throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
@@ -225,7 +217,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Instanzen befinden, außer spielraumID = 0
      */
     @Override
-    public void botHinzufuegen(boolean easybot, int spielraumID)
+    public synchronized void botHinzufuegen(boolean easybot, int spielraumID)
             throws ungueltigeSpielraumIDException, spielraumVollException, RemoteException, ungueltigerBenutzernameException {
         RMIClientIF bot;
         if(easybot) bot = new BotEinfach(this);
@@ -252,7 +244,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void botEntfernen(String botname, int spielraumID)
+    public synchronized void botEntfernen(String botname, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException {
         lobby.spielraumVerlassen(botname,spielraumID);
         Spielrunde spielrunde = spielrunden.get(spielraumID);
@@ -281,7 +273,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @throws spielLaeuftBereitsException wenn Spiel zuvor gestartet und noch nicht beendet wurde
      */
     @Override
-    public void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException {
+    public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException {
     }
 
     /**
@@ -299,7 +291,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)
+    public synchronized void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
 
     }
@@ -316,7 +308,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void chipAbgeben(boolean einserchip, String benutzername, int spielraumID)
+    public synchronized void chipAbgeben(boolean einserchip, String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
 
     }
@@ -336,7 +328,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void karteAblegen(int karte, String benutzername, int spielraumID)
+    public synchronized void karteAblegen(int karte, String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
 
     }
@@ -355,7 +347,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @return Integer (Kartenwert) zwischen 0 und 6, wobei 0 ein Lama repräsentiert
      */
     @Override
-    public int karteZiehen(String benutzername, int spielraumID)
+    public synchronized int karteZiehen(String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
         return 0;
     }
@@ -370,7 +362,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      *   Benutzernamen benutzernamen befindet.
      */
     @Override
-    public void aussteigen(String benutzername, int spielraumID)
+    public synchronized void aussteigen(String benutzername, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
     }
 
