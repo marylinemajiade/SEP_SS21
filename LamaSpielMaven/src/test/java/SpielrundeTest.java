@@ -33,7 +33,7 @@ public class SpielrundeTest{
     String benutzername;
     @BeforeEach
     void setup(){
-        spielrunde = new Spielrunde(1);
+        spielrunde = new Spielrunde(1,new Lobby());
         benutzername = spielrunde.anDerReihe();
     }
 
@@ -41,7 +41,7 @@ public class SpielrundeTest{
       @Test
     void getRaumId() {
         assertEquals(1, spielrunde.getRaumId());
-        Spielrunde spielrunde2 = new Spielrunde(2);
+        Spielrunde spielrunde2 = new Spielrunde(2,new Lobby());
         assertEquals(2, spielrunde2.getRaumId());
       }
 
