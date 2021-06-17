@@ -17,10 +17,10 @@ import fachlicheExceptions.*;
 public class Spielrunde extends Chipstapel {
 
     private int spielraumId;
-    private HashSet<Integer> handkarten;
-    private Stack<Integer> ablagestapel;
-    private Stack<Integer> nachziehstapel;
-    private Chipstapel chipstapel;
+    private HashSet<Integer> handkarten = new HashSet<>();
+    private Stack<Integer> ablagestapel = new Stack<>();
+    private Stack<Integer> nachziehstapel = new Stack<>();
+    private Chipstapel chipstapel = new Chipstapel();
 
     /**
      * Die Methode dient zum Abrufen der Spielraum-ID
