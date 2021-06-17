@@ -21,13 +21,17 @@ import java.util.List;
 public class RMIServer implements RMIServerIF, Serializable {
 
     //Attribute
-    private final Bestenliste bestenliste = new Bestenliste();
-    private final Lobby lobby = new Lobby();
-    private final BenutzerVerwalten benutzerdaten = new BenutzerVerwalten();
-    private final HashMap<Integer,Spielrunde> spielrunden = new HashMap<>();
-    private final ArrayList<RMIClientIF> clientliste = new ArrayList<>();
+    private Bestenliste bestenliste;
+    private Lobby lobby;
+    private BenutzerVerwalten benutzerdaten;
+    private HashMap<Integer,Spielrunde> spielrunden = new HashMap<>();
+    private ArrayList<RMIClientIF> clientliste = new ArrayList<>();
+    private int naechsteSpielraumID = 1;
 
-    public RMIServer() throws RemoteException {
+    public RMIServer(Bestenliste bestenliste, Lobby lobby, BenutzerVerwalten benutzerverwaltung) throws RemoteException {
+        this.bestenliste = bestenliste;
+        this.lobby = lobby;
+        this.benutzerdaten = benutzerverwaltung;
     }
 
     /**
@@ -125,7 +129,7 @@ public class RMIServer implements RMIServerIF, Serializable {
             throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
         }
         List<Integer> alteSpielraumIDs = lobby.getSpielraum_Ids();
-        lobby.spielraumErstellen(benutzername);
+        lobby.spielraumHinzufuegen(naechsteSpielraumID++);
         List<Integer> neueSpielraumIDs = lobby.getSpielraum_Ids();
         Integer spielraumID=0;
         for(Integer id: neueSpielraumIDs)
