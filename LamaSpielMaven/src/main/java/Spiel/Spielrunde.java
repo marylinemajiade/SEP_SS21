@@ -1,11 +1,12 @@
 package Spiel;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Stack;
+
+import SpielLobby.Lobby;
 import fachlicheExceptions.*;
-
-
-
+import jdk.internal.org.jline.reader.Buffer;
 
 
 /**
@@ -16,19 +17,34 @@ import fachlicheExceptions.*;
 
 public class Spielrunde extends Chipstapel {
 
+    ArrayList<String> spielerInRunde;
     private int spielraumId;
     private HashSet<Integer> handkarten = new HashSet<>();
     private Stack<Integer> ablagestapel = new Stack<>();
     private Stack<Integer> nachziehstapel = new Stack<>();
     private Chipstapel chipstapel = new Chipstapel();
+    Lobby lobby;
+
+
+
+
+
+
+
 
     /**
      * Die Methode dient zum Abrufen der Spielraum-ID
      * @return gibt die ID als Integer zurück
      */
 
-    public Spielrunde(int Id){
+
+
+
+
+    public Spielrunde(int Id, Lobby lobby){
+        this.lobby = lobby;
         this.spielraumId = Id;
+        this.spielerInRunde = lobby.getSpieler(Id);
     }
 
     public int getRaumId(){
@@ -217,7 +233,7 @@ public class Spielrunde extends Chipstapel {
      * @param benutzername Benutzername des Spielers, der verlassen möchte
      * @throws ungueltigerBenutzernameException
      */
-    public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException{
+    public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException {
 
     }
 

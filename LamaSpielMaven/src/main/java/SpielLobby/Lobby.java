@@ -44,6 +44,8 @@ public class Lobby{
      */
     public void spielraumBeitreten(String benutzername, int spielraumId){
         spielerInSpielrunde.get(spielraumId).add(benutzername);
+
+
     }
 
 
@@ -78,7 +80,7 @@ public class Lobby{
 
     public void spielraumHinzufuegen(int spielraumID) {
 
-        Spielrunde spielrunde = new Spielrunde(spielraumID);
+        Spielrunde spielrunde = new Spielrunde(spielraumID, this);
         spielraum_Ids.add(spielraumID);
         spielrunden.add(spielrunde);
         spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);
