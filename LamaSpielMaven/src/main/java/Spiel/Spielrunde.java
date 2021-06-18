@@ -3,7 +3,6 @@ package Spiel;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Stack;
-
 import SpielLobby.Lobby;
 import fachlicheExceptions.*;
 
@@ -22,23 +21,17 @@ public class Spielrunde extends Chipstapel {
     private HashSet<Integer> handkarten = new HashSet<>();
     private Stack<Integer> ablagestapel = new Stack<>();
     private Stack<Integer> nachziehstapel = new Stack<>();
+    private HashSet<Integer> spielkarten = new HashSet<>();
     private Chipstapel chipstapel = new Chipstapel();
+    private Stack<String> spielReihenfolge = new Stack<>();
+
     Lobby lobby;
-
-
-
-
-
-
 
 
     /**
      * Die Methode dient zum Abrufen der Spielraum-ID
      * @return gibt die ID als Integer zurück
      */
-
-
-
 
 
     public Spielrunde(int Id, Lobby lobby){
@@ -69,7 +62,6 @@ public class Spielrunde extends Chipstapel {
 
         }
     }
-
 
     /**
      * Die Methode dient zum Ziehen einer Karte
@@ -102,9 +94,9 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerBenutzernameException
      */
     public boolean aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
+        spielReihenfolge.remove(benutzername);
         return true;
     }
-
 
 
 
@@ -132,8 +124,6 @@ public class Spielrunde extends Chipstapel {
         }
 
     }
-
-
 
 
     /**
@@ -165,7 +155,7 @@ public class Spielrunde extends Chipstapel {
      * @return gibt den Benutzernamen des Spielers zurück
      */
     public String anDerReihe(){
-        return null;
+        return spielReihenfolge.pop();
     }
 
 
@@ -174,7 +164,21 @@ public class Spielrunde extends Chipstapel {
      * @throws spielLaeuftBereitsException
      */
     public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
-        return true;
+        for(String name:spielerInRunde){
+            spielReihenfolge.add(name);
+        }
+        for (int i = 1; i<=7; i++) {
+            for (int j = 1; j <= 8; j++) {
+                spielkarten.add(i);
+            }
+        }
+        for(int karte:spielkarten){
+         nachziehstapel.push(karte);
+        }
+        ablagestapel.push(nachziehstapel.pop());
+
+
+            return true;
     }
 
 
@@ -218,7 +222,6 @@ public class Spielrunde extends Chipstapel {
      */
 
     public Chipstapel getChipstapel(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
-
         int white = chipstapel.getWeiss();
         int black = chipstapel.getSchwarz();
         chipstapel.setWeiss(white);
@@ -234,7 +237,9 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerBenutzernameException
      */
     public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException {
-
+        spielerInRunde.remove(benutzername);
+        lobby.getSpielerInSpielrunde().get(spielraumId).remove(benutzername);
+        lobby.getSpielerInSpielrunde().get(0).add(benutzername);
     }
 
 
