@@ -28,11 +28,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="Lobby + LobbyTests fertiggestellt">
+    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="LobbyTests verbessert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LobbyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LobbyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotEinfach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotEinfach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotSchwer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotSchwer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bot/BotEinfach.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bot/BotEinfach.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bot/BotSchwer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bot/BotSchwer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +49,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -53,6 +61,17 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SCOPE" value="All" />
   </component>
   <component name="ProjectId" id="1toJbZRKC1xX9Ky6WDmUyQvas5N" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -66,6 +85,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -74,7 +95,15 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.LobbyTest">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Bot" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RMIServerTest">
     <configuration name="RMIClientDriver" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RMI.RMIClientDriver" />
       <module name="LamaSpielMaven" />
@@ -83,6 +112,16 @@
           <option name="PATTERN" value="RMI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -109,51 +148,49 @@
       <toRun name="Server Client Run" type="Application" />
       <method v="2" />
     </configuration>
-    <configuration name="LobbyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BenutzerVerwaltenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LobbyTest.getSpieler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BenutzerVerwaltenTest.benutzerRegistrieren" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="getSpieler" />
+      <option name="MAIN_CLASS_NAME" value="BenutzerVerwaltenTest" />
+      <option name="METHOD_NAME" value="benutzerRegistrieren" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LobbyTest.getSpielraum_Ids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RMIServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="getSpielraum_Ids" />
+      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RMIServerTest.registriereClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+      <option name="METHOD_NAME" value="registriereClient" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LobbyTest.spielraumBeitreten" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpielrundeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="spielraumBeitreten" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LobbyTest.spielraumHinzufuegen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LamaSpielMaven" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="spielraumHinzufuegen" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="SpielrundeTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,19 +198,19 @@
     <list>
       <item itemvalue="Application.RMIClientDriver" />
       <item itemvalue="Compound.ServerClientRun" />
-      <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
-      <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
-      <item itemvalue="JUnit.LobbyTest.getSpieler" />
-      <item itemvalue="JUnit.LobbyTest" />
-      <item itemvalue="JUnit.LobbyTest.spielraumBeitreten" />
+      <item itemvalue="JUnit.SpielrundeTest" />
+      <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+      <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerRegistrieren" />
+      <item itemvalue="JUnit.RMIServerTest.registriereClient" />
+      <item itemvalue="JUnit.RMIServerTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LobbyTest" />
-        <item itemvalue="JUnit.LobbyTest.spielraumBeitreten" />
-        <item itemvalue="JUnit.LobbyTest.getSpieler" />
-        <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
-        <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
+        <item itemvalue="JUnit.RMIServerTest" />
+        <item itemvalue="JUnit.RMIServerTest.registriereClient" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest.benutzerRegistrieren" />
+        <item itemvalue="JUnit.BenutzerVerwaltenTest" />
+        <item itemvalue="JUnit.SpielrundeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +230,7 @@
       <workItem from="1623577975238" duration="118000" />
       <workItem from="1623578184257" duration="8564000" />
       <workItem from="1623703362003" duration="31220000" />
-      <workItem from="1623950168089" duration="12493000" />
+      <workItem from="1623950168089" duration="29212000" />
     </task>
     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
       <created>1623429985046</created>
@@ -265,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623972800672</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="LobbyTests verbessert">
+      <created>1624031239689</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1624031239689</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,6 +350,13 @@
     <MESSAGE value="LobbyTest erweitert+Implementierung von Methoden in der Klasse Lobby" />
     <MESSAGE value="LobbyIF + LobbyTest aktualisiert" />
     <MESSAGE value="Lobby + LobbyTests fertiggestellt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lobby + LobbyTests fertiggestellt" />
+    <MESSAGE value="LobbyTests verbessert" />
+    <option name="LAST_COMMIT_MESSAGE" value="LobbyTests verbessert" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LamaSpielMaven$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1624043756043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/LamaSpielMaven$LobbyTest.ic" NAME="LobbyTest Coverage Results" MODIFIED="1624043559422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/LamaSpielMaven$RMIServerTest_registriereClient.ic" NAME="RMIServerTest.registriereClient Coverage Results" MODIFIED="1624043765327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/LamaSpielMaven$ChipstapelTest.ic" NAME="ChipstapelTest Coverage Results" MODIFIED="1624043623620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

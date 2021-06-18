@@ -43,9 +43,10 @@ public class BotSchwer implements RMIClientIF {
     }
 
     @Override
-    public void setSpielraum() throws RemoteException {
+    public void setSpielraum(Spielrunde spielrunde) throws RemoteException {
 
     }
+
 
     @Override
     public boolean isBot() throws RemoteException {

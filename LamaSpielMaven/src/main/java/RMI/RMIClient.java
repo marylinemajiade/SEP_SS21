@@ -80,7 +80,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
     }
 
     @Override
-    public void setSpielraum() throws RemoteException {
+    public void setSpielraum(Spielrunde spielrunde) throws RemoteException {
 
     }
 

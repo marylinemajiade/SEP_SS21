@@ -17,9 +17,6 @@ public class Lobby{
         this.spielraum_Ids = spielraum_Ids;
     }
 
-    public ArrayList<Spielrunde> getSpielrunden() {
-        return spielrunden;
-    }
 
     public void setSpielrunden(ArrayList<Spielrunde> spielrunden) {
         this.spielrunden = spielrunden;

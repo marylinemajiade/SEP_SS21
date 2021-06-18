@@ -20,7 +20,7 @@ public interface RMIClientIF extends Remote {
 
     void aktualisiereSpielraeume(Lobby lobby) throws RemoteException;
 
-    void setSpielraum() throws RemoteException;
+    void setSpielraum(Spielrunde spielrunde) throws RemoteException;
 
     boolean isBot() throws RemoteException;
 
