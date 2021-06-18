@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import SpielLobby.Lobby;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 
@@ -22,10 +24,10 @@ public class SpielrundeTest{
      */
 
     private int spielraumId;
-    private HashSet<Integer> handkarten;
+    private HashMap<String, ArrayList<Integer>> handkarten = new HashMap<>();
     private Spielrunde spielrunde;
-    private Stack<Integer> ablagestapel;
-    private Stack<Integer> nachziehstapel;
+    private Stack<Integer> ablagestapel = new Stack<>();
+    private Stack<Integer> nachziehstapel= new Stack<>();
     private Chipstapel chipstapel;
 
 
@@ -49,21 +51,23 @@ public class SpielrundeTest{
     @Test
     void karteAblegen() throws ungueltigerBenutzernameException, stapelLeerException {
 
-        handkarten = spielrunde.getHandkarten(benutzername);
+
         ablagestapel = spielrunde.getAblagestapel();
+
 
         assertTrue(handkarten.isEmpty());
         assertTrue(ablagestapel.empty());
 
-        handkarten.add(1);
-        handkarten.add(4);
-        handkarten.add(5);
+        handkarten.get(benutzername).add(1);
+        handkarten.get(benutzername).add(4);
+        handkarten.get(benutzername).add(5);
+
         assertEquals(3, handkarten.size());
 
         spielrunde.karteAblegen(benutzername, 1);
 
         assertEquals(2, handkarten.size());
-        assertFalse(handkarten.contains(1));
+        assertFalse(handkarten.get(benutzername).contains(1));
         assertEquals(1, ablagestapel.size());
         assertEquals(1, ablagestapel.peek());
 
@@ -81,7 +85,6 @@ public class SpielrundeTest{
     @Test
     void karteZiehen() throws stapelLeerException, ungueltigerBenutzernameException, ungueltigeKarteException {
         nachziehstapel = spielrunde.getNachziehstapel();
-        handkarten = spielrunde.getHandkarten(benutzername);
         assertTrue(nachziehstapel.isEmpty());
         assertTrue(handkarten.isEmpty());
 
@@ -94,14 +97,14 @@ public class SpielrundeTest{
 
         assertEquals(2, nachziehstapel.size());
         assertEquals(3, nachziehstapel.peek());
-        assertTrue(handkarten.contains(4));
+        assertTrue(handkarten.get(benutzername).contains(4));
         assertEquals(1, handkarten.size());
 
         spielrunde.karteZiehen(benutzername);
         spielrunde.karteZiehen(benutzername);
         assertTrue(nachziehstapel.empty());
-        assertTrue(handkarten.contains(3));
-        assertTrue(handkarten.contains(1));
+        assertTrue(handkarten.get(benutzername).contains(3));
+        assertTrue(handkarten.get(benutzername).contains(1));
         assertEquals(3, handkarten.size());
         try{
             spielrunde.karteZiehen(benutzername);
@@ -190,24 +193,24 @@ public class SpielrundeTest{
     @Test
     void getHandkarten() throws ungueltigerBenutzernameException, stapelLeerException, ungueltigeKarteException {
 
-        handkarten = spielrunde.getHandkarten(benutzername);
+
         assertTrue(handkarten.isEmpty());
 
-        handkarten.add(1);
-        handkarten.add(3);
-        handkarten.add(5);
+        handkarten.get(benutzername).add(1);
+        handkarten.get(benutzername).add(3);
+        handkarten.get(benutzername).add(5);
 
         assertEquals(handkarten.size(), 3);
-        assertTrue(handkarten.contains(1));
-        assertTrue(handkarten.contains(3));
-        assertTrue(handkarten.contains(5));
-        assertFalse(handkarten.contains(2));
-        assertFalse(handkarten.contains(4));
-        assertFalse(handkarten.contains(6));
+        assertTrue(handkarten.get(benutzername).contains(1));
+        assertTrue(handkarten.get(benutzername).contains(3));
+        assertTrue(handkarten.get(benutzername).contains(5));
+        assertFalse(handkarten.get(benutzername).contains(2));
+        assertFalse(handkarten.get(benutzername).contains(4));
+        assertFalse(handkarten.get(benutzername).contains(6));
 
         spielrunde.karteAblegen(benutzername,5);
         assertEquals(handkarten.size(), 2);
-        assertFalse(handkarten.contains(5));
+        assertFalse(handkarten.get(benutzername).contains(5));
     }
 
     @Test

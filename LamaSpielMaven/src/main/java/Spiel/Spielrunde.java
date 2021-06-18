@@ -1,6 +1,7 @@
 package Spiel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Stack;
 import SpielLobby.Lobby;
@@ -18,7 +19,7 @@ public class Spielrunde extends Chipstapel {
 
     ArrayList<String> spielerInRunde;
     private int spielraumId;
-    private HashSet<Integer> handkarten = new HashSet<>();
+    private HashMap<String,ArrayList<Integer>> handkarten = new HashMap<>();
     private Stack<Integer> ablagestapel = new Stack<>();
     private Stack<Integer> nachziehstapel = new Stack<>();
     private HashSet<Integer> spielkarten = new HashSet<>();
@@ -53,8 +54,7 @@ public class Spielrunde extends Chipstapel {
      */
     public void karteAblegen(String benutzername, int karte) throws stapelLeerException{
         try {
-            handkarten = getHandkarten(benutzername);
-            handkarten.remove(karte);
+            handkarten.get(benutzername).remove(karte);
             ablagestapel = getAblagestapel();
             ablagestapel.push(karte);
         }
@@ -74,9 +74,8 @@ public class Spielrunde extends Chipstapel {
     public int karteZiehen(String benutzername) throws ungueltigeKarteException, stapelLeerException{
         try {
             nachziehstapel = getNachziehstapel();
-            handkarten = getHandkarten(benutzername);
             int karte = nachziehstapel.pop();
-            handkarten.add(karte);
+            handkarten.get(benutzername).add(karte);
             return karte;
         }
         catch (Exception e){
@@ -95,6 +94,7 @@ public class Spielrunde extends Chipstapel {
      */
     public boolean aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
         spielReihenfolge.remove(benutzername);
+        handkarten.get(benutzername).clear();
         return true;
     }
 
@@ -164,19 +164,30 @@ public class Spielrunde extends Chipstapel {
      * @throws spielLaeuftBereitsException
      */
     public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
+        // Spielerreihenfolge
         for(String name:spielerInRunde){
             spielReihenfolge.add(name);
         }
+        //Spielkarten mischen
         for (int i = 1; i<=7; i++) {
             for (int j = 1; j <= 8; j++) {
                 spielkarten.add(i);
             }
         }
+
+        //Nachziehstapel
         for(int karte:spielkarten){
          nachziehstapel.push(karte);
         }
-        ablagestapel.push(nachziehstapel.pop());
 
+        //Handkarten verteilen
+        for(int i = 0; i<6; i++) {
+        for (String name:spielerInRunde){
+                handkarten.get(name).set(i,nachziehstapel.pop());
+            }
+        }
+        //Ablagestapel oberste Karte von Nachziehstapel
+        ablagestapel.push(nachziehstapel.pop());
 
             return true;
     }
@@ -189,9 +200,10 @@ public class Spielrunde extends Chipstapel {
      * @throws stapelLeerException
      * @throws ungueltigerBenutzernameException
      */
-    public HashSet<Integer> getHandkarten(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
-        return handkarten;
+    public ArrayList<Integer> getHandkarten(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
+        return handkarten.get(benutzername);
     }
+
 
     /**
      * Die Methode dient zur Verwaltung des Ablagestapels
