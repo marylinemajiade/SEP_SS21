@@ -64,7 +64,7 @@ class LobbyTest {
 
         Benutzer benutzer= new Benutzer("Tester", "testMyCode99");
 
-        assertTrue(spielerInSpielrundeTest.isEmpty());
+        assertFalse(spielerInSpielrundeTest.isEmpty());
         lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
 
         ArrayList<String> benutzernamen = new ArrayList<>();
@@ -89,7 +89,7 @@ class LobbyTest {
 
         Benutzer benutzer= new Benutzer("Nick", "testMyCode99");
 
-        assertTrue(spielerInSpielrundeTest.isEmpty());
+        assertFalse(spielerInSpielrundeTest.isEmpty());
         lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
 
         ArrayList<String> benutzernamen = new ArrayList<>();

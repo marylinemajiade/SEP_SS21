@@ -29,42 +29,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="Lobby + LobbyTests fertiggestellt">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21,_20_18_[Default_Changelist]/Lobby.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21,_20_18_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21,_20_35_[Default_Changelist]/Lobby.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21,_20_35_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21__20_18__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_06_21__20_35__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_21__01_31__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Bot/BotEinfach.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Bot/BotSchwer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Chat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Login$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Login$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/GUI/Login.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientDriver$1MyPolicy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientDriver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerDriver$1MyPolicy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServerIF.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/RMIClientTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LobbyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LobbyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/LobbyIF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Spielraum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/BestenlisteTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ChipstapelTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/LobbyTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/SpielrundeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Spiel/Spielrunde.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +74,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.LobbyTest.getSpieler">
+  <component name="RunManager" selected="JUnit.LobbyTest">
     <configuration name="RMIClientDriver" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RMI.RMIClientDriver" />
       <module name="LamaSpielMaven" />
@@ -141,6 +109,15 @@
       <toRun name="Server Client Run" type="Application" />
       <method v="2" />
     </configuration>
+    <configuration name="LobbyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LamaSpielMaven" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LobbyTest.getSpieler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
@@ -161,11 +138,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LobbyTest.spielRaumLoeschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LobbyTest.spielraumBeitreten" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LamaSpielMaven" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="spielRaumLoeschen" />
+      <option name="METHOD_NAME" value="spielraumBeitreten" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -181,32 +158,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LobbyTest.spielraumVerlassen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LamaSpielMaven" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
-      <option name="METHOD_NAME" value="spielraumVerlassen" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.RMIClientDriver" />
       <item itemvalue="Compound.ServerClientRun" />
-      <item itemvalue="JUnit.LobbyTest.spielraumVerlassen" />
-      <item itemvalue="JUnit.LobbyTest.spielRaumLoeschen" />
       <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
       <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
       <item itemvalue="JUnit.LobbyTest.getSpieler" />
+      <item itemvalue="JUnit.LobbyTest" />
+      <item itemvalue="JUnit.LobbyTest.spielraumBeitreten" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LobbyTest" />
+        <item itemvalue="JUnit.LobbyTest.spielraumBeitreten" />
         <item itemvalue="JUnit.LobbyTest.getSpieler" />
         <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
         <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
-        <item itemvalue="JUnit.LobbyTest.spielRaumLoeschen" />
-        <item itemvalue="JUnit.LobbyTest.spielraumVerlassen" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +193,7 @@
       <workItem from="1623577975238" duration="118000" />
       <workItem from="1623578184257" duration="8564000" />
       <workItem from="1623703362003" duration="31220000" />
-      <workItem from="1623950168089" duration="11731000" />
+      <workItem from="1623950168089" duration="12493000" />
     </task>
     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
       <created>1623429985046</created>
@@ -291,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623747138095</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Lobby + LobbyTests fertiggestellt">
+      <created>1623972800672</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1623972800672</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
