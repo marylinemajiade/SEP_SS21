@@ -70,14 +70,23 @@ class RMIServerTest {
 
     @org.junit.jupiter.api.Test
     void benutzerLoeschen() throws benutzerNameVergebenException, ungueltigerBenutzernameException, RemoteException, ungueltigeSpielraumIDException, ZustellungNachrichtNichtMoeglichException {
-        RMIServer rmiserver = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
+        Bestenliste bestenliste = mock(Bestenliste.class);
+        Lobby lobby = mock(Lobby.class);
+        BenutzerVerwalten benutzerVerwalten = mock(BenutzerVerwalten.class);
+        RMIServer rmiserver = new RMIServer(bestenliste,lobby,benutzerVerwalten);
         rmiserver.benutzerRegistrieren("LamaKönig123", "dorwssaP");
+        Mockito.when(benutzerVerwalten.benutzerdatenPruefen("LamaKönig123", "dorwssaP")).thenReturn(true);
         RMIClientIF lamaKoenig123 = mock(RMIClientIF.class);
         Mockito.when(lamaKoenig123.getBenutzername()).thenReturn("LamaKönig123");
+        RMIClientIF benutzer = mock(RMIClientIF.class);
+        Mockito.when(benutzer.getBenutzername()).thenReturn("Benutzer");
+        rmiserver.registriereClient(benutzer);
         assertTrue(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));
         rmiserver.benutzerLoeschen("LamaKönig123");
+        Mockito.when(benutzerVerwalten.benutzerdatenPruefen("LamaKönig123", "dorwssaP")).thenReturn(false);
+        Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>(Arrays.asList("Benutzer")));
         rmiserver.sendeChatnachricht("Benutzer",0,"test");
-        Mockito.verify(lamaKoenig123,never()).uebertrageChatnachricht("Benutzername","test");
+        Mockito.verify(lamaKoenig123,never()).uebertrageChatnachricht("Benutzer","test");
         assertFalse(rmiserver.benutzerdatenPruefen("LamaKönig123", "dorwssaP"));//Methode in BenutzerVerwalten geändert
         try{rmiserver.benutzerRegistrieren("LamaKönig123", "dsfasdfasdf");}
         catch(benutzerNameVergebenException ignored){fail("Benutzername sollte wieder frei sein");}
@@ -216,20 +225,67 @@ class RMIServerTest {
         assertThrows(fachlicheExceptions.ungueltigeSpielraumIDException.class,
                 ()->{rmiserver.spielraumVerlassen("client1",1);});
         Mockito.verify(lobby).spielraumVerlassen("client1",1);
-
-
-
-
     }
 
     @org.junit.jupiter.api.Test
-    void botHinzufuegen() throws RemoteException {
-        RMIServer rmiserver = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
+    void botHinzufuegen() throws RemoteException, ungueltigerBenutzernameException, spielraumVollException, ungueltigeSpielraumIDException {
+        Bestenliste bestenliste = mock(Bestenliste.class);
+        Lobby lobby = mock(Lobby.class);
+        BenutzerVerwalten benutzerVerwalten = mock(BenutzerVerwalten.class);
+        RMIServer rmiserver = new RMIServer(bestenliste,lobby,benutzerVerwalten);
+        RMIClientIF client1 = mock(RMIClient.class);
+        Mockito.when(client1.getBenutzername()).thenReturn("client1");
+        rmiserver.registriereClient(client1);
+        Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>(Arrays.asList("client1")));
+        rmiserver.spielraumErstellen("client1");
+        Mockito.when(lobby.getSpielraum_Ids()).thenReturn(new ArrayList<>(Arrays.asList(0,1)));
+        Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>());
+        Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1")));
+        rmiserver.botHinzufuegen(true,1);
+        rmiserver.botHinzufuegen(false,1);
+        Mockito.verify(client1).aktualisiereSpielstatus(any(Spielrunde.class));
+        Mockito.verify(lobby).spielraumBeitreten(any(String.class),1);
+        rmiserver.botHinzufuegen(false,1);
+        Mockito.verify(client1).aktualisiereSpielstatus(any(Spielrunde.class));
+        Mockito.verify(lobby).spielraumBeitreten(any(String.class),1);
+        assertThrows(fachlicheExceptions.ungueltigeSpielraumIDException.class,
+                ()->{rmiserver.botHinzufuegen(true,1);});
+        rmiserver.botHinzufuegen(false,1);
+        rmiserver.botHinzufuegen(false,1);
+        rmiserver.botHinzufuegen(true,1);
+        rmiserver.botHinzufuegen(false,1);
+        Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1","Bot1","Bot2","Bot3","Bot4","Bot5")));
+        assertThrows(fachlicheExceptions.spielraumVollException.class,
+                ()->{rmiserver.botHinzufuegen(false,0);});
     }
 
     @org.junit.jupiter.api.Test
-    void botEntfernen() throws RemoteException{
-        RMIServer rmiserver = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
+    void botEntfernen() throws RemoteException, ungueltigerBenutzernameException, spielraumVollException, ungueltigeSpielraumIDException {
+        Bestenliste bestenliste = mock(Bestenliste.class);
+        Lobby lobby = mock(Lobby.class);
+        BenutzerVerwalten benutzerVerwalten = mock(BenutzerVerwalten.class);
+        RMIServer rmiserver = new RMIServer(bestenliste,lobby,benutzerVerwalten);
+        RMIClientIF client1 = mock(RMIClientIF.class);
+        RMIClientIF bot = mock(RMIClientIF.class);
+        Mockito.when(bot.isBot()).thenReturn(true);
+        Mockito.when(client1.isBot()).thenReturn(false);
+        Mockito.when(bot.getBenutzername()).thenReturn("Bot1");
+        Mockito.when(client1.getBenutzername()).thenReturn("client1");
+        rmiserver.registriereClient(client1);
+        rmiserver.registriereClient(bot);
+        Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>(Arrays.asList("client1","Bot1")));
+        rmiserver.spielraumErstellen("client1");
+        Mockito.when(lobby.getSpielraum_Ids()).thenReturn(new ArrayList<>(Arrays.asList(1,0)));
+        rmiserver.spielraumBeitreten("Bot1",1);
+        Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>());
+        Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1","Bot1")));
+        assertThrows(fachlicheExceptions.ungueltigeSpielraumIDException.class,
+                ()->{rmiserver.botEntfernen("Bot1",9);});
+        rmiserver.botEntfernen("Bot",1);
+        Mockito.verify(client1).aktualisiereSpielstatus(any(Spielrunde.class));
+        Mockito.verify(lobby).spielraumVerlassen("Bot",1);
+        Mockito.verify(client1).aktualisiereSpielraeume(lobby);
+        Mockito.verify(client1).aktualisiereSpielstatus(any(Spielrunde.class));
     }
 
     @org.junit.jupiter.api.Test

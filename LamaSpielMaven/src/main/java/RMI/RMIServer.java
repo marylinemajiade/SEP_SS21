@@ -83,9 +83,11 @@ public class RMIServer implements RMIServerIF, Serializable {
 
         benutzerdaten.benutzerLoeschen(benutzername);
         bestenliste.eintragLoeschen(benutzername);
+        ArrayList<RMIClientIF> neueClientListe = new ArrayList<>();
         for(RMIClientIF client:clientliste){
-            if (client.getBenutzername().equals(benutzername)) clientliste.remove(client);
+            if (!client.getBenutzername().equals(benutzername)) neueClientListe.add(client);
         }
+        this.clientliste = neueClientListe;
         try {
             for (int id : lobby.getSpielraum_Ids()) spielrunden.get(id).spielraumVerlassen(benutzername);
         }catch (Exception ignored){}
@@ -219,6 +221,10 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized void botHinzufuegen(boolean easybot, int spielraumID)
             throws ungueltigeSpielraumIDException, spielraumVollException, RemoteException, ungueltigerBenutzernameException {
+        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
+        }
+        if (lobby.getSpieler(0).size() > 5) throw new spielraumVollException("Spielraum bereits voll");
         RMIClientIF bot;
         if(easybot) bot = new BotEinfach(this);
         else bot = new BotSchwer(this);
@@ -246,6 +252,9 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized void botEntfernen(String botname, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException {
+        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
+        }
         lobby.spielraumVerlassen(botname,spielraumID);
         Spielrunde spielrunde = spielrunden.get(spielraumID);
         spielrunde.spielraumVerlassen(botname);
@@ -254,6 +263,7 @@ public class RMIServer implements RMIServerIF, Serializable {
                 client.aktualisiereSpielraeume(lobby);
                 if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())) {
                     client.aktualisiereSpielstatus(spielrunde);
+                    client.aktualisiereSpielraeume(lobby);
                 }
             } catch (Exception ignored) {}
         }
@@ -273,7 +283,15 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @throws spielLaeuftBereitsException wenn Spiel zuvor gestartet und noch nicht beendet wurde
      */
     @Override
-    public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException {
+    public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException, RemoteException {
+        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+            throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
+        }
+        Spielrunde spielrunde =spielrunden.get(spielraumID);
+        spielrunde.spielStarten();
+        for(RMIClientIF client: clientliste){
+            client.aktualisiereSpielstatus(spielrunde);
+        }
     }
 
     /**
@@ -292,8 +310,15 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public synchronized void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-
+            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException, stapelLeerException, ungueltigerChipException {
+        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+            throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
+        }
+        Spielrunde spielrunde =spielrunden.get(spielraumID);
+        spielrunde.chipsTauschen(!einsergegenzehner,benutzername);
+        for(RMIClientIF client: clientliste){
+            client.aktualisiereSpielstatus(spielrunde);
+        }
     }
 
     /**
@@ -309,8 +334,15 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public synchronized void chipAbgeben(boolean einserchip, String benutzername, int spielraumID)
-            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-
+            throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException, ungueltigerChipException, RemoteException {
+        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+            throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
+        }
+        Spielrunde spielrunde =spielrunden.get(spielraumID);
+        spielrunde.chipAbgeben(!einserchip,benutzername);
+        for(RMIClientIF client: clientliste){
+            client.aktualisiereSpielstatus(spielrunde);
+        }
     }
 
     /**
