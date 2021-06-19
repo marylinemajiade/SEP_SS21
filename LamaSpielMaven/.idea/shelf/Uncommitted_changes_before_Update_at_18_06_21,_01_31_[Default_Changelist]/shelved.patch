@@ -1,0 +1,611 @@
+Index: src/test/java/LobbyTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nimport Konto.Benutzer;\nimport SpielLobby.Lobby;\nimport SpielLobby.Spielraum;\nimport fachlicheExceptions.ungueltigerBenutzernameException;\nimport org.junit.jupiter.api.Test;\n\nimport java.util.ArrayList;\nimport java.util.Arrays;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\nimport static org.junit.jupiter.api.Assertions.assertNotNull;\n\n\n/**\n * @author Maryline Majiade\n */\n\n\nclass LobbyTest {\n\n    private Lobby lobby;\n\n    @Test\n    void getSpielraum_Ids() {\n\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        Spielraum raum2 = new Spielraum(2);\n        Spielraum raum3 = new Spielraum(3);\n\n        spielraums.add(raum1);\n        spielraums.add(raum2);\n        spielraums.add(raum3);\n\n        assertNotNull(spielraums);\n\n        ArrayList<Integer> actual = new ArrayList<>();\n        actual.add(1);\n        actual.add(2);\n        actual.add(3);\n        ArrayList<Integer> expected = lobby.getSpielraum_Ids();\n\n        assertEquals(expected,actual);\n\n    }\n\n\n    @Test\n    void spielraumBeitreten() {\n\n        Benutzer benutzer1= new Benutzer(\"Maryline\", \"testPwd123\");\n        Benutzer benutzer2= new Benutzer(\"Tester\", \"testMyCode99\");\n\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        spielraums.add(raum1);\n\n        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);\n        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);\n\n        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1\n    }\n\n    @Test\n    void spielraumVerlassen() {\n\n        Benutzer benutzer1= new Benutzer(\"Maryline\", \"testPwd123\");\n        Benutzer benutzer2= new Benutzer(\"Tester\", \"testMyCode99\");\n\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        spielraums.add(raum1);\n\n        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);\n        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);\n        assertEquals(spielraums.size(),1);\n        lobby.spielraumVerlassen(\"Mary\",1);\n        assert(spielraums.get(0).spielerList().size()==1); //Anzahl der Spieler in Raum 1\n\n    }\n\n\n\n    @Test\n    void spielRaumLoeschen() {\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        Spielraum raum2 = new Spielraum(2);\n        spielraums.add(raum1);\n        spielraums.add(raum2);\n\n        assert(spielraums.size()==2);\n        lobby.spielraumLoeschen(2);\n        assertEquals(spielraums.size(),1);\n\n        lobby.spielraumLoeschen(1);\n        assertEquals(spielraums.size(),0);\n\n\n    }\n\n    @Test\n    void spielraumHinzufuegen(){\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        Spielraum raum2 = new Spielraum(2);\n        spielraums.add(raum1);\n        spielraums.add(raum2);\n\n        assertEquals(spielraums.size(),2);\n        lobby.spielraumHinzufuegen(3);\n        assertEquals(spielraums.size(),3);\n    }\n\n    @Test\n    void getSpieler(){\n        Benutzer benutzer1= new Benutzer(\"Maryline\", \"testPwd123\");\n        Benutzer benutzer2= new Benutzer(\"Tester\", \"testMyCode99\");\n\n        ArrayList<Spielraum> spielraums = new ArrayList<>();\n        Spielraum raum1 = new Spielraum(1);\n        spielraums.add(raum1);\n\n        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);\n        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);\n\n        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1\n\n        ArrayList<String> spielerList = new ArrayList<>();\n        spielerList.add(benutzer1.getBenutzername());\n        spielerList.add(benutzer2.getBenutzername());\n\n        assertEquals(spielerList,lobby.getSpieler(1));\n\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/LobbyTest.java b/src/test/java/LobbyTest.java
+--- a/src/test/java/LobbyTest.java	(revision 3b3b57c31a64da3f774792ce119080ea8ef152f6)
++++ b/src/test/java/LobbyTest.java	(date 1623972681543)
+@@ -1,15 +1,16 @@
+ 
+ import Konto.Benutzer;
++import Spiel.Spielrunde;
+ import SpielLobby.Lobby;
+-import SpielLobby.Spielraum;
++import fachlicheExceptions.stapelLeerException;
+ import fachlicheExceptions.ungueltigerBenutzernameException;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.mockito.internal.util.ArrayUtils;
+ 
+-import java.util.ArrayList;
+-import java.util.Arrays;
++import java.util.*;
+ 
+-import static org.junit.jupiter.api.Assertions.assertEquals;
+-import static org.junit.jupiter.api.Assertions.assertNotNull;
++import static org.junit.jupiter.api.Assertions.*;
+ 
+ 
+ /**
+@@ -19,15 +20,22 @@
+ 
+ class LobbyTest {
+ 
+-    private Lobby lobby;
++    private Lobby lobby = new Lobby();
++    HashMap<Integer,ArrayList<String>> spielerInSpielrundeTest = new HashMap<>();
++    ArrayList<Spielrunde> spielraums = new ArrayList<>();
++
++    @BeforeEach
++    void setup(){ //überschreiben der Klassenvariablen mit den  Testvariablen
++        lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
++        lobby.setSpielrunden(spielraums);
++    }
+ 
+     @Test
+     void getSpielraum_Ids() {
+ 
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
+-        Spielraum raum2 = new Spielraum(2);
+-        Spielraum raum3 = new Spielraum(3);
++        Spielrunde raum1 = new Spielrunde(1,new Lobby());
++        Spielrunde raum2 = new Spielrunde(2,new Lobby());
++        Spielrunde raum3 = new Spielrunde(3,new Lobby());
+ 
+         spielraums.add(raum1);
+         spielraums.add(raum2);
+@@ -39,6 +47,8 @@
+         actual.add(1);
+         actual.add(2);
+         actual.add(3);
++
++        lobby.setSpielraum_Ids(actual);
+         ArrayList<Integer> expected = lobby.getSpielraum_Ids();
+ 
+         assertEquals(expected,actual);
+@@ -49,34 +59,51 @@
+     @Test
+     void spielraumBeitreten() {
+ 
+-        Benutzer benutzer1= new Benutzer("Maryline", "testPwd123");
+-        Benutzer benutzer2= new Benutzer("Tester", "testMyCode99");
++        Spielrunde spielrunde = new Spielrunde(1, new Lobby());
++        lobby.spielraumHinzufuegen(spielrunde.getRaumId());
++
++        Benutzer benutzer= new Benutzer("Tester", "testMyCode99");
++
++        assertTrue(spielerInSpielrundeTest.isEmpty());
++        lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
++
++        ArrayList<String> benutzernamen = new ArrayList<>();
++        benutzernamen.add("Maryline");
++        benutzernamen.add("Vanessa");
++        benutzernamen.add("Nick");
+ 
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
+-        spielraums.add(raum1);
++        spielerInSpielrundeTest.put(spielrunde.getRaumId(), benutzernamen);
+ 
+-        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+-        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
++        assertEquals(1,spielerInSpielrundeTest.size());
+ 
+-        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1
++        lobby.spielraumBeitreten(benutzer.getBenutzername(),spielrunde.getRaumId());
++        assertTrue(benutzernamen.contains(benutzer.getBenutzername()));
++        assertEquals(4,benutzernamen.size());
++
+     }
+ 
+     @Test
+     void spielraumVerlassen() {
++        Spielrunde spielrunde = new Spielrunde(1, new Lobby());
++        lobby.spielraumHinzufuegen(spielrunde.getRaumId());
++
++        Benutzer benutzer= new Benutzer("Nick", "testMyCode99");
+ 
+-        Benutzer benutzer1= new Benutzer("Maryline", "testPwd123");
+-        Benutzer benutzer2= new Benutzer("Tester", "testMyCode99");
++        assertTrue(spielerInSpielrundeTest.isEmpty());
++        lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
+ 
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
+-        spielraums.add(raum1);
++        ArrayList<String> benutzernamen = new ArrayList<>();
++        benutzernamen.add("Maryline");
++        benutzernamen.add("Vanessa");
++        benutzernamen.add(benutzer.getBenutzername());
+ 
+-        lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+-        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
+-        assertEquals(spielraums.size(),1);
+-        lobby.spielraumVerlassen("Mary",1);
+-        assert(spielraums.get(0).spielerList().size()==1); //Anzahl der Spieler in Raum 1
++        spielerInSpielrundeTest.put(spielrunde.getRaumId(), benutzernamen);
++
++        assertEquals(1,spielerInSpielrundeTest.size());
++
++        lobby.spielraumVerlassen(benutzer.getBenutzername(),spielrunde.getRaumId());
++        assertFalse(benutzernamen.contains(benutzer.getBenutzername()));
++        assertEquals(2,benutzernamen.size());
+ 
+     }
+ 
+@@ -84,33 +111,44 @@
+ 
+     @Test
+     void spielRaumLoeschen() {
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
+-        Spielraum raum2 = new Spielraum(2);
++
++        ArrayList<Integer> ids = new ArrayList<>();
++
++        Spielrunde raum1 = new Spielrunde(1,new Lobby());
++        ids.add(raum1.getRaumId());
++
++        Spielrunde raum2 = new Spielrunde(2,new Lobby());
++        ids.add(raum2.getRaumId());
++
+         spielraums.add(raum1);
+         spielraums.add(raum2);
+ 
++        lobby.setSpielraum_Ids(ids);
++
++        lobby.setSpielrunden(spielraums);
++
+         assert(spielraums.size()==2);
+         lobby.spielraumLoeschen(2);
+         assertEquals(spielraums.size(),1);
+ 
++
+         lobby.spielraumLoeschen(1);
+         assertEquals(spielraums.size(),0);
+ 
+-
+     }
+ 
+     @Test
+     void spielraumHinzufuegen(){
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
+-        Spielraum raum2 = new Spielraum(2);
++
++        Spielrunde raum1 = new Spielrunde(1,new Lobby());
++        Spielrunde raum2 = new Spielrunde(2,new Lobby());
+         spielraums.add(raum1);
+         spielraums.add(raum2);
+ 
+         assertEquals(spielraums.size(),2);
+         lobby.spielraumHinzufuegen(3);
+-        assertEquals(spielraums.size(),3);
++
++        assertEquals(3,spielraums.size());
+     }
+ 
+     @Test
+@@ -118,20 +156,31 @@
+         Benutzer benutzer1= new Benutzer("Maryline", "testPwd123");
+         Benutzer benutzer2= new Benutzer("Tester", "testMyCode99");
+ 
+-        ArrayList<Spielraum> spielraums = new ArrayList<>();
+-        Spielraum raum1 = new Spielraum(1);
++        Spielrunde raum1 = new Spielrunde(1,new Lobby());
++        Spielrunde raum2 = new Spielrunde(2,new Lobby());
+         spielraums.add(raum1);
++        spielraums.add(raum2);
++
++
++        lobby.spielraumHinzufuegen(raum1.getRaumId());
++        lobby.spielraumHinzufuegen(raum2.getRaumId());
++
+ 
+         lobby.spielraumBeitreten(benutzer1.getBenutzername(),1);
+-        lobby.spielraumBeitreten(benutzer2.getBenutzername(),1);
++        ArrayList<String> raumlist1 = new ArrayList<>();
++        raumlist1.add(benutzer1.getBenutzername());
++
++        lobby.spielraumBeitreten(benutzer2.getBenutzername(),2);
++        ArrayList<String> raumlist2 = new ArrayList<>();
++        raumlist2.add(benutzer2.getBenutzername());
+ 
+-        assert(spielraums.get(0).spielerList().size()==2); //Anzahl der Spieler in Raum 1
+ 
+-        ArrayList<String> spielerList = new ArrayList<>();
+-        spielerList.add(benutzer1.getBenutzername());
+-        spielerList.add(benutzer2.getBenutzername());
++        spielerInSpielrundeTest.put(raum1.getRaumId(), raumlist1);
++        spielerInSpielrundeTest.put(raum2.getRaumId(), raumlist2);
+ 
+-        assertEquals(spielerList,lobby.getSpieler(1));
++
++        assertEquals(raumlist1,lobby.getSpieler(1));
++        System.out.println(lobby.getSpieler(2));
+ 
+     }
+ 
+Index: src/main/java/SpielLobby/Lobby.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package SpielLobby;\nimport Bot.BotEinfach;\nimport Bot.BotSchwer;\nimport GUI.Chat;\nimport Konto.Benutzer;\nimport Spiel.Spielrunde;\nimport fachlicheExceptions.spielraumVollException;\nimport fachlicheExceptions.ungueltigerBenutzernameException;\n\nimport java.rmi.RemoteException;\nimport java.rmi.server.UnicastRemoteObject;\nimport java.util.*;\n\n\n/**\n * @author Maryline Majiade, Catharina Helten\n * Die Klasse verwaltet die Lobby des Spiels.\n */\npublic class Lobby{\n\n    private ArrayList<Integer> spielraum_Ids = new ArrayList<>();\n    ArrayList<Spielrunde> spielrunden;\n    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();\n\n\n\n\n    /**\n     * Die Methode gibt die Liste aller Spielraum IDs zurück\n     * @return Liste von Spielraum IDs\n     */\n\n\n\n    public ArrayList<Integer> getSpielraum_Ids(){\n\n        return spielraum_Ids;\n    }\n\n    /**\n     * Die Methode fügt den Spieler mit dem übegebenen Benutzernamen dem Spielraum mit der ID spielraumID hinzu\n     * @param benutzername String != null\n     * @param spielraumId Integer != null\n     */\n    public void spielraumBeitreten(String benutzername, int spielraumId){\n        spielerInSpielrunde.get(spielraumId).add(benutzername);\n\n\n    }\n\n\n    /**\n     * Die Methode entfernt den Benutzer mit dem Namen benutzername aus dem Spielraum mit dem Id spielraumId\n     * @param benutzername Benutzername des Spielers, der entfernt werden muss\n     * @param spielraumId Id des Spielraums\n     */\n    public void spielraumVerlassen(String benutzername, int spielraumId){\n\n        spielerInSpielrunde.get(spielraumId).remove(benutzername);\n\n    }\n\n\n    /**\n     * Die Methode löscht den Spielraum mit dem Id spielraumId\n     * @param spielraumID Id des Spielraums, der gelöscht werden muss\n     */\n\n    public void spielraumLoeschen(int spielraumID) {\n        spielrunden.remove(spielraumID-1);\n        spielraum_Ids.remove(spielraumID);\n\n    }\n\n\n    /**\n     * Die Methode fügt einen Spielraum mit dem Id spielraumId in die Lobby hinzu\n     * @param spielraumID Id des Spielraums, der hinzugefügt werden muss\n     */\n\n    public void spielraumHinzufuegen(int spielraumID) {\n\n        Spielrunde spielrunde = new Spielrunde(spielraumID, this);\n        spielraum_Ids.add(spielraumID);\n        spielrunden.add(spielrunde);\n        spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);\n    }\n\n    /**\n     * Die Methode gib die Liste aller Spieler zurück, die sich in dem\n     * Spielraum mit ID spielraumId befinden\n     * @return Liste von den Spielern\n     */\n    public ArrayList<String> getSpieler(int spielraumId){\n        return spielerInSpielrunde.get(spielraumId);\n    }\n\n}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/SpielLobby/Lobby.java b/src/main/java/SpielLobby/Lobby.java
+--- a/src/main/java/SpielLobby/Lobby.java	(revision 3b3b57c31a64da3f774792ce119080ea8ef152f6)
++++ b/src/main/java/SpielLobby/Lobby.java	(date 1623959843726)
+@@ -1,14 +1,5 @@
+ package SpielLobby;
+-import Bot.BotEinfach;
+-import Bot.BotSchwer;
+-import GUI.Chat;
+-import Konto.Benutzer;
+ import Spiel.Spielrunde;
+-import fachlicheExceptions.spielraumVollException;
+-import fachlicheExceptions.ungueltigerBenutzernameException;
+-
+-import java.rmi.RemoteException;
+-import java.rmi.server.UnicastRemoteObject;
+ import java.util.*;
+ 
+ 
+@@ -19,19 +10,34 @@
+ public class Lobby{
+ 
+     private ArrayList<Integer> spielraum_Ids = new ArrayList<>();
+-    ArrayList<Spielrunde> spielrunden;
+-    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();
++    ArrayList<Spielrunde> spielrunden = new ArrayList<>();
++    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<>();
++
++    public void setSpielraum_Ids(ArrayList<Integer> spielraum_Ids) {
++        this.spielraum_Ids = spielraum_Ids;
++    }
+ 
++    public ArrayList<Spielrunde> getSpielrunden() {
++        return spielrunden;
++    }
+ 
++    public void setSpielrunden(ArrayList<Spielrunde> spielrunden) {
++        this.spielrunden = spielrunden;
++    }
+ 
++    public HashMap<Integer, ArrayList<String>> getSpielerInSpielrunde() {
++        return spielerInSpielrunde;
++    }
++
++    public void setSpielerInSpielrunde(HashMap<Integer, ArrayList<String>> spielerInSpielrunde) {
++        this.spielerInSpielrunde = spielerInSpielrunde;
++    }
+ 
+     /**
+      * Die Methode gibt die Liste aller Spielraum IDs zurück
+      * @return Liste von Spielraum IDs
+      */
+ 
+-
+-
+     public ArrayList<Integer> getSpielraum_Ids(){
+ 
+         return spielraum_Ids;
+@@ -45,7 +51,6 @@
+     public void spielraumBeitreten(String benutzername, int spielraumId){
+         spielerInSpielrunde.get(spielraumId).add(benutzername);
+ 
+-
+     }
+ 
+ 
+@@ -68,7 +73,7 @@
+ 
+     public void spielraumLoeschen(int spielraumID) {
+         spielrunden.remove(spielraumID-1);
+-        spielraum_Ids.remove(spielraumID);
++        spielraum_Ids.remove(spielraumID-1);
+ 
+     }
+ 
+@@ -83,7 +88,7 @@
+         Spielrunde spielrunde = new Spielrunde(spielraumID, this);
+         spielraum_Ids.add(spielraumID);
+         spielrunden.add(spielrunde);
+-        spielerInSpielrunde.put(spielraumID, (ArrayList<String>) Collections.EMPTY_LIST);
++        spielerInSpielrunde.put(spielraumID, new ArrayList<>());
+     }
+ 
+     /**
+Index: src/test/java/ChipstapelTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nimport Spiel.Chipstapel;\nimport Spiel.Spielrunde;\nimport SpielLobby.Lobby;\nimport fachlicheExceptions.stapelLeerException;\nimport fachlicheExceptions.ungueltigerBenutzernameException;\nimport fachlicheExceptions.ungueltigerChipException;\nimport fachlicheExceptions.ungueltigerSpielzugException;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.assertEquals;\n\n\npublic class ChipstapelTest {\n\n    /**\n     * @author Catharina Helten\n     */\n\n\n\n    private int white;\n    private int black;\n    private int punkte;\n    Spielrunde spielrunde;\n    String benutzername;\n    Chipstapel chipstapel;\n\n\n    @BeforeEach\n    void setup() throws ungueltigerBenutzernameException, stapelLeerException {\n     spielrunde = new Spielrunde(1,new Lobby());\n     benutzername = spielrunde.anDerReihe();\n     chipstapel = spielrunde.getChipstapel(benutzername);\n     chipstapel.setWeiss(5);\n     chipstapel.setSchwarz(3);\n\n    }\n\n    @Test\n    void getWeiss() throws ungueltigerChipException, ungueltigerSpielzugException, ungueltigerBenutzernameException, stapelLeerException {\n        white = chipstapel.getWeiss();\n        spielrunde.chipAbgeben(false, benutzername);\n        assertEquals(white-1,chipstapel.getWeiss());\n    }\n\n    @Test\n    void getSchwarz() throws ungueltigerChipException, ungueltigerSpielzugException, ungueltigerBenutzernameException, stapelLeerException {\n        black = chipstapel.getSchwarz();\n        spielrunde.chipAbgeben(true, benutzername);\n        assertEquals(black-1,chipstapel.getSchwarz());\n    }\n\n    @Test\n    void getPunkte() throws ungueltigerChipException, ungueltigerSpielzugException, ungueltigerBenutzernameException, stapelLeerException {\n         punkte = chipstapel.getPunkte();\n         spielrunde.chipAbgeben(true, benutzername);\n         assertEquals(punkte-10, chipstapel.getPunkte());\n         spielrunde.chipAbgeben(false, benutzername);\n         assertEquals(punkte-11, chipstapel.getPunkte());\n    }\n\n    @Test\n     void setWeiss(){\n        assertEquals(35, chipstapel.getPunkte());\n        chipstapel.setWeiss(2);\n        assertEquals(32, chipstapel.getPunkte());\n     }\n\n    @Test\n     void setSchwarz(){\n        assertEquals(35, chipstapel.getPunkte());\n        chipstapel.setSchwarz(0);\n        assertEquals(5, chipstapel.getPunkte());\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/ChipstapelTest.java b/src/test/java/ChipstapelTest.java
+--- a/src/test/java/ChipstapelTest.java	(revision 3b3b57c31a64da3f774792ce119080ea8ef152f6)
++++ b/src/test/java/ChipstapelTest.java	(date 1623955170613)
+@@ -29,7 +29,7 @@
+ 
+     @BeforeEach
+     void setup() throws ungueltigerBenutzernameException, stapelLeerException {
+-     spielrunde = new Spielrunde(1,new Lobby());
++     spielrunde = new Spielrunde(1, new Lobby());
+      benutzername = spielrunde.anDerReihe();
+      chipstapel = spielrunde.getChipstapel(benutzername);
+      chipstapel.setWeiss(5);
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>LamaSpielMaven</artifactId>\n    <version>1.0-SNAPSHOT</version>\n\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <version>3.8.1</version>\n                <configuration>\n                    <source>1.8</source>\n                    <target>1.8</target>\n                </configuration>\n            </plugin>\n        </plugins>\n    </build>\n\n    <dependencies>\n\n        <dependency>\n            <groupId>org.junit.jupiter</groupId>\n            <artifactId>junit-jupiter-engine</artifactId>\n            <version>5.4.2</version>\n            <scope>test</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.mockito</groupId>\n            <artifactId>mockito-all</artifactId>\n            <version>1.8.4</version>\n            <scope>test</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.junit.jupiter</groupId>\n            <artifactId>junit-jupiter-api</artifactId>\n            <version>5.4.2</version>\n            <scope>test</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.openjfx</groupId>\n            <artifactId>javafx-controls</artifactId>\n            <version>11</version>\n        </dependency>\n        <dependency>\n            <groupId>org.testng</groupId>\n            <artifactId>testng</artifactId>\n            <version>RELEASE</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.mockito</groupId>\n            <artifactId>mockito-junit-jupiter</artifactId>\n            <version>3.6.28</version>\n            <scope>test</scope>\n        </dependency>\n\n    </dependencies>\n\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 3b3b57c31a64da3f774792ce119080ea8ef152f6)
++++ b/pom.xml	(date 1623954998217)
+@@ -24,13 +24,6 @@
+ 
+     <dependencies>
+ 
+-        <dependency>
+-            <groupId>org.junit.jupiter</groupId>
+-            <artifactId>junit-jupiter-engine</artifactId>
+-            <version>5.4.2</version>
+-            <scope>test</scope>
+-        </dependency>
+-
+         <dependency>
+             <groupId>org.mockito</groupId>
+             <artifactId>mockito-all</artifactId>
+@@ -39,9 +32,16 @@
+         </dependency>
+ 
+         <dependency>
+-            <groupId>org.junit.jupiter</groupId>
+-            <artifactId>junit-jupiter-api</artifactId>
+-            <version>5.4.2</version>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.12</version>
++            <scope>test</scope>
++        </dependency>
++        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
++        <dependency>
++            <groupId>org.junit.platform</groupId>
++            <artifactId>junit-platform-launcher</artifactId>
++            <version>1.5.2</version>
+             <scope>test</scope>
+         </dependency>
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:Abgabe3\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"LobbyTest erweitert+Implementierung von Methoden in der Klasse Lobby\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_11_45__Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_11_45__Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_15_52__Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_15_52__Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/RMI/RMIServer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/RMI/RMIServer.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$/..\" value=\"48254bf635f83d89fb0c8447f65151bd235579a2\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1toJbZRKC1xX9Ky6WDmUyQvas5N\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\n  </component>\n  <component name=\"RunManager\" selected=\"JUnit.RMIServerTest\">\n    <configuration name=\"Chat\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Chat\" />\n      <module name=\"LamaSpielMaven\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"GUI.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Login\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"GUI.Login\" />\n      <module name=\"LamaSpielMaven\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"GUI.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"RMIClientDriver\" type=\"Application\" factoryName=\"Application\" singleton=\"false\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"RMI.RMIClientDriver\" />\n      <module name=\"LamaSpielMaven\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"RMI.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ServerClientRun\" type=\"CompoundRunConfigurationType\">\n      <toRun name=\"RMIClientDriver\" type=\"Application\" />\n      <toRun name=\"Server Client Run\" type=\"Application\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"CompoundRunConfigurationType\">\n      <toRun name=\"RMIClientDriver\" type=\"Application\" />\n      <toRun name=\"Server Client Run\" type=\"Application\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"LobbyTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"LamaSpielMaven\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"LobbyTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"LobbyTest.getSpielraum_Ids\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"LamaSpielMaven\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"LobbyTest\" />\n      <option name=\"METHOD_NAME\" value=\"getSpielraum_Ids\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"RMIServerTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"LamaSpielMaven\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"RMIServerTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.RMIClientDriver\" />\n      <item itemvalue=\"Application.Chat\" />\n      <item itemvalue=\"Application.Login\" />\n      <item itemvalue=\"Compound.ServerClientRun\" />\n      <item itemvalue=\"JUnit.LobbyTest\" />\n      <item itemvalue=\"JUnit.LobbyTest.getSpielraum_Ids\" />\n      <item itemvalue=\"JUnit.RMIServerTest\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"JUnit.RMIServerTest\" />\n        <item itemvalue=\"Application.Chat\" />\n        <item itemvalue=\"JUnit.LobbyTest\" />\n        <item itemvalue=\"JUnit.LobbyTest.getSpielraum_Ids\" />\n        <item itemvalue=\"Application.Login\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" BundledDictionaries=\"0\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" Dictionaries=\"0\" CorrectionsLimit=\"5\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" />\n  <component name=\"SvnConfiguration\">\n    <configuration />\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1f2b9502-530f-454a-8549-ff22ef7d8c03\" name=\"Default Changelist\" comment=\"\" />\n      <created>1623429580363</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1623429580363</updated>\n      <workItem from=\"1623429581553\" duration=\"4043000\" />\n      <workItem from=\"1623487605474\" duration=\"13892000\" />\n      <workItem from=\"1623577975238\" duration=\"118000\" />\n      <workItem from=\"1623578184257\" duration=\"8564000\" />\n      <workItem from=\"1623703362003\" duration=\"31220000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Libaries installiert (hoffentlich:D)\">\n      <created>1623429985046</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623429985046</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Libaries installiert (hoffentlich:D) pom.xml\">\n      <created>1623430621517</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623430621517</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Error behoben\">\n      <created>1623433505487</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623433505487</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Kleine chat aplikation implementiert\">\n      <created>1623581534577</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623581534577</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Lobby auf Public, Methoden RMIServer implementiert\">\n      <created>1623585700479</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623585700479</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Attribute als final deklariert in RMIServer\">\n      <created>1623586123731</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623586123731</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Lobby Dokumentation vervollständig + Spielraum Klasse erstellt\">\n      <created>1623703950132</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623703950132</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"LobbyTest erweitert+Implementierung von Methoden in der Klasse Lobby\">\n      <created>1623723570408</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623723570409</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"LobbyIF + LobbyTest aktualisiert\">\n      <created>1623747138095</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1623747138095</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"10\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"Abgabe3\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D)\" />\n    <MESSAGE value=\"Libaries installiert (hoffentlich:D) pom.xml\" />\n    <MESSAGE value=\"Error behoben\" />\n    <MESSAGE value=\"Kleine chat aplikation implementiert\" />\n    <MESSAGE value=\"Lobby auf Public, Methoden RMIServer implementiert\" />\n    <MESSAGE value=\"Attribute als final deklariert in RMIServer\" />\n    <MESSAGE value=\"Lobby Dokumentation vervollständig + Spielraum Klasse erstellt\" />\n    <MESSAGE value=\"LobbyTest erweitert+Implementierung von Methoden in der Klasse Lobby\" />\n    <MESSAGE value=\"LobbyIF + LobbyTest aktualisiert\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"LobbyIF + LobbyTest aktualisiert\" />\n  </component>\n  <component name=\"WindowStateProjectService\">\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1623940311733\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814\" timestamp=\"1623940311733\" />\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.center\" timestamp=\"1623940311733\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814\" timestamp=\"1623940311733\" />\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.left\" timestamp=\"1623940311733\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814\" timestamp=\"1623940311733\" />\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.right\" timestamp=\"1623940311733\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state width=\"1492\" height=\"137\" key=\"GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814\" timestamp=\"1623940311733\" />\n    <state x=\"444\" y=\"118\" key=\"RollbackChangesDialog\" timestamp=\"1623936947542\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state x=\"444\" y=\"118\" key=\"RollbackChangesDialog/0.0.1536.814@0.0.1536.814\" timestamp=\"1623936947542\" />\n    <state x=\"507\" y=\"332\" key=\"VCS.EditChangelistDialog\" timestamp=\"1623936938085\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state x=\"507\" y=\"332\" key=\"VCS.EditChangelistDialog/0.0.1536.814@0.0.1536.814\" timestamp=\"1623936938085\" />\n    <state x=\"580\" y=\"328\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1623936878954\">\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"814\" />\n    </state>\n    <state x=\"580\" y=\"328\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814\" timestamp=\"1623936878954\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3b3b57c31a64da3f774792ce119080ea8ef152f6)
++++ b/.idea/workspace.xml	(date 1623972681618)
+@@ -1,5 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="BranchesTreeState">
+     <expand>
+       <path>
+@@ -26,11 +29,20 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="LobbyTest erweitert+Implementierung von Methoden in der Klasse Lobby">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_11_45__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_11_45__Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_15_52__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_06_2021_15_52__Default_Changelist_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIServer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ChipstapelTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/LobbyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LobbyTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/LobbyIF.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Spielraum.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/BenutzerVerwaltenTest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/BestenlisteTest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/ChipstapelTest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/LobbyTest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/RMIServerTest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/SpielrundeTest.class" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -72,13 +84,13 @@
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+   </component>
+-  <component name="RunManager" selected="JUnit.RMIServerTest">
+-    <configuration name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="GUI.Chat" />
++  <component name="RunManager" selected="JUnit.LobbyTest.getSpieler">
++    <configuration name="RMIClientDriver" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="RMI.RMIClientDriver" />
+       <module name="LamaSpielMaven" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="GUI.*" />
++          <option name="PATTERN" value="RMI.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -86,28 +98,13 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="GUI.Login" />
+-      <module name="LamaSpielMaven" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="GUI.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="RMIClientDriver" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="RMI.RMIClientDriver" />
+-      <module name="LamaSpielMaven" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="RMI.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -122,11 +119,12 @@
+       <toRun name="Server Client Run" type="Application" />
+       <method v="2" />
+     </configuration>
+-    <configuration name="LobbyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="LobbyTest.getSpieler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="LamaSpielMaven" />
+       <option name="PACKAGE_NAME" value="" />
+       <option name="MAIN_CLASS_NAME" value="LobbyTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="METHOD_NAME" value="getSpieler" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -141,35 +139,56 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RMIServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="LobbyTest.spielRaumLoeschen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="LamaSpielMaven" />
+       <option name="PACKAGE_NAME" value="" />
+-      <option name="MAIN_CLASS_NAME" value="RMIServerTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
++      <option name="METHOD_NAME" value="spielRaumLoeschen" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LobbyTest.spielraumHinzufuegen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="LamaSpielMaven" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
++      <option name="METHOD_NAME" value="spielraumHinzufuegen" />
++      <option name="TEST_OBJECT" value="method" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LobbyTest.spielraumVerlassen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="LamaSpielMaven" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="LobbyTest" />
++      <option name="METHOD_NAME" value="spielraumVerlassen" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+     <list>
+       <item itemvalue="Application.RMIClientDriver" />
+-      <item itemvalue="Application.Chat" />
+-      <item itemvalue="Application.Login" />
+       <item itemvalue="Compound.ServerClientRun" />
+-      <item itemvalue="JUnit.LobbyTest" />
++      <item itemvalue="JUnit.LobbyTest.spielraumVerlassen" />
++      <item itemvalue="JUnit.LobbyTest.spielRaumLoeschen" />
+       <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
+-      <item itemvalue="JUnit.RMIServerTest" />
++      <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
++      <item itemvalue="JUnit.LobbyTest.getSpieler" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.RMIServerTest" />
+-        <item itemvalue="Application.Chat" />
+-        <item itemvalue="JUnit.LobbyTest" />
++        <item itemvalue="JUnit.LobbyTest.getSpieler" />
++        <item itemvalue="JUnit.LobbyTest.spielraumHinzufuegen" />
+         <item itemvalue="JUnit.LobbyTest.getSpielraum_Ids" />
+-        <item itemvalue="Application.Login" />
++        <item itemvalue="JUnit.LobbyTest.spielRaumLoeschen" />
++        <item itemvalue="JUnit.LobbyTest.spielraumVerlassen" />
+       </list>
+     </recent_temporary>
+   </component>
+-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="SvnConfiguration">
+     <configuration />
+   </component>
+@@ -185,6 +204,7 @@
+       <workItem from="1623577975238" duration="118000" />
+       <workItem from="1623578184257" duration="8564000" />
+       <workItem from="1623703362003" duration="31220000" />
++      <workItem from="1623950168089" duration="11616000" />
+     </task>
+     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
+       <created>1623429985046</created>
+@@ -291,34 +311,4 @@
+     <MESSAGE value="LobbyIF + LobbyTest aktualisiert" />
+     <option name="LAST_COMMIT_MESSAGE" value="LobbyIF + LobbyTest aktualisiert" />
+   </component>
+-  <component name="WindowStateProjectService">
+-    <state width="1492" height="137" key="GridCell.Tab.0.bottom" timestamp="1623940311733">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="137" key="GridCell.Tab.0.bottom/0.0.1536.814@0.0.1536.814" timestamp="1623940311733" />
+-    <state width="1492" height="137" key="GridCell.Tab.0.center" timestamp="1623940311733">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="137" key="GridCell.Tab.0.center/0.0.1536.814@0.0.1536.814" timestamp="1623940311733" />
+-    <state width="1492" height="137" key="GridCell.Tab.0.left" timestamp="1623940311733">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="137" key="GridCell.Tab.0.left/0.0.1536.814@0.0.1536.814" timestamp="1623940311733" />
+-    <state width="1492" height="137" key="GridCell.Tab.0.right" timestamp="1623940311733">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state width="1492" height="137" key="GridCell.Tab.0.right/0.0.1536.814@0.0.1536.814" timestamp="1623940311733" />
+-    <state x="444" y="118" key="RollbackChangesDialog" timestamp="1623936947542">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state x="444" y="118" key="RollbackChangesDialog/0.0.1536.814@0.0.1536.814" timestamp="1623936947542" />
+-    <state x="507" y="332" key="VCS.EditChangelistDialog" timestamp="1623936938085">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state x="507" y="332" key="VCS.EditChangelistDialog/0.0.1536.814@0.0.1536.814" timestamp="1623936938085" />
+-    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623936878954">
+-      <screen x="0" y="0" width="1536" height="814" />
+-    </state>
+-    <state x="580" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.814@0.0.1536.814" timestamp="1623936878954" />
+-  </component>
+ </project>
+\ No newline at end of file

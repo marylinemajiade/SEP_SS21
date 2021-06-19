@@ -28,18 +28,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="LobbyTests verbessert">
+    <list default="true" id="1f2b9502-530f-454a-8549-ff22ef7d8c03" name="Default Changelist" comment="BoteinfachTest erstellt + erste Implementierung">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotEinfach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotEinfach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotSchwer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotSchwer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RMI/RMIClientIF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpielLobby/Lobby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Bot/BotEinfach.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bot/BotEinfach.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Bot/BotSchwer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bot/BotSchwer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RMI/RMIClientIF.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpielLobby/Lobby.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +220,7 @@
       <workItem from="1623577975238" duration="118000" />
       <workItem from="1623578184257" duration="8564000" />
       <workItem from="1623703362003" duration="31220000" />
-      <workItem from="1623950168089" duration="29212000" />
+      <workItem from="1623950168089" duration="29767000" />
     </task>
     <task id="LOCAL-00001" summary="Libaries installiert (hoffentlich:D)">
       <created>1623429985046</created>
@@ -309,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624031239689</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="BoteinfachTest erstellt + erste Implementierung">
+      <created>1624055559352</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1624055559352</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +348,8 @@
     <MESSAGE value="LobbyIF + LobbyTest aktualisiert" />
     <MESSAGE value="Lobby + LobbyTests fertiggestellt" />
     <MESSAGE value="LobbyTests verbessert" />
-    <option name="LAST_COMMIT_MESSAGE" value="LobbyTests verbessert" />
+    <MESSAGE value="BoteinfachTest erstellt + erste Implementierung" />
+    <option name="LAST_COMMIT_MESSAGE" value="BoteinfachTest erstellt + erste Implementierung" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LamaSpielMaven$RMIServerTest.ic" NAME="RMIServerTest Coverage Results" MODIFIED="1624043756043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
