@@ -42,11 +42,11 @@ public interface RMIServerIF extends Remote {
             throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException, ungueltigerChipException;
 
     void karteAblegen(int karte, String benutzername, int spielraumID)
-            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException;
 
     int karteZiehen(String benutzername, int spielraumId)
-            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException, ungueltigeKarteException;
 
     void aussteigen(String benutzername, int spielraumId)
-            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException ;
+            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, ungueltigerSpielzugException;
 }
