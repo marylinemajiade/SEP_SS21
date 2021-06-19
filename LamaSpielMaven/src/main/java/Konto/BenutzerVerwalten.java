@@ -50,8 +50,6 @@ public class BenutzerVerwalten {
      */
     public void benutzerLoeschen(String benutzername)throws ungueltigerBenutzernameException {
 
-
-
         benutzerListe.removeIf( benutzer -> benutzer.getBenutzername().equals(benutzername));
 
         /*for (Benutzer registeredBenutzer: benutzerListe) {

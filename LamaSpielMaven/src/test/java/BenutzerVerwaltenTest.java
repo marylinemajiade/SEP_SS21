@@ -1,4 +1,5 @@
 
+import Konto.Benutzer;
 import Konto.BenutzerVerwalten;
 import fachlicheExceptions.benutzerNameVergebenException;
 import fachlicheExceptions.ungueltigerBenutzernameException;
@@ -24,10 +25,19 @@ class BenutzerVerwaltenTest {
 
     @Test
     void benutzerRegistrieren() throws benutzerNameVergebenException {
-        benutzerVerwalten.benutzerRegistrieren("Samu","samu123");
+        //Die Klasse "Benutzer" enthält paar Methoden, die getestet werden müssen, um ein höhes Coverage zu erreichen
+        //da die Methoden in der Klasse BenutzerVerwalten kein Objekt "Benutzer" als Parameter nehmen, werden die Tests getrennt ausgeführt
+        Benutzer samu = new Benutzer("Samu","Samu123");
+        samu.setBenutzername("Samou");
+        samu.setPasswort("Samu1234");
+        assertEquals("Samu1234",samu.getPasswort());
+        assertEquals("Samou",samu.getBenutzername());
+        assertEquals("Benutzer{benutzername='Samou', passwort='Samu1234'}", samu.toString());
+
         benutzerVerwalten.benutzerRegistrieren("Laura","Laurita");
+
         assertFalse(benutzerVerwalten.returnAllPlayer().isEmpty());
-        assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
+        assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
     }
 
     @Test
@@ -49,6 +59,7 @@ class BenutzerVerwaltenTest {
         assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
     }
 
+    /* Test brauchenwir nicht... Veränderung auf die Methode benutzerLoeschen
     @Test
     void ungueltigerBenutzernameExceptionTest() throws benutzerNameVergebenException {
         benutzerVerwalten.benutzerRegistrieren("Samu","samu123");
@@ -56,6 +67,7 @@ class BenutzerVerwaltenTest {
         assertEquals(1,benutzerVerwalten.returnAllPlayer().size());
         assertThrows(ungueltigerBenutzernameException.class , () -> benutzerVerwalten.benutzerLoeschen("Samu1"));
     }
+     */
 
     @Test
     void benutzerdatenPruefen() throws benutzerNameVergebenException {
@@ -64,6 +76,7 @@ class BenutzerVerwaltenTest {
         assertEquals(2,benutzerVerwalten.returnAllPlayer().size());
         assertEquals(true,benutzerVerwalten.benutzerdatenPruefen("Samu","samu123"));
         assertEquals(false,benutzerVerwalten.benutzerdatenPruefen("Laura","Laurita1"));
+
     }
 
 }
