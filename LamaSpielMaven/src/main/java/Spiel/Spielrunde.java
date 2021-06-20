@@ -25,7 +25,9 @@ public class Spielrunde extends Chipstapel {
     private HashSet<Integer> spielkarten = new HashSet<>();
     private Chipstapel chipstapel = new Chipstapel();
     private Stack<String> spielReihenfolge = new Stack<>();
-
+    int aktuellerPunktestand = 0;
+    String letzterSpieler;
+    int Runde = 0;
     Lobby lobby;
 
 
@@ -165,9 +167,7 @@ public class Spielrunde extends Chipstapel {
      */
     public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
         // Spielerreihenfolge
-        for(String name:spielerInRunde){
-            spielReihenfolge.add(name);
-        }
+        spielReihenfolge.addAll(spielerInRunde);
         //Spielkarten mischen
         for (int i = 1; i<=7; i++) {
             for (int j = 1; j <= 8; j++) {
@@ -189,7 +189,13 @@ public class Spielrunde extends Chipstapel {
         //Ablagestapel oberste Karte von Nachziehstapel
         ablagestapel.push(nachziehstapel.pop());
 
-            return true;
+        //Runde läuft bis einer -40 Punkte hat
+     //  while (aktuellerPunktestand != -40){
+
+     //   letzterSpieler = anDerReihe();
+      // }
+
+        return true;
     }
 
 
