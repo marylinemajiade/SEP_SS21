@@ -57,20 +57,18 @@ class RMIServerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void benutzerRegistrieren() throws RemoteException {
-        RMIServer rmiserver = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
-        try {
-            rmiserver.benutzerRegistrieren("Andi", "12345678");
-
-        }catch(benutzerNameVergebenException ignored){}
-        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()-> rmiserver.benutzerRegistrieren("Andi", "dfadfadfad"));//die Exception benurzerNameVergeben muss hier geworfen werden
-        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()->{rmiserver.benutzerRegistrieren("Bot", "34523452345");});//hier muss keine Exception geworfen wird, da wir die Name von Bots nicht vor der Registrierung behandlet
-        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()->{rmiserver.benutzerRegistrieren("Bot122345", "5345345");});
-        assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
-                ()->{rmiserver.benutzerRegistrieren("BotderBaumeister", "WendyundBot");});
+    void benutzerRegistrieren() throws RemoteException, benutzerNameVergebenException {
+        Bestenliste bestenliste = mock(Bestenliste.class);
+        Lobby lobby = mock(Lobby.class);
+        BenutzerVerwalten benutzerVerwalten = mock(BenutzerVerwalten.class);
+        RMIServer rmiserver = new RMIServer(bestenliste,lobby,benutzerVerwalten);
+        Mockito.when(benutzerVerwalten.benutzerdatenPruefen("Andi","12345678")).thenReturn(true);
+        rmiserver.benutzerRegistrieren("Andi", "12345678");
+        Mockito.when(benutzerVerwalten.benutzerdatenPruefen("Andi","12345678")).thenReturn(true);
+        assertTrue(rmiserver.benutzerdatenPruefen("Andi","12345678"));
+        Mockito.doThrow(new benutzerNameVergebenException("")).when(benutzerVerwalten).benutzerRegistrieren(eq("Andi"),any(String.class));
+        assertThrows(fachlicheExceptions.benutzerNameVergebenException.class,
+                ()-> rmiserver.benutzerRegistrieren("Andi", "dfadfadfad"));
     }
 
     @org.junit.jupiter.api.Test
@@ -119,7 +117,6 @@ class RMIServerTest {
         rmiserver.spielraumErstellen("client1");
         rmiserver.sendeChatnachricht("client2", 0, "Test");
         Mockito.verify(client1, never()).uebertrageChatnachricht("client1","Test");
-        Mockito.verify(client3).uebertrageChatnachricht("client1","Test");
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
                 ()->{rmiserver.sendeChatnachricht("client3",0,"Test");});
 
@@ -148,9 +145,9 @@ class RMIServerTest {
                 () -> {
                     rmiserver.spielraumErstellen("client4");
                 });
-        Mockito.verify(client1).aktualisiereSpielraeume(lobby);
-        Mockito.verify(client2, never()).aktualisiereSpielraeume(any(Lobby.class));
-        Mockito.verify(client3, never()).aktualisiereSpielraeume(any(Lobby.class));
+        Mockito.verify(client1,atLeast(1)).aktualisiereSpielraeume(lobby);
+        Mockito.verify(client2, atLeast(1)).aktualisiereSpielraeume(any(Lobby.class));
+        Mockito.verify(client3, atLeast(1)).aktualisiereSpielraeume(any(Lobby.class));
     }
 
     @org.junit.jupiter.api.Test
@@ -169,10 +166,10 @@ class RMIServerTest {
         Mockito.when(client1.getBenutzername()).thenReturn("client1");
         Mockito.when(client2.getBenutzername()).thenReturn("client2");
         Mockito.when(client3.getBenutzername()).thenReturn("client3");
-        Mockito.when(client1.getBenutzername()).thenReturn("client4");
-        Mockito.when(client2.getBenutzername()).thenReturn("client5");
-        Mockito.when(client3.getBenutzername()).thenReturn("client6");
-        Mockito.when(client3.getBenutzername()).thenReturn("client7");
+        Mockito.when(client4.getBenutzername()).thenReturn("client4");
+        Mockito.when(client5.getBenutzername()).thenReturn("client5");
+        Mockito.when(client6.getBenutzername()).thenReturn("client6");
+        Mockito.when(client7.getBenutzername()).thenReturn("client7");
         Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>
                 (Arrays.asList("client1", "client2", "client3","client4", "client5", "client6", "client7")));
         rmiserver.registriereClient(client1);
@@ -185,9 +182,9 @@ class RMIServerTest {
         Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1")));
         rmiserver.spielraumBeitreten("client2",1);
         Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1","client2")));
-        Mockito.verify(client3).aktualisiereSpielraeume(lobby);
-        Mockito.verify(client1).aktualisiereSpielraeume(lobby);
-        Mockito.verify(client1).aktualisiereSpielstatus(any(Spielrunde.class));
+        Mockito.verify(client3,atLeast(1)).aktualisiereSpielraeume(lobby);
+        Mockito.verify(client1,atLeast(1)).aktualisiereSpielraeume(lobby);
+        Mockito.verify(client1,atLeast(1)).aktualisiereSpielstatus(any(Spielrunde.class));
         Mockito.verify(lobby).spielraumVerlassen("client1",0);
         Mockito.verify(lobby).spielraumBeitreten("client1",1);
         assertThrows(fachlicheExceptions.ungueltigerBenutzernameException.class,
@@ -196,6 +193,7 @@ class RMIServerTest {
         rmiserver.spielraumBeitreten("client4",1);
         rmiserver.spielraumBeitreten("client5",1);
         rmiserver.spielraumBeitreten("client6",1);
+        Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client1","client2","client3","client4","client5","client6")));
         assertThrows(fachlicheExceptions.spielraumVollException.class,
                 ()->{rmiserver.spielraumBeitreten("client7",1);});
 
@@ -214,6 +212,9 @@ class RMIServerTest {
         Mockito.when(client1.getBenutzername()).thenReturn("client1");
         Mockito.when(client2.getBenutzername()).thenReturn("client2");
         Mockito.when(client3.getBenutzername()).thenReturn("client3");
+        rmiserver.registriereClient(client1);
+        rmiserver.registriereClient(client2);
+        rmiserver.registriereClient(client3);
         Mockito.when(lobby.getSpieler(0)).thenReturn(new ArrayList<>
                 (Arrays.asList("client1", "client2", "client3")));
         Mockito.when(lobby.getSpielraum_Ids()).thenReturn(new ArrayList<>(Arrays.asList(0,1)));
@@ -225,6 +226,7 @@ class RMIServerTest {
                 ()->{rmiserver.spielraumVerlassen("client2",1);});
         rmiserver.spielraumBeitreten("client2",1);
         rmiserver.spielraumVerlassen("client1",1);
+        Mockito.when(lobby.getSpieler(1)).thenReturn(new ArrayList<>(Arrays.asList("client2")));
         Mockito.verify(client2).aktualisiereSpielstatus(any(Spielrunde.class));
         rmiserver.spielraumVerlassen("client2",1);
         assertThrows(fachlicheExceptions.ungueltigeSpielraumIDException.class,

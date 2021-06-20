@@ -71,7 +71,6 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized void benutzerRegistrieren(String benutzername, String passwort) throws benutzerNameVergebenException {
         benutzerdaten.benutzerRegistrieren(benutzername,passwort);
-
     }
 
     /**
@@ -115,7 +114,7 @@ public class RMIServer implements RMIServerIF, Serializable {
             for (RMIClientIF client: clientliste){
                 if(benutzernamenInSpielrunde.contains(client.getBenutzername())) {
                     try {
-                        client.uebertrageChatnachricht(client.getBenutzername(), nachricht);
+                        client.uebertrageChatnachricht(benutzername, nachricht);
                     } catch (ZustellungNachrichtNichtMoeglichException ignored) {}
                 }
             }
@@ -133,9 +132,11 @@ public class RMIServer implements RMIServerIF, Serializable {
         if(!lobby.getSpieler(0).contains(benutzername)) {
             throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
         }
-        List<Integer> alteSpielraumIDs = lobby.getSpielraum_Ids();
-        lobby.spielraumHinzufuegen(naechsteSpielraumID++);
+        spielrunden.put(naechsteSpielraumID,new Spielrunde(naechsteSpielraumID,new Lobby()));
+        lobby.spielraumHinzufuegen(naechsteSpielraumID);
+        naechsteSpielraumID++;
         lobby.spielraumVerlassen(benutzername,0);
+        lobby.spielraumBeitreten(benutzername,1);
         for(RMIClientIF client:clientliste){
             try{
                 client.aktualisiereSpielraeume(lobby);
