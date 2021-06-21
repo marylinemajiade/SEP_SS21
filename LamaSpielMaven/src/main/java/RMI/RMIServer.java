@@ -228,7 +228,7 @@ public class RMIServer implements RMIServerIF, Serializable {
         if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
             throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
         }
-        if (lobby.getSpieler(0).size() > 5) throw new spielraumVollException("Spielraum bereits voll");
+        if (lobby.getSpieler(spielraumID).size() > 5) throw new spielraumVollException("Spielraum bereits voll");
         RMIClientIF bot;
         if(easybot) bot = new BotEinfach(this);
         else bot = new BotSchwer(this);
@@ -276,7 +276,6 @@ public class RMIServer implements RMIServerIF, Serializable {
             if(client.isBot() && client.getBenutzername().equals(botname))botclient = client; break;
         }
         if (botclient != null)clientliste.remove(botclient);
-
     }
 
     /**
@@ -291,6 +290,7 @@ public class RMIServer implements RMIServerIF, Serializable {
         if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }
+        if(lobby.getSpieler(spielraumID).size() <2) throw new zuWenigSpielerException("Nicht genügend Spieler in Spielrunde");
         Spielrunde spielrunde =spielrunden.get(spielraumID);
         spielrunde.spielStarten();
         for(RMIClientIF client: clientliste){
