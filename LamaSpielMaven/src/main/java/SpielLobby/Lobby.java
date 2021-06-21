@@ -57,8 +57,9 @@ public class Lobby{
      * @param spielraumId Id des Spielraums
      */
     public void spielraumVerlassen(String benutzername, int spielraumId){
-
-        spielerInSpielrunde.get(spielraumId).remove(benutzername);
+        if(spielraum_Ids.contains(spielraumId)) {
+            spielerInSpielrunde.get(spielraumId).remove(benutzername);
+        }
 
     }
 
@@ -69,9 +70,8 @@ public class Lobby{
      */
 
     public void spielraumLoeschen(int spielraumID) {
+        spielraum_Ids.remove(Integer.valueOf(spielraumID));
         spielrunden.remove(spielraumID-1);
-        spielraum_Ids.remove(spielraumID-1);
-
     }
 
 

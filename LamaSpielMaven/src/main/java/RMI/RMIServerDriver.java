@@ -25,7 +25,7 @@ public class RMIServerDriver {
        try {
            //RMIServer-Objekt exportieren
            RMIServer obj = new RMIServer(new Bestenliste(),new Lobby() ,new BenutzerVerwalten());
-           RMIServerIF stub1 = (RMIServerIF) UnicastRemoteObject.exportObject(obj, 0);
+           RMIServerIF stub1 = (RMIServerIF) UnicastRemoteObject.exportObject(obj,1099);
 
            //Registry erstellen und Dienste exportieren
            Registry registry = LocateRegistry.createRegistry(1099);

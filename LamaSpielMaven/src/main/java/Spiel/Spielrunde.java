@@ -1,9 +1,7 @@
 package Spiel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.*;
+
 import SpielLobby.Lobby;
 import fachlicheExceptions.*;
 
@@ -260,5 +258,40 @@ public class Spielrunde extends Chipstapel {
         lobby.getSpielerInSpielrunde().get(0).add(benutzername);
     }
 
+    private void kartenAusteilen(){
+        ArrayList<Integer> alleSpielkarten = new ArrayList<>();
+        //Erzeuge alle Karten
+        for(int i = 0;i<8;i++){
+            alleSpielkarten.add(0);             //0 repräsentiert eine Lama-Karte
+            alleSpielkarten.add(1);             //1-6 repräsentiert jeweiligen Kartenwert
+            alleSpielkarten.add(2);
+            alleSpielkarten.add(3);
+            alleSpielkarten.add(4);
+            alleSpielkarten.add(5);
+            alleSpielkarten.add(6);
+        }
+        //Karten mischen
+        Random random = new Random();
+        for(int i = 0; i< alleSpielkarten.size()-1; i++){
+            int rndindex= random.nextInt(alleSpielkarten.size()-1);
+            int temp=alleSpielkarten.get(i);
+            alleSpielkarten.set(i,alleSpielkarten.get(rndindex));
+            alleSpielkarten.set(rndindex,temp);
+        }
+
+        int indexNaechsteKarte= 0;
+        //Karten austeilen
+        for(String benutzername: spielerInRunde){
+            ArrayList<Integer> ausgeteilteHandkarten = new ArrayList<>();
+            for (int i = 0 ; i < 6; i++){
+                ausgeteilteHandkarten.add(alleSpielkarten.get(indexNaechsteKarte++));
+            }
+            handkarten.put(benutzername,ausgeteilteHandkarten);
+        }
+        ablagestapel.push(indexNaechsteKarte++);
+        while (indexNaechsteKarte < alleSpielkarten.size()-1){
+            nachziehstapel.push(alleSpielkarten.get(indexNaechsteKarte++));
+        }
+    }
 
 }
