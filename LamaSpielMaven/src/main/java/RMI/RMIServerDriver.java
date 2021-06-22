@@ -21,7 +21,7 @@ public class RMIServerDriver {
             }
         }
         System.setProperty("java.security.policy", "file:./security.policy");
-        Policy.setPolicy(new MyPolicy());
+
 
 
        try {

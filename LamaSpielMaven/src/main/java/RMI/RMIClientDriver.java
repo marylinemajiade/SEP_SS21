@@ -22,7 +22,7 @@ public class RMIClientDriver {
                 return (new AllPermission()).newPermissionCollection();
             }
         }
-        Policy.setPolicy(new MyPolicy());
+        System.setProperty("java.security.policy", "file:./security.policy");
 
         //Verbindungsaufbau zum Server
         Registry registry = LocateRegistry.getRegistry("192.168.178.67",1099);
