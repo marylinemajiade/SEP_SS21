@@ -20,7 +20,9 @@ public class RMIServerDriver {
                 return (new AllPermission()).newPermissionCollection();
             }
         }
+        System.setProperty("java.security.policy", "file:./security.policy");
         Policy.setPolicy(new MyPolicy());
+
 
        try {
            //RMIServer-Objekt exportieren
