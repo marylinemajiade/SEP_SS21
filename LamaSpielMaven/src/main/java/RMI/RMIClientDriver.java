@@ -25,7 +25,8 @@ public class RMIClientDriver {
         Policy.setPolicy(new MyPolicy());
 
         //Verbindungsaufbau zum Server
-        RMIServerIF rmiserver = (RMIServerIF) Naming.lookup("rmi://LAPTOP-AM7GPH86:1099/BK");
+        Registry registry = LocateRegistry.getRegistry("LAPTOP-AM7GPH86",1099);
+        RMIServerIF rmiserver = (RMIServerIF) registry.lookup("LamaServer");
 
 
     }

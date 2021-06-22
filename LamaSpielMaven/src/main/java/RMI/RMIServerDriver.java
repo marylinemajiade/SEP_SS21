@@ -29,7 +29,7 @@ public class RMIServerDriver {
 
            //Registry erstellen und Dienste exportieren
            Registry registry = LocateRegistry.createRegistry(1099);
-           Naming.rebind("rmi://LAPTOP-AM7GPH86:1099/BK", stub1);
+           registry.bind("LamaServer", stub1);
        } catch (Exception e){
            System.out.println ("RMIServer exception: ");
            e.printStackTrace();
