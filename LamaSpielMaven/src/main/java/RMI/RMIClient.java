@@ -27,6 +27,8 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
         this.benutzername = benutzername;
     }
 
+
+
     @Override
     public void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException {
 

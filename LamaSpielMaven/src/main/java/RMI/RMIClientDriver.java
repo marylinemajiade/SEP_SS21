@@ -24,8 +24,10 @@ public class RMIClientDriver {
         }
         System.setProperty("java.security.policy", "file:./security.policy");
 
+
+
         //Verbindungsaufbau zum Server
-        Registry registry = LocateRegistry.getRegistry("192.168.178.67",1099);
+        Registry registry = LocateRegistry.getRegistry("131.246.228.177",1099);
         RMIServerIF rmiserver = (RMIServerIF) registry.lookup("LamaServer");
 
 
