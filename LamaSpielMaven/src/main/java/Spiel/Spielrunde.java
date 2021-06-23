@@ -15,7 +15,7 @@ import fachlicheExceptions.*;
 
 public class Spielrunde extends Chipstapel {
 
-    ArrayList<String> spielerInRunde;
+    public ArrayList<String> spielerInRunde = new ArrayList<>();
     private int spielraumId;
     private HashMap<String,ArrayList<Integer>> handkarten = new HashMap<>();
     private Stack<Integer> ablagestapel = new Stack<>();
@@ -38,7 +38,6 @@ public class Spielrunde extends Chipstapel {
     public Spielrunde(int Id, Lobby lobby){
         this.lobby = lobby;
         this.spielraumId = Id;
-        this.spielerInRunde = lobby.getSpieler(Id);
     }
 
     public int getRaumId(){
@@ -163,7 +162,9 @@ public class Spielrunde extends Chipstapel {
      * Die Methode dient zum Starten des Spiels
      * @throws spielLaeuftBereitsException
      */
+
     public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
+        this.spielerInRunde = lobby.getSpieler(getRaumId());
         // Spielerreihenfolge
         spielReihenfolge.addAll(spielerInRunde);
         //Spielkarten mischen
@@ -253,9 +254,8 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerBenutzernameException
      */
     public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException {
+        lobby.spielraumVerlassen(benutzername, getRaumId());
         spielerInRunde.remove(benutzername);
-        lobby.getSpielerInSpielrunde().get(spielraumId).remove(benutzername);
-        lobby.getSpielerInSpielrunde().get(0).add(benutzername);
     }
 
     private void kartenAusteilen(){
