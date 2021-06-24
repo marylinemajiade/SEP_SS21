@@ -49,7 +49,7 @@ public class SpielrundeTest{
 
 
     @Test
-    void karteAblegen() throws ungueltigerBenutzernameException, stapelLeerException {
+    void karteAblegen() throws ungueltigerBenutzernameException, stapelLeerException, ungueltigerSpielzugException {
 
 
         ablagestapel = spielrunde.getAblagestapel();
@@ -78,7 +78,7 @@ public class SpielrundeTest{
         assertEquals(5, ablagestapel.peek());
         try{
             spielrunde.karteAblegen(benutzername, 6);
-        } catch (stapelLeerException ignored){}
+        } catch (ungueltigerSpielzugException ignored){}
     }
 
 
@@ -191,7 +191,7 @@ public class SpielrundeTest{
     }
 
     @Test
-    void getHandkarten() throws ungueltigerBenutzernameException, stapelLeerException, ungueltigeKarteException {
+    void getHandkarten() throws ungueltigerBenutzernameException, stapelLeerException, ungueltigeKarteException, ungueltigerSpielzugException {
 
 
         assertTrue(handkarten.isEmpty());
@@ -214,7 +214,7 @@ public class SpielrundeTest{
     }
 
     @Test
-    void getAblagestapel() throws stapelLeerException {
+    void getAblagestapel() throws stapelLeerException, ungueltigerSpielzugException {
 
         ablagestapel = spielrunde.getAblagestapel();
         assertTrue(ablagestapel.empty());
