@@ -10,25 +10,9 @@ import java.util.*;
 public class Lobby{
 
     private ArrayList<Integer> spielraum_Ids = new ArrayList<>();
-    ArrayList<Spielrunde> spielrunden = new ArrayList<>();
-    HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<>();
+    public ArrayList<Spielrunde> spielrunden = new ArrayList<>();
+    private HashMap<Integer,ArrayList<String>> spielerInSpielrunde = new HashMap<Integer,ArrayList<String>>();
 
-    public void setSpielraum_Ids(ArrayList<Integer> spielraum_Ids) {
-        this.spielraum_Ids = spielraum_Ids;
-    }
-
-
-    public void setSpielrunden(ArrayList<Spielrunde> spielrunden) {
-        this.spielrunden = spielrunden;
-    }
-
-    public HashMap<Integer, ArrayList<String>> getSpielerInSpielrunde() {
-        return spielerInSpielrunde;
-    }
-
-    public void setSpielerInSpielrunde(HashMap<Integer, ArrayList<String>> spielerInSpielrunde) {
-        this.spielerInSpielrunde = spielerInSpielrunde;
-    }
 
     /**
      * Die Methode gibt die Liste aller Spielraum IDs zurück
@@ -36,9 +20,9 @@ public class Lobby{
      */
 
     public ArrayList<Integer> getSpielraum_Ids(){
-
         return spielraum_Ids;
     }
+
 
     /**
      * Die Methode fügt den Spieler mit dem übegebenen Benutzernamen dem Spielraum mit der ID spielraumID hinzu
@@ -47,7 +31,8 @@ public class Lobby{
      */
     public void spielraumBeitreten(String benutzername, int spielraumId){
         spielerInSpielrunde.get(spielraumId).add(benutzername);
-
+        spielerInSpielrunde.get(0).remove(benutzername);
+        spielrunden.get(spielraumId).spielerInRunde.add(benutzername);
     }
 
 
@@ -70,8 +55,8 @@ public class Lobby{
      */
 
     public void spielraumLoeschen(int spielraumID) {
-        spielraum_Ids.remove(Integer.valueOf(spielraumID));
-        spielrunden.remove(spielraumID-1);
+        spielrunden.remove(spielraumID);
+        spielraum_Ids.remove(spielraumID);
     }
 
 
@@ -81,11 +66,10 @@ public class Lobby{
      */
 
     public void spielraumHinzufuegen(int spielraumID) {
-
         Spielrunde spielrunde = new Spielrunde(spielraumID, this);
         spielraum_Ids.add(spielraumID);
         spielrunden.add(spielrunde);
-        spielerInSpielrunde.put(spielraumID, new ArrayList<>());
+        spielerInSpielrunde.put(spielraumID, new ArrayList<String>());
     }
 
     /**
@@ -98,5 +82,3 @@ public class Lobby{
     }
 
 }
-
-
