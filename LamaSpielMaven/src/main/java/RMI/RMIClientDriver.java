@@ -27,9 +27,8 @@ public class RMIClientDriver {
 
 
         //Verbindungsaufbau zum Server
-        Registry registry = LocateRegistry.getRegistry("131.246.228.177",1099);
+        Registry registry = LocateRegistry.getRegistry("localhost",1099);
         RMIServerIF rmiserver = (RMIServerIF) registry.lookup("LamaServer");
-
 
     }
 }
