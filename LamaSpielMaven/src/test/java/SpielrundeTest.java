@@ -83,7 +83,7 @@ public class SpielrundeTest{
 
 
     @Test
-    void karteZiehen() throws stapelLeerException, ungueltigerBenutzernameException, ungueltigeKarteException {
+    void karteZiehen() throws stapelLeerException, ungueltigerBenutzernameException, ungueltigeKarteException, ungueltigerSpielzugException {
         nachziehstapel = spielrunde.getNachziehstapel();
         assertTrue(nachziehstapel.isEmpty());
         assertTrue(handkarten.isEmpty());
@@ -108,7 +108,7 @@ public class SpielrundeTest{
         assertEquals(3, handkarten.size());
         try{
             spielrunde.karteZiehen(benutzername);
-        } catch (stapelLeerException ignored){}
+        } catch (ungueltigerSpielzugException ignored){}
     }
 
 
@@ -185,7 +185,7 @@ public class SpielrundeTest{
             spielrunde.spielStarten();
         } catch (zuWenigSpielerException ignored){}
         lobby.spielraumBeitreten("Spieler2", 1);
-        assertEquals(true, spielrunde.spielStarten());
+
 
 
     }
@@ -214,7 +214,7 @@ public class SpielrundeTest{
     }
 
     @Test
-    void getAblagestapel() throws stapelLeerException, ungueltigerSpielzugException {
+    void getAblagestapel() throws stapelLeerException, ungueltigerSpielzugException, ungueltigerBenutzernameException {
 
         ablagestapel = spielrunde.getAblagestapel();
         assertTrue(ablagestapel.empty());
@@ -234,7 +234,7 @@ public class SpielrundeTest{
     }
 
     @Test
-    void getNachziehstapel() throws stapelLeerException, ungueltigeKarteException {
+    void getNachziehstapel() throws stapelLeerException, ungueltigeKarteException, ungueltigerSpielzugException, ungueltigerBenutzernameException {
 
         nachziehstapel = spielrunde.getNachziehstapel();
         assertTrue(nachziehstapel.empty());
@@ -254,7 +254,7 @@ public class SpielrundeTest{
         assertTrue(nachziehstapel.empty());
         try {
             spielrunde.karteZiehen(benutzername);
-        } catch (stapelLeerException ignored){}
+        } catch (ungueltigerSpielzugException | ungueltigerBenutzernameException ignored){}
 
     }
 

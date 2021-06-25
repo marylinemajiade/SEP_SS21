@@ -1,263 +1,197 @@
 package Spiel;
 
 import java.util.*;
-
 import SpielLobby.Lobby;
 import fachlicheExceptions.*;
 
-
-
 /**
- * Die Klasse verwaltet die Spielrunde mit den Funktionalitäten des Spielers in Bezug auf Karten/Chips.
+ * Die Klasse verwaltet ein LAMA-Spiel, bietet Getter-Methoden für alle im Spiel benötigten Ressourcen (Karten, Chips)
+ * und bietet Methoden um alle Spielzüge gemäß des LAMA-Regelwerks durchzuführen
  *
- * @author Catharina Helten
+ * @author Catharina Helten und Nick Jochum
  */
 
 public class Spielrunde extends Chipstapel {
 
+    //Attribute
     public ArrayList<String> spielerInRunde = new ArrayList<>();
-    private int spielraumId;
-    private HashMap<String,ArrayList<Integer>> handkarten = new HashMap<>();
-    private Stack<Integer> ablagestapel = new Stack<>();
-    private Stack<Integer> nachziehstapel = new Stack<>();
-    private HashSet<Integer> spielkarten = new HashSet<>();
-    private Chipstapel chipstapel = new Chipstapel();
-    private Stack<String> spielReihenfolge = new Stack<>();
-    int aktuellerPunktestand = 0;
-    String letzterSpieler;
-    int Runde = 0;
-    Lobby lobby;
+    private final int spielraumId;
+    private final HashMap<String,ArrayList<Integer>> handkartenSpieler = new HashMap<>();
+    private final Stack<Integer> ablagestapel = new Stack<>();
+    private final Stack<Integer> nachziehstapel = new Stack<>();
+    private final HashMap<String,Chipstapel> chipstapelSpieler = new HashMap<>();
+    private final HashSet<String> ausgestiegeneSpieler = new HashSet<>();
+    private int amZugIndex=0;
+
+
+    //Konstruktor. Lobby Argument wird nicht mehr verwendet. ID sollte im Sysem global eindeutiger Integerwert != 0 sein
+    public Spielrunde(int id, Lobby lobby){
+        this.spielraumId = id;
+    }
 
 
     /**
-     * Die Methode dient zum Abrufen der Spielraum-ID
-     * @return gibt die ID als Integer zurück
+     * Getter-Methode für SpielraumID
+     * @return Integer != 0 und != null
      */
-
-
-    public Spielrunde(int Id, Lobby lobby){
-        this.lobby = lobby;
-        this.spielraumId = Id;
-    }
-
     public int getRaumId(){
         return spielraumId;
     }
 
 
     /**
-     * Die Methode dient zum Karte ablegen eines Spielers
-     * @param benutzername Benutzername des Spielers, dessen Karte abgelegt werden soll
-     * @param karte Karte, die abgelegt werden soll dargestellt als Integer-Wert
-     * @throws stapelLeerException
+     * Führt den Spielzug "Karte ablegen" gemäß des LAMA-Regelwerks durch
+     * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
+     * @param karte Integer mit Wert 0,1,2,3,4,5 oder 6, repräsentiert die abzulegende Karte
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     * befindet
+     * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
      */
-    public void karteAblegen(String benutzername, int karte) throws stapelLeerException{
-        try {
-            handkarten.get(benutzername).remove(karte);
-            ablagestapel = getAblagestapel();
-            ablagestapel.push(karte);
-        }
-        catch(Exception e){
+    public void karteAblegen(String benutzername, int karte) throws ungueltigerBenutzernameException,
+            ungueltigerSpielzugException{
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "Übergenen Benutzernamen in der Spielrunde");
+        //Teste ob Spielzug gueltig ist
+        
 
-        }
+        //TODO
     }
 
-    /**
-     * Die Methode dient zum Ziehen einer Karte
-     * @param benutzername Benutzername des Spielers, der die Karte zieht
-     * @return gibt die gezogene Karte als Integer-Wert zurück
-     * @throws ungueltigeKarteException
-     * @throws stapelLeerException
-     *
-     */
-    public int karteZiehen(String benutzername) throws ungueltigeKarteException, stapelLeerException{
-        try {
-            nachziehstapel = getNachziehstapel();
-            int karte = nachziehstapel.pop();
-            handkarten.get(benutzername).add(karte);
-            return karte;
-        }
-        catch (Exception e){
 
-        }
+    /**
+     * Führt den Spielzug "Karte ziehen" gemäß des LAMA-Regelwerks durch
+     * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
+     * @return Integer mit Wert zwischne 0 und 6, welcher den Wert der gezogenen Karte darstellt
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     * befindet
+     * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
+     */
+    public int karteZiehen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
+        //TODO
     return 0;
     }
 
 
-
     /**
-     * Die Methode dient zum Aussteigen bei einer Runde
-     * @param benutzername Benutzername des Spielers, der aussteigen möchte
-     * @throws ungueltigerSpielzugException
-     * @throws ungueltigerBenutzernameException
+     * Führt den Spielzug "Austeigen" gemäß des LAMA-Regelwerks durch
+     * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     * befindet
+     * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
      */
-    public boolean aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
-        spielReihenfolge.remove(benutzername);
-        handkarten.get(benutzername).clear();
-        return true;
-    }
-
-
-
-    /**
-     * Die Methode dient zum Tauschen von Chips
-     * @param zehngegeneins stell dar, ob ein Zehnerchip gegen einen Einserchip getauscht wird oder andersrum
-     * @param benutzername Benutzername des Spielers, der die Chips tauschen möchte
-     * @throws ungueltigerBenutzernameException
-     * @throws ungueltigerChipException
-     * @throws stapelLeerException
-     * @throws ungueltigerSpielzugException
-     */
-    public void chipsTauschen(boolean zehngegeneins, String benutzername) throws ungueltigerBenutzernameException, ungueltigerChipException, stapelLeerException, ungueltigerSpielzugException {
-    int white = chipstapel.getWeiss();
-    int black = chipstapel.getSchwarz();
-    try {
-        if (zehngegeneins) {
-            chipstapel.setSchwarz(black - 1);
-            chipstapel.setWeiss(white + 10);
-        } else {
-            chipstapel.setWeiss(white - 10);
-            chipstapel.setSchwarz(black + 1);
-        }
-    } catch(Exception e){
-        }
-
+    public void aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
+        //TODO
     }
 
 
     /**
-     * Die Methode dient zum Abgeben eines Chips
-     * @param zehnerchip stellt dar, ob ein Zehner oder Einserchip abgegeben wird
-     * @param benutzername Benutzername des Spielers, der den Chip abgeben möchte
-     * @throws ungueltigerBenutzernameException
-     * @throws ungueltigerChipException
-     * @throws stapelLeerException
-     * @throws ungueltigerSpielzugException
+     * Führt den Spielzug "Chip tauschen" gemäß des LAMA-Regelwerks durch
+     * @param zehngegeneins Boolean != null. Wenn true, wird ein 10er Chip gegen 10 1er Chips getauscht, wenn false,
+     *                      umgekehrt
+     * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     * befindet
+     * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößtn
      */
-    public void chipAbgeben(boolean zehnerchip, String benutzername) throws ungueltigerBenutzernameException, ungueltigerChipException, stapelLeerException, ungueltigerSpielzugException{
-        chipstapel = getChipstapel(benutzername);
-        int white = chipstapel.getWeiss();
-        int black = chipstapel.getSchwarz();
-        try {
-            if (zehnerchip) {
-                chipstapel.setSchwarz(black - 1);
-            }else
-            chipstapel.setWeiss(white - 1);
-        }
-        catch(Exception e){
-        }
+    public void chipsTauschen(boolean zehngegeneins, String benutzername) throws ungueltigerBenutzernameException,
+            ungueltigerSpielzugException {
+        //TODO
     }
 
 
     /**
-     * Die Methode dient zum Abrufen welcher Spieler an der Reihe ist
-     * @return gibt den Benutzernamen des Spielers zurück
+     * Führt den Spielzug "Chip tauschen" gemäß des LAMA-Regelwerks durch
+     * @param zehnerchip Boolean != null. Wenn true, wird ein 10er Chip abgegeben, wenn false, ein 1er Chip
+     * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     *                                          befindet
+     * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
+     */
+    public void chipAbgeben(boolean zehnerchip, String benutzername) throws ungueltigerBenutzernameException,
+            ungueltigerSpielzugException{
+        //TODO
+    }
+
+
+    /**
+     * Methode dient um abzufragen, welcher Spieler an der Reihe ist
+     * @return Benutzername des Spielers, welcher am Zug ist
      */
     public String anDerReihe(){
-        return spielReihenfolge.pop();
+        //TODO
+        return "TODO";
     }
 
 
     /**
-     * Die Methode dient zum Starten des Spiels
-     * @throws spielLaeuftBereitsException
+     * Die Methode dient zum Starten des Spiels. Es werden alle Karten ausgeteilt
+     * @throws spielLaeuftBereitsException Wenn Spiel bereits gestartet und noch nicht beendet wurde
+     * @throws zuWenigSpielerException Wenn weniger als zwei Spieler sich in der Spielrunde befinden
      */
-
-    public boolean spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
-        this.spielerInRunde = lobby.getSpieler(getRaumId());
-        // Spielerreihenfolge
-        spielReihenfolge.addAll(spielerInRunde);
-        //Spielkarten mischen
-        for (int i = 1; i<=7; i++) {
-            for (int j = 1; j <= 8; j++) {
-                spielkarten.add(i);
-            }
-        }
-
-        //Nachziehstapel
-        for(int karte:spielkarten){
-         nachziehstapel.push(karte);
-        }
-
-        //Handkarten verteilen
-        for(int i = 0; i<6; i++) {
-        for (String name:spielerInRunde){
-                handkarten.get(name).set(i,nachziehstapel.pop());
-            }
-        }
-        //Ablagestapel oberste Karte von Nachziehstapel
-        ablagestapel.push(nachziehstapel.pop());
-
-        //Runde läuft bis einer -40 Punkte hat
-     //  while (aktuellerPunktestand != -40){
-
-     //   letzterSpieler = anDerReihe();
-      // }
-
-        return true;
+    public void spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
+        //TODO
     }
 
 
     /**
-     * Die Methode dient zur Verwaltung des Handkartenstapels
-     * @param benutzername Benutzername des Spielers, dessen Stapel verwaltet wird
-     * @return gibt den Stapel als ungeordnetes HashSet aus Integer-Werten der Karten zurück
-     * @throws stapelLeerException
-     * @throws ungueltigerBenutzernameException
+     * Getter-Methode für die Handkarten eines bestimmten Spielers
+     * @param benutzername Benutzername des Spielers, dessen Handkarten ausgegeben werden sollen
+     * @return ArrayList welche Integer zwischen 0 und 6 enthält
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     *                                          befindet
      */
-    public ArrayList<Integer> getHandkarten(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
-        return handkarten.get(benutzername);
+    public ArrayList<Integer> getHandkarten(String benutzername) throws ungueltigerBenutzernameException{
+        return handkartenSpieler.get(benutzername);
     }
 
 
     /**
-     * Die Methode dient zur Verwaltung des Ablagestapels
-     * @return gibt den Stapel als Stack aus Integer-Werten der Karten zurück
-     * @throws stapelLeerException
+     * Getter-Methode für den Ablagestapel
+     * @return Stack, welcher Integer zwischen 0 und 6 enthält
      */
-
     public Stack<Integer> getAblagestapel() {
         return ablagestapel;
     }
 
 
     /**
-     * Die Methode dient zur Verwaltung des Nachziehstapels
-     * @return gibt den Stapel als Stack aus Integer-Werten der Karten zurück
-     * @throws stapelLeerException
+     * Getter-Methode für den Nachziehstapel
+     * @return Stack, welcher Integer zwischen 0 und 6 enthält
      */
-    public Stack<Integer> getNachziehstapel() throws stapelLeerException{
+    public Stack<Integer> getNachziehstapel() {
         return nachziehstapel;
     }
+
 
     /**
      * Die Methode dient zur Verwaltung des Chipstapels
      * @param benutzername Benutzername des Spielers, dessen Chipstapel verwaltet wird
      * @return gibt den Chipstapel mit der richtigen Anzahl weißer und schwarzer Chips zurück
-     * @throws stapelLeerException
-     * @throws ungueltigerBenutzernameException
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     *                                          befindet
      */
-
-    public Chipstapel getChipstapel(String benutzername) throws stapelLeerException, ungueltigerBenutzernameException{
-        int white = chipstapel.getWeiss();
-        int black = chipstapel.getSchwarz();
-        chipstapel.setWeiss(white);
-        chipstapel.setSchwarz(black);
-        return chipstapel;
+    public Chipstapel getChipstapel(String benutzername) throws ungueltigerBenutzernameException{
+        //TODO
+        return new Chipstapel();
     }
-
 
 
     /**
-     * Die Methode dient zum Verlassen des Spielraumes
-     * @param benutzername Benutzername des Spielers, der verlassen möchte
-     * @throws ungueltigerBenutzernameException
+     * Entfernt den Benutzer mit übergebenen Benutzernamen aus der Spielrunde. Handkarten und Chipstapel werden eben-
+     * falls entfernt.
+     * @param benutzername Benutzername des Benutzer, der entfernt werden soll
+     * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
+     *                                          befindet
      */
     public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException {
-        lobby.spielraumVerlassen(benutzername, getRaumId());
-        spielerInRunde.remove(benutzername);
+        //TODO
     }
 
+
+    /**
+     * Hilfsmethode. Mischt Karten, teilt sie an die Spieler aus und erstellt Ablagestapel und Nachziehstapel gemäß
+     * des LAMA-Regelwerks
+     */
     private void kartenAusteilen(){
         ArrayList<Integer> alleSpielkarten = new ArrayList<>();
         //Erzeuge alle Karten
@@ -286,11 +220,27 @@ public class Spielrunde extends Chipstapel {
             for (int i = 0 ; i < 6; i++){
                 ausgeteilteHandkarten.add(alleSpielkarten.get(indexNaechsteKarte++));
             }
-            handkarten.put(benutzername,ausgeteilteHandkarten);
+            handkartenSpieler.put(benutzername,ausgeteilteHandkarten);
         }
         ablagestapel.push(indexNaechsteKarte++);
         while (indexNaechsteKarte < alleSpielkarten.size()-1){
             nachziehstapel.push(alleSpielkarten.get(indexNaechsteKarte++));
+        }
+    }
+
+
+    private void spielzugAbschliessen(){
+        //Wenn Spielrunde abgeschlossen wurde
+        if(spielerInRunde.size() == ausgestiegeneSpieler.size() ||
+                handkartenSpieler.get(spielerInRunde.get(amZugIndex)).size() == 0){
+            //TODO Minuspunkte verteilen, nächste Runde starten
+        }else{
+            //nächster Spieler an der Reihe ermitteln
+            amZugIndex = amZugIndex + 1 % spielerInRunde.size();
+            while(ausgestiegeneSpieler.contains(spielerInRunde.get(amZugIndex))){
+                amZugIndex = amZugIndex + 1 % spielerInRunde.size();
+            }
+
         }
     }
 
