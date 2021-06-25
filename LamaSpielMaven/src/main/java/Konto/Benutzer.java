@@ -13,6 +13,9 @@ public class Benutzer implements Serializable {
 
     private String benutzername;
     private String passwort;
+    private int score;
+
+
 
     public Benutzer() {
     }
@@ -41,6 +44,22 @@ public class Benutzer implements Serializable {
 
     public String getPasswort() {
         return passwort;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
+     * Check if a Player is a Bot.
+     * @return false because it is a registered Player.
+     */
+    public boolean isBot(){
+        return false;
     }
 
     @Override

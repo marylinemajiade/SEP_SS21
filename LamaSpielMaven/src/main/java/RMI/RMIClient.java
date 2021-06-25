@@ -1,12 +1,15 @@
 package RMI;
 
 import Highscore.Bestenliste;
+import Konto.Benutzer;
+import Konto.BenutzerVerwalten;
 import Spiel.Spielrunde;
 import SpielLobby.Lobby;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashMap;
 
 import static GUI.Chat.outputArea;
 
@@ -19,7 +22,9 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
     //Attribute
     public RMIServerIF rmiserver;
     String benutzername;
-
+    BenutzerVerwalten benutzerVerwalten = new BenutzerVerwalten();
+    Bestenliste bestenliste = new Bestenliste();
+    HashMap<String,Integer> bestenListe ;
 
     public RMIClient(RMIServerIF rmiserver,String benutzername) throws RemoteException {
         super();
@@ -67,6 +72,12 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
     @Override
     public void akutalisiereBestenliste(Bestenliste bestenliste) throws RemoteException {
 
+        bestenliste.getBestenliste().clear();
+        for (Benutzer benutzer: benutzerVerwalten.returnAllPlayer()
+             ) {
+            bestenListe.put(benutzer.getBenutzername(), benutzer.getScore());
+        }
+        bestenliste.setBestenliste(bestenListe);
     }
 
     /**
@@ -93,6 +104,8 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
      */
     @Override
     public boolean isBot() throws RemoteException {
-        return false;
+       if(benutzername.startsWith("bot"))
+           return true;
+       else return false;
     }
 }

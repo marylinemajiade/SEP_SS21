@@ -22,8 +22,8 @@ class LobbyTest {
 
     @BeforeEach
     void setup(){ //überschreiben der Klassenvariablen mit den  Testvariablen
-        lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
-        lobby.setSpielrunden(spielraums);
+        //lobby.setSpielerInSpielrunde(spielerInSpielrundeTest);
+        //lobby.setSpielrunden(spielraums);
     }
 
     @Test

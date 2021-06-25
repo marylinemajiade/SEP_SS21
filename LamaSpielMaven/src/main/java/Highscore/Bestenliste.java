@@ -72,7 +72,18 @@ public class Bestenliste {
         } catch (NullPointerException e){
 
         }
+    }
 
+    /**
+     * Getter und Setter der Bestenliste
+     * @author Hamza Bariane
+     */
+    public HashMap<String, Integer> getBestenliste() {
+        return bestenliste;
+    }
+
+    public void setBestenliste(HashMap<String, Integer> bestenliste) {
+        this.bestenliste = bestenliste;
     }
 
 }
