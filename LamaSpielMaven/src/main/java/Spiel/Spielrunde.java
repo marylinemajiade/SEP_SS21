@@ -16,12 +16,14 @@ public class Spielrunde extends Chipstapel {
     //Attribute
     public ArrayList<String> spielerInRunde = new ArrayList<>();
     private final int spielraumId;
-    private final HashMap<String,ArrayList<Integer>> handkartenSpieler = new HashMap<>();
-    private final Stack<Integer> ablagestapel = new Stack<>();
-    private final Stack<Integer> nachziehstapel = new Stack<>();
-    private final HashMap<String,Chipstapel> chipstapelSpieler = new HashMap<>();
-    private final HashSet<String> ausgestiegeneSpieler = new HashSet<>();
+    private HashMap<String,ArrayList<Integer>> handkartenSpieler = new HashMap<>();
+    private Stack<Integer> ablagestapel = new Stack<>();
+    private Stack<Integer> nachziehstapel = new Stack<>();
+    private HashMap<String,Chipstapel> chipstapelSpieler = new HashMap<>();
+    private HashSet<String> ausgestiegeneSpieler = new HashSet<>();
     private int amZugIndex=0;
+    private int beginntNaechstenDurchgang = 1;
+    private boolean spiellaeuft = false;
 
 
     //Konstruktor. Lobby Argument wird nicht mehr verwendet. ID sollte im Sysem global eindeutiger Integerwert != 0 sein
@@ -50,11 +52,18 @@ public class Spielrunde extends Chipstapel {
     public void karteAblegen(String benutzername, int karte) throws ungueltigerBenutzernameException,
             ungueltigerSpielzugException{
         if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
-                "Übergenen Benutzernamen in der Spielrunde");
-        //Teste ob Spielzug gueltig ist
-        
-
-        //TODO
+                "übergenen Benutzernamen in der Spielrunde");
+        //Teste ob Spielzug ungueltig ist
+        if (!spielerInRunde.get(amZugIndex).equals(benutzername) ||
+                spielerInRunde.size()-ausgestiegeneSpieler.size() < 2 ||
+                (ablagestapel.peek() != karte && ablagestapel.peek() + 1 % 7 != karte ) ||
+                !handkartenSpieler.get(benutzername).contains(karte) || !spiellaeuft){
+            throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
+        }
+        //Führe Spielzug durch
+        handkartenSpieler.get(benutzername).remove(karte);
+        ablagestapel.push(karte);
+        spielzugAbschliessen();
     }
 
 
@@ -67,8 +76,17 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
      */
     public int karteZiehen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
-        //TODO
-    return 0;
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        //Teste ob Spielzug ungueltig ist
+        if(!spielerInRunde.get(amZugIndex).equals(benutzername) || nachziehstapel.empty() || !spiellaeuft){
+            throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
+        }
+        //Führe Spielzug durch
+        int karte = nachziehstapel.pop();
+        handkartenSpieler.get(benutzername).add(karte);
+        spielzugAbschliessen();
+        return karte;
     }
 
 
@@ -80,22 +98,45 @@ public class Spielrunde extends Chipstapel {
      * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößt
      */
     public void aussteigen(String benutzername) throws ungueltigerSpielzugException, ungueltigerBenutzernameException{
-        //TODO
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        //Teste ob Spielzug ungueltig ist
+        if(!spielerInRunde.get(amZugIndex).equals(benutzername) || !spiellaeuft){
+            throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
+        }
+        //Führe Spielzug aus
+        ausgestiegeneSpieler.add(benutzername);
+        spielzugAbschliessen();
     }
 
 
     /**
      * Führt den Spielzug "Chip tauschen" gemäß des LAMA-Regelwerks durch
-     * @param zehngegeneins Boolean != null. Wenn true, wird ein 10er Chip gegen 10 1er Chips getauscht, wenn false,
+     * @param zehnergegeneiner Boolean != null. Wenn true, wird ein 10er Chip gegen 10 1er Chips getauscht, wenn false,
      *                      umgekehrt
      * @param benutzername Benutzername des Spielers, der den Spielzug durchführt
      * @throws ungueltigerBenutzernameException Wenn kein Spieler mit Benutzernamen benutzername sich in der Spielrunde
      * befindet
      * @throws ungueltigerSpielzugException Wenn der Spielzug gegen die LAMA-Regeln verstößtn
      */
-    public void chipsTauschen(boolean zehngegeneins, String benutzername) throws ungueltigerBenutzernameException,
+    public void chipsTauschen(boolean zehnergegeneiner, String benutzername) throws ungueltigerBenutzernameException,
             ungueltigerSpielzugException {
-        //TODO
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        Chipstapel chipstapel = chipstapelSpieler.get(benutzername);
+        //Teste ob Spielzug gueltig ist
+        if((chipstapel.getWeiss() < 10 && !zehnergegeneiner) || (chipstapel.getSchwarz()<1 && zehnergegeneiner
+                || !spiellaeuft)){
+            throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
+        }
+        //Führe Tausch durch
+        if(zehnergegeneiner){
+            chipstapel.setSchwarz(chipstapel.getSchwarz() -1);
+            chipstapel.setWeiss(chipstapel.getWeiss() + 10);
+        }else{
+            chipstapel.setSchwarz(chipstapel.getSchwarz() +1);
+            chipstapel.setWeiss(chipstapel.getWeiss() -10);
+        }
     }
 
 
@@ -109,7 +150,20 @@ public class Spielrunde extends Chipstapel {
      */
     public void chipAbgeben(boolean zehnerchip, String benutzername) throws ungueltigerBenutzernameException,
             ungueltigerSpielzugException{
-        //TODO
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        //Teste ob Spielzug gueltig ist
+        Chipstapel chipstapel = chipstapelSpieler.get(benutzername);
+        if((zehnerchip && chipstapel.getSchwarz() < 1) ||(!zehnerchip && chipstapel.getWeiss() < 1) || !spiellaeuft
+        || !handkartenSpieler.get(benutzername).isEmpty()) {
+            throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
+        }
+        //Gebe Chip ab
+        if(zehnerchip) chipstapel.setSchwarz(chipstapel.getSchwarz()-1);
+        else chipstapel.setWeiss(chipstapel.getWeiss()-1);
+        //Spieldurchgang wird abgeschlossen
+        spieldurchgangAbschliessen();
+
     }
 
 
@@ -118,18 +172,35 @@ public class Spielrunde extends Chipstapel {
      * @return Benutzername des Spielers, welcher am Zug ist
      */
     public String anDerReihe(){
-        //TODO
-        return "TODO";
+        return spielerInRunde.get(amZugIndex);
     }
 
 
     /**
-     * Die Methode dient zum Starten des Spiels. Es werden alle Karten ausgeteilt
+     * Die Methode dient zum Starten des Spiels. Es werden alle Karten ausgeteilt und die Chipstapel initialisiert
      * @throws spielLaeuftBereitsException Wenn Spiel bereits gestartet und noch nicht beendet wurde
      * @throws zuWenigSpielerException Wenn weniger als zwei Spieler sich in der Spielrunde befinden
      */
     public void spielStarten() throws spielLaeuftBereitsException, zuWenigSpielerException{
-        //TODO
+        if (spielerInRunde.size() < 2) throw new zuWenigSpielerException("Nicht genügend Spieler in Spielrunde");
+        if(spiellaeuft) throw new spielLaeuftBereitsException("Spiel läuft bereits");
+        spiellaeuft= true;
+        //Setze Attribute zurück
+        handkartenSpieler = new HashMap<>();
+        ablagestapel = new Stack<>();
+        nachziehstapel = new Stack<>();
+        chipstapelSpieler = new HashMap<>();
+        ausgestiegeneSpieler = new HashSet<>();
+        amZugIndex=0;
+        beginntNaechstenDurchgang = 0;
+        //Initialisiere Chipstapel
+        for (String benutzername :spielerInRunde){
+            Chipstapel chipstapel = new Chipstapel();
+            chipstapel.setSchwarz(0);
+            chipstapel.setWeiss(0);
+            chipstapelSpieler.put(benutzername,chipstapel);
+        }
+        kartenAusteilen();
     }
 
 
@@ -141,6 +212,8 @@ public class Spielrunde extends Chipstapel {
      *                                          befindet
      */
     public ArrayList<Integer> getHandkarten(String benutzername) throws ungueltigerBenutzernameException{
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
         return handkartenSpieler.get(benutzername);
     }
 
@@ -171,8 +244,9 @@ public class Spielrunde extends Chipstapel {
      *                                          befindet
      */
     public Chipstapel getChipstapel(String benutzername) throws ungueltigerBenutzernameException{
-        //TODO
-        return new Chipstapel();
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        return chipstapelSpieler.get(benutzername);
     }
 
 
@@ -184,7 +258,13 @@ public class Spielrunde extends Chipstapel {
      *                                          befindet
      */
     public void spielraumVerlassen(String benutzername) throws ungueltigerBenutzernameException {
-        //TODO
+        if(!spielerInRunde.contains(benutzername)) throw new ungueltigerBenutzernameException("Kein Spieler mit " +
+                "übergenen Benutzernamen in der Spielrunde");
+        boolean spielerIstAmZug = (benutzername.equals(spielerInRunde.get(amZugIndex)));
+        handkartenSpieler.remove(benutzername);
+        chipstapelSpieler.remove(benutzername);
+        spielerInRunde.remove(benutzername);
+        if (spielerIstAmZug) spielzugAbschliessen();
     }
 
 
@@ -197,7 +277,7 @@ public class Spielrunde extends Chipstapel {
         //Erzeuge alle Karten
         for(int i = 0;i<8;i++){
             alleSpielkarten.add(0);             //0 repräsentiert eine Lama-Karte
-            alleSpielkarten.add(1);             //1-6 repräsentiert jeweiligen Kartenwert
+            alleSpielkarten.add(1);             //1-6 repräsentiert den jeweiligen Kartenwert
             alleSpielkarten.add(2);
             alleSpielkarten.add(3);
             alleSpielkarten.add(4);
@@ -228,19 +308,52 @@ public class Spielrunde extends Chipstapel {
         }
     }
 
-
+    /**
+     * Ermittelt nächsten Spieler, welcher am Zug ist und schließt gegebenenfalls den Spieldurchgang ab.
+     */
     private void spielzugAbschliessen(){
         //Wenn Spielrunde abgeschlossen wurde
         if(spielerInRunde.size() == ausgestiegeneSpieler.size() ||
                 handkartenSpieler.get(spielerInRunde.get(amZugIndex)).size() == 0){
-            //TODO Minuspunkte verteilen, nächste Runde starten
+            //Wenn kein Chip abgegeben werden muss, starte nächsten Durchgang
+            Chipstapel chipstapel = chipstapelSpieler.get(spielerInRunde.get(amZugIndex));
+            if(handkartenSpieler.get(spielerInRunde.get(amZugIndex)).size() != 0
+                    || chipstapel.getWeiss() + chipstapel.getSchwarz() == 0){
+                spieldurchgangAbschliessen();
+            } //Andernfalls wird Spieldurchgang abgeschlossen, nachdem entsprechender Spieler einen Chip abgegeben hat
         }else{
             //nächster Spieler an der Reihe ermitteln
             amZugIndex = amZugIndex + 1 % spielerInRunde.size();
             while(ausgestiegeneSpieler.contains(spielerInRunde.get(amZugIndex))){
                 amZugIndex = amZugIndex + 1 % spielerInRunde.size();
             }
+        }
+    }
 
+    /**
+     * Hilfsmethode. Minuspuktechips werden verteilt und gegebenenfalls wird ein neuer Spieldurchgang gestartet und
+     * Karten ausgeteilt. Wird am Ende eines Spieldurchgangs aufgerufen, nachdem ggf. ein Chip abgegeben wurde
+     */
+    private void spieldurchgangAbschliessen(){
+        boolean spielZuEnde = false;
+        //Berechne Minuspunkte aller Spieler und füge sie den jeweiligen Chipstapel hinzu
+        for(String benutzername: spielerInRunde){
+            Chipstapel chipstapel = chipstapelSpieler.get(benutzername);
+            ArrayList<Integer> handkarten = handkartenSpieler.get(benutzername);
+            int minuspunkte = 0;
+            for(Integer handkarte: handkarten){
+                if(handkarte == 0) minuspunkte += 10;
+                else minuspunkte +=handkarte;
+            }
+            chipstapel.setSchwarz(chipstapel.getSchwarz() + minuspunkte / 10);
+            chipstapel.setWeiss(chipstapel.getWeiss()+ minuspunkte % 10);
+            if(chipstapel.getPunkte() >= 40) spielZuEnde = true;
+        }
+        if(spielZuEnde) spiellaeuft = false;
+        else {
+            kartenAusteilen();
+            amZugIndex= beginntNaechstenDurchgang;
+            beginntNaechstenDurchgang = beginntNaechstenDurchgang +1 % spielerInRunde.size();
         }
     }
 
