@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 /*Remote Interface für RMI.RMIClient. Für die Dokumentation der Methoden siehe RMI.RMIClient*/
 public interface RMIClientIF extends Remote {
 
-    void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException;
+    void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException, ungueltigerBenutzernameException;
 
     void uebertrageChatnachricht(String benutzername, String nachricht) throws RemoteException, ungueltigerBenutzernameException, ZustellungNachrichtNichtMoeglichException ;
 
@@ -22,6 +22,6 @@ public interface RMIClientIF extends Remote {
 
     void setSpielraum(Spielrunde spielrunde) throws RemoteException;
 
-    boolean isBot() throws RemoteException;
+    boolean isBot() throws RemoteException, ungueltigerBenutzernameException;
 
 }

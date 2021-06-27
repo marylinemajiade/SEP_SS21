@@ -13,6 +13,7 @@ import fachlicheExceptions.*;
 
 public class Spielrunde extends Chipstapel {
 
+
     //Attribute
     public ArrayList<String> spielerInRunde = new ArrayList<>();
     private final int spielraumId;
@@ -21,6 +22,15 @@ public class Spielrunde extends Chipstapel {
     private Stack<Integer> nachziehstapel = new Stack<>();
     private HashMap<String,Chipstapel> chipstapelSpieler = new HashMap<>();
     private HashSet<String> ausgestiegeneSpieler = new HashSet<>();
+
+    public int getAmZugIndex() {
+        return amZugIndex;
+    }
+
+    public void setAmZugIndex(int amZugIndex) {
+        this.amZugIndex = amZugIndex;
+    }
+
     private int amZugIndex=0;
     private int beginntNaechstenDurchgang = 1;
     private boolean spiellaeuft = false;
@@ -233,6 +243,15 @@ public class Spielrunde extends Chipstapel {
      */
     public Stack<Integer> getNachziehstapel() {
         return nachziehstapel;
+    }
+
+
+    /**
+     * Getter-Methode für den handkartenSpieler
+     * @return HashMap, welcher die Handkarten von jedem Spieler enthält
+     */
+    public HashMap<String, ArrayList<Integer>> getHandkartenSpieler() {
+        return handkartenSpieler;
     }
 
 

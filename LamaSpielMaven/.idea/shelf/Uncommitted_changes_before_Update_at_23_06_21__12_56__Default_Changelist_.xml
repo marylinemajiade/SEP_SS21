@@ -1,0 +1,29 @@
+<changelist name="Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]" date="1624445765578" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 23.06.21, 12:56 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/Bot/BotEinfach.class" />
+    <option name="AFTER_PATH" value="target/classes/Bot/BotEinfach.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/BotEinfach.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/RMIServerTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/RMIServerTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/RMIServerTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/LobbyTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/LobbyTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/LobbyTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/SpielLobby/Lobby.class" />
+    <option name="AFTER_PATH" value="target/classes/SpielLobby/Lobby.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/Lobby.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/ChipstapelTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/ChipstapelTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_06_21,_12_56_[Default_Changelist]/ChipstapelTest.class" />
+  </binary>
+</changelist>

@@ -29,15 +29,31 @@ public class BotEinfach implements RMIClientIF {
      * @param spielrunde Spielraums
      */
     @Override
-    public void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException {
+    public void aktualisiereSpielstatus(Spielrunde spielrunde) throws RemoteException, ungueltigerBenutzernameException {
+        int k = spielrunde.getAblagestapel().peek();
         try {
             if(spielrunde.anDerReihe().equals(getBenutzername())){ //prüft ob Bot an der Reihe ist
 
                 if(spielrunde.getHandkarten(getBenutzername()).size()<1){ //falls ja, prüft Anzahl der Handkarten
-                    spielrunde.aussteigen(getBenutzername());
+                    server.aussteigen(getBenutzername(), spielrunde.getRaumId());
                     spielrunde.getPunkte();
                 }
-                spielrunde.karteAblegen(getBenutzername(),spielrunde.getHandkarten(getBenutzername()).get(0));
+                else{
+                    for(int i=0; i<=spielrunde.getHandkarten(getBenutzername()).size(); i++){
+                        int handkarte = spielrunde.getHandkarten(getBenutzername()).get(i);
+                        int indexOfHandkarte = spielrunde.getHandkarten(getBenutzername()).indexOf(handkarte);
+                        if(k==handkarte || k+1==handkarte || k==0){ //Bedingungen fürs Ablegen einer Handkarte
+                            server.karteAblegen(handkarte, getBenutzername(), spielrunde.getRaumId());
+                            spielrunde.getHandkarten(getBenutzername()).remove(indexOfHandkarte); //remove abgelegte Karte von den Handkarten
+                            spielrunde.anDerReihe();
+
+                        }
+                        else {
+
+                        }
+                    }
+
+                }
             }
         }
 
@@ -112,7 +128,7 @@ public class BotEinfach implements RMIClientIF {
      * @return boolean
      */
     @Override
-    public boolean isBot() throws RemoteException {
-        return true;
+    public boolean isBot() throws RemoteException, ungueltigerBenutzernameException {
+        return getBenutzername().contains("Bot");
     }
 }
