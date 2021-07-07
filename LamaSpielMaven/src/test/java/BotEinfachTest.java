@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * @author Maryline Majiade
+ * @author
  */
 
 
@@ -67,7 +67,7 @@ class BotEinfachTest {
     }
 
     @Test
-    void isBot()throws RemoteException {
+    void isBot() throws RemoteException, ungueltigerBenutzernameException {
         try {
             botEinfach.isBot();
         }catch(Exception ignored){}

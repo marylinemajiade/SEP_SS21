@@ -1,5 +1,6 @@
 package Bot;
 
+import GUI.Chat;
 import Highscore.Bestenliste;
 import RMI.RMIClientIF;
 import RMI.RMIServerIF;
@@ -89,7 +90,10 @@ public class BotSchwer implements RMIClientIF {
         }
     }
 
-
+    /**
+     * Die Methode wechsele der Spieler, der am Zug ist
+     * @param spielrunde Spielrunde
+     */
     private void spielerWechsel(Spielrunde spielrunde) {
         int updateZugIndex = spielrunde.getAmZugIndex();
         if(updateZugIndex>= spielrunde.spielerInRunde.size()) {
@@ -134,14 +138,14 @@ public class BotSchwer implements RMIClientIF {
     }
 
     /**
-     * Die Methode aktualisiert den Spielraum in der Lobby wenn ein Bot beitritt
+     * Die Methode aktualisiert den Spielraum in der Lobby wenn ein Bot einen Spielraum beitritt
      * @param lobby Lobby
      */
     @Override
     public void aktualisiereSpielraeume(Lobby lobby) throws RemoteException {
         try{
 
-            lobby.spielraumBeitreten(getBenutzername(), lobby.getSpielraum_Ids().get(0));
+            server.spielraumBeitreten(getBenutzername(), lobby.getSpielraum_Ids().get(0));
 
         }
 

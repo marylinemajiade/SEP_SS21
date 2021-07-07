@@ -286,7 +286,7 @@ public class RMIServer implements RMIServerIF, Serializable {
      * @throws spielLaeuftBereitsException wenn Spiel zuvor gestartet und noch nicht beendet wurde
      */
     @Override
-    public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException, RemoteException {
+    public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException, RemoteException, ungueltigerBenutzernameException {
         if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }

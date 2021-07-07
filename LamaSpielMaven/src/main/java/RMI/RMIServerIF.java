@@ -33,7 +33,7 @@ public interface RMIServerIF extends Remote {
                 throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
 
     void spielStarten(int spielraumID)
-            throws RemoteException, ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException;
+            throws RemoteException, ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException, ungueltigerBenutzernameException;
 
     void chipsTauschen(boolean einsergegenzehner, int spielraumID, String benutzername)
             throws RemoteException, ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException, ungueltigerChipException;
