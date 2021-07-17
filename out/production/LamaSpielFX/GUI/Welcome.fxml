@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:controller="GUI.WelcomeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="530.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <children>
+      <Button onAction="#erstelleSpielraum" layoutX="365.0" layoutY="44.0" mnemonicParsing="false" text="Spielraum erstellen" />
+      <Button onAction="#loggeBenutzerAus" layoutX="365.0" layoutY="95.0" mnemonicParsing="false" text="Ausloggen" />
+      <Button onAction="#zeigeBestenlisteAn" layoutX="365.0" layoutY="154.0" mnemonicParsing="false" text="Bestenliste anzeigen" />
+
+      <Label layoutX="110.0" layoutY="14.0" text="Spielräume">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+
+      <ListView fx:id="spielrauemeList" layoutX="26.0" layoutY="44.0" orientation="HORIZONTAL" prefHeight="260.0" prefWidth="252.0" style="-fx-border-image-width: 7; -fx-border-image-insets: -7;" styleClass="retroTextfield" />
+
+   </children>
+</AnchorPane>
