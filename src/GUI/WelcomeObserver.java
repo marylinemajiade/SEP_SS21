@@ -70,8 +70,6 @@ public class WelcomeObserver extends UnicastRemoteObject implements ObserverI, R
                     h.setSpacing(100);
                     list.add(h);
                 }
-                //a.add(new Spielrunde(1, new Lobby()));
-                //welcomeController.getSpielrauemeList().setItems( FXCollections.observableArrayList(a));
 
             }
         });
