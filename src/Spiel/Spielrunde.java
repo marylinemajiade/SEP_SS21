@@ -46,7 +46,7 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
 
     public Spielrunde remoteSpielrunde;
     //Konstruktor
-    public Spielrunde(int id, Lobby lobby) throws RemoteException {
+    public Spielrunde(int id) throws RemoteException {
         this.spielraumId = id;
         //this.remoteSpielrunde = (Spielrunde) UnicastRemoteObject.exportObject(this, 1099);
     }
@@ -58,6 +58,9 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
      */
     public int getRaumId(){
         return spielraumId;
+    }
+    public void setSpielerInRunde(ArrayList<String> sir){
+        spielerInRunde=sir;
     }
 
 

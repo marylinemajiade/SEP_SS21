@@ -44,14 +44,11 @@ public class LoginController {
                 .lookup("LamaServer");
         var om = (ObserverManagerI) registry
                 .lookup("om"); //client fetches the object from the registry (reference)
-        var o = new Observer();
-        o.setHash("me"+ (new Random()).nextInt());
-        om.bind(o); //register object
 
         RMIClientDriver.setOm(om);
-        RMIClientDriver.setObserver(o);
         RMIClientDriver.setLamaServer(server);
         this.rmiClient = new RMIClient(server);
+        RMIClientDriver.setRmiClient(this.rmiClient);
     }
 
 
@@ -78,6 +75,10 @@ public class LoginController {
 
 
         if (rmiClient.loggeSpielerEin(name, pass)) {
+            var o = new Observer();
+            o.setHash(name);
+
+            RMIClientDriver.getOm().bind(o);
             goToWelcomePage(event);
         }
 

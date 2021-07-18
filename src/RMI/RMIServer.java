@@ -9,10 +9,12 @@ import SpielLobby.Lobby;
 import fachlicheExceptions.*;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Nick Jochum
@@ -28,6 +30,7 @@ public class RMIServer implements RMIServerIF, Serializable {
     private BenutzerVerwalten benutzerdaten;
     private HashMap<Integer,Spielrunde> spielrunden = new HashMap<>();
     private ArrayList<RMIClientIF> clientliste = new ArrayList<>();
+    private HashMap<Integer,ArrayList<String>> spieler = new HashMap<Integer, ArrayList<String>>();
     private int naechsteSpielraumID = 1;
 
     public RMIServer(Bestenliste bestenliste, Lobby lobby, BenutzerVerwalten benutzerverwaltung, ObserverManagerI observerManager) throws RemoteException {
@@ -136,9 +139,11 @@ public class RMIServer implements RMIServerIF, Serializable {
 /*        if(!lobby.getSpieler(0).contains(benutzername)) {
             throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
         }*/
-        var sr = new Spielrunde(naechsteSpielraumID,new Lobby());
+        var sr = new Spielrunde(naechsteSpielraumID);
         spielrunden.put(naechsteSpielraumID,sr);
         observerManager.dispatch(new Event("spielraum",sr));
+        spieler.put(naechsteSpielraumID, new ArrayList<>());
+        naechsteSpielraumID++;
         /*lobby.spielraumHinzufuegen(naechsteSpielraumID);
         naechsteSpielraumID++;
         lobby.spielraumVerlassen(benutzername,0);
@@ -168,24 +173,13 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public synchronized void spielraumBeitreten(String benutzername, int spielraumID)
-            throws spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException {
-        if (!lobby.getSpieler(0).contains(benutzername)) {
-            throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
-        }
-        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throws spielraumVollException, ungueltigeSpielraumIDException {
+
+        if(!spieler.containsKey(spielraumID)) {
             throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
         }
-        if (lobby.getSpieler(spielraumID).size() < 6) {
-            lobby.spielraumVerlassen(benutzername,0);
-            lobby.spielraumBeitreten(benutzername, spielraumID);
-            for(RMIClientIF client:clientliste){
-                try{
-                    client.aktualisiereSpielraeume(lobby);
-                    if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())){
-                        client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
-                    }
-                }catch(Exception ignored){}
-            }
+        if (spieler.get(spielraumID).size() < 6) {
+            spieler.get(spielraumID).add(benutzername);
         }else throw new spielraumVollException("Es befinden sich bereits 6 Spieler im gewählten Spielraum");
 
     }
@@ -199,23 +193,11 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public synchronized void spielraumVerlassen(String benutzername, int spielraumID)
-            throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException {
-        if(!lobby.getSpielraum_Ids().contains(spielraumID)) {
+            throws ungueltigeSpielraumIDException {
+        if(!spieler.containsKey(spielraumID)) {
             throw new ungueltigeSpielraumIDException("Übergebener Spielraum existiert nicht");
         }
-        if (!lobby.getSpieler(spielraumID).contains(benutzername)) {
-            throw new ungueltigerBenutzernameException("Kein Spieler mit dem übegebenen Benutzernamen in der Lobby");
-        }
-        lobby.spielraumVerlassen(benutzername, spielraumID);
-        lobby.spielraumBeitreten(benutzername,0);
-        for(RMIClientIF client:clientliste){
-            try{
-                client.aktualisiereSpielraeume(lobby);
-                if (lobby.getSpieler(spielraumID).contains(client.getBenutzername())) {
-                    client.aktualisiereSpielstatus(spielrunden.get(spielraumID));
-                }
-            }catch(Exception ignored){}
-        }
+        spieler.get(spielraumID).remove(benutzername);
     }
 
     @Override
@@ -301,15 +283,15 @@ public class RMIServer implements RMIServerIF, Serializable {
      */
     @Override
     public synchronized void spielStarten(int spielraumID) throws ungueltigeSpielraumIDException, spielLaeuftBereitsException, zuWenigSpielerException, RemoteException, ungueltigerBenutzernameException {
-        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+        if(spielraumID==0 || !spieler.containsKey(spielraumID)){
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }
-        if(lobby.getSpieler(spielraumID).size() <2) throw new zuWenigSpielerException("Nicht genügend Spieler in Spielrunde");
+        System.out.println(spieler.get(spielraumID));
+        if(spieler.get(spielraumID).size() <2) throw new zuWenigSpielerException("Nicht genügend Spieler in Spielrunde");
         Spielrunde spielrunde =spielrunden.get(spielraumID);
+        spielrunde.setSpielerInRunde(spieler.get(spielraumID));
         spielrunde.spielStarten();
-        for(RMIClientIF client: clientliste){
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+
     }
 
     /**
@@ -442,5 +424,16 @@ public class RMIServer implements RMIServerIF, Serializable {
             client.aktualisiereSpielstatus(spielrunde);
         }
     }
+
+    @Override
+    public ArrayList<String> getSpieler(int spielraumId) throws RemoteException {
+        return spieler.get(spielraumId);
+    }
+
+    @Override
+    public ArrayList<Integer> getSpielraeume() throws RemoteException {
+        return new ArrayList<>(spieler.keySet().stream().filter(i->spieler.get(i).size()<5).collect(Collectors.toList()));
+    }
+
 
 }

@@ -23,10 +23,10 @@ public interface RMIServerIF extends Remote {
 
     void spielraumErstellen(String benutzername) throws RemoteException, ungueltigerBenutzernameException;
     void spielraumBeitreten(String benutzername, int spielraumID)
-            throws RemoteException, spielraumVollException, ungueltigerBenutzernameException, ungueltigeSpielraumIDException;
+            throws RemoteException, spielraumVollException, ungueltigeSpielraumIDException;
 
     void spielraumVerlassen(String benutzername, int spielraumID)
-            throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException;
+            throws RemoteException, ungueltigeSpielraumIDException;
 
     ArrayList<Spielrunde> getAllSpielraueme() throws RemoteException;
 
@@ -53,5 +53,8 @@ public interface RMIServerIF extends Remote {
 
     void aussteigen(String benutzername, int spielraumId)
             throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, ungueltigerSpielzugException;
+    ArrayList<String> getSpieler(int spielraumId) throws RemoteException;
+    ArrayList<Integer> getSpielraeume() throws RemoteException;
+
 }
 

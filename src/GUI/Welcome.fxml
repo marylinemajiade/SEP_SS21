@@ -17,7 +17,7 @@
          </font>
       </Label>
 
-      <ListView fx:id="spielrauemeList" layoutX="26.0" layoutY="44.0" orientation="HORIZONTAL" prefHeight="260.0" prefWidth="252.0" style="-fx-border-image-width: 7; -fx-border-image-insets: -7;" styleClass="retroTextfield" />
+      <ListView fx:id="spielrauemeList" layoutX="26.0" layoutY="44.0" orientation="VERTICAL" prefHeight="260.0" prefWidth="252.0" style="-fx-border-image-width: 7; -fx-border-image-insets: -7;" styleClass="retroTextfield" />
 
    </children>
 </AnchorPane>

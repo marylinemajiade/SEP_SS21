@@ -67,7 +67,7 @@ public class Spielumgebung extends Application {
 
 
 
-    Spielrunde spielrunde = new Spielrunde(spielraumListe.getSelectionModel().getSelectedIndex()+1, lobby);
+    Spielrunde spielrunde = new Spielrunde(spielraumListe.getSelectionModel().getSelectedIndex()+1);
 
 
 
@@ -197,7 +197,7 @@ public class Spielumgebung extends Application {
                         spielerOnline.getItems().add(userTextField.getText());
                         try {
                             server.spielraumBeitreten(userTextField.getText(), 0);
-                        } catch (spielraumVollException | ungueltigerBenutzernameException | ungueltigeSpielraumIDException e) {
+                        } catch (spielraumVollException | ungueltigeSpielraumIDException e) {
                             e.printStackTrace();
                         }
                     } else {
@@ -400,7 +400,7 @@ public class Spielumgebung extends Application {
                 try {
                     server.spielraumVerlassen(userTextField.getText(), 0);
                     spielerListe.remove(userTextField.getText());
-                } catch (ungueltigeSpielraumIDException | ungueltigerBenutzernameException | RemoteException e) {
+                } catch (ungueltigeSpielraumIDException | RemoteException e) {
                     e.printStackTrace();
                 }
             }

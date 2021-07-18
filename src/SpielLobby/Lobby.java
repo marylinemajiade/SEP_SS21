@@ -70,7 +70,7 @@ public class Lobby{
      */
 
     public void spielraumHinzufuegen(int spielraumID) throws RemoteException {
-        Spielrunde spielrunde = new Spielrunde(spielraumID, this);
+        Spielrunde spielrunde = new Spielrunde(spielraumID);
         spielraum_Ids.add(spielraumID);
         spielrunden.add(spielrunde);
         spielerInSpielrunde.put(spielraumID, new ArrayList<String>());

@@ -127,6 +127,7 @@ public class RMIClient extends UnicastRemoteObject implements RMIClientIF, Seria
     @Override
     public boolean loggeSpielerEin(String benutzername, String passwort) throws RemoteException, ungueltigerBenutzernameException {
         Benutzer benutzer1 = new Benutzer(benutzername,passwort);
+        this.benutzername = benutzername;
         return rmiserver.benutzerdatenPruefen(benutzer1.getBenutzername(),benutzer1.getPasswort());
     }
 

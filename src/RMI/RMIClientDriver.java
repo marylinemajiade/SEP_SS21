@@ -16,7 +16,6 @@ public class RMIClientDriver {
     private static RMIServerIF lamaServer;
     private static ObserverManagerI om;
     private static ObserverI observer;
-
     private static RMIClient rmiClient;
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException, InterruptedException, ungueltigerBenutzernameException {
         // Security Manager einrichten
@@ -59,5 +58,13 @@ public class RMIClientDriver {
 
     public static void setObserver(ObserverI observer) {
         RMIClientDriver.observer = observer;
+    }
+
+    public static RMIClient getRmiClient() {
+        return rmiClient;
+    }
+
+    public static void setRmiClient(RMIClient rmiClient) {
+        RMIClientDriver.rmiClient = rmiClient;
     }
 }
