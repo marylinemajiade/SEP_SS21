@@ -44,7 +44,7 @@ public class LobbyObserver extends UnicastRemoteObject implements ObserverI, Rem
                     if (event.getPayload() instanceof Message) {
                         var m = (Message) event.getPayload();
                         var list = lobbyController.getMessages().getItems();
-                        var u = new Text(m.getUsername());
+                        var u = new Text("Spieler: "+m.getUsername());
                         u.setStyle("-fx-text-fill: grey");
                         var v = new VBox(u, new Text(m.getMessage()));
                         list.add(v);

@@ -55,6 +55,7 @@ public interface RMIServerIF extends Remote {
             throws RemoteException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, ungueltigerSpielzugException;
     ArrayList<String> getSpieler(int spielraumId) throws RemoteException;
     ArrayList<Integer> getSpielraeume() throws RemoteException;
+    public Spielrunde getSpielrunde(int spielraumID) throws RemoteException;
 
-}
+    }
 

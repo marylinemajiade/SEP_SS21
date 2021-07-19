@@ -128,10 +128,12 @@ public class LobbyController extends UnicastRemoteObject implements Initializabl
                 } catch (spielLaeuftBereitsException e) {
                     Parent root = null;
                     try {
-                        root = FXMLLoader.load(getClass().getResource("Spielraum.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spielraum.fxml"));
+                        loader.setController(new SpielumgebungController(spielrunde));
+                        root = loader.load();
                         Scene scene = new Scene(root);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setTitle("Spielraum");
+                        stage.setTitle("Spielraum (Spieler: "+RMIClientDriver.getRmiClient().benutzername+")");
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException e2) {

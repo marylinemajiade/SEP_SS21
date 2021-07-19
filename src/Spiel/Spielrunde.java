@@ -51,6 +51,22 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
         //this.remoteSpielrunde = (Spielrunde) UnicastRemoteObject.exportObject(this, 1099);
     }
 
+    public boolean isSpiellaeuft(){
+        return spiellaeuft;
+    }
+
+    public String getWinner() throws ungueltigerBenutzernameException {
+        var min = getChipstapel(spielerInRunde.get(0)).getPunkte();
+        var tmp = "";
+        for(var e: spielerInRunde){
+            if(getChipstapel(spielerInRunde.get(0)).getPunkte()>min){
+                tmp = e;
+                min = getChipstapel(spielerInRunde.get(0)).getPunkte();
+            }
+        }
+        return tmp;
+    }
+
 
     /**
      * Getter-Methode für SpielraumID
@@ -79,12 +95,15 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
         //Teste ob Spielzug ungueltig ist
         if (!spielerInRunde.get(amZugIndex).equals(benutzername) ||
                 spielerInRunde.size()-ausgestiegeneSpieler.size() < 2 ||
-                (ablagestapel.peek() != karte && ablagestapel.peek() + 1 % 7 != karte ) ||
+                (ablagestapel.peek() != karte && ( karte<ablagestapel.peek() || karte>=ablagestapel.peek()+2) ) ||
                 !handkartenSpieler.get(benutzername).contains(karte) || !spiellaeuft){
+            System.out.println(!spielerInRunde.get(amZugIndex).equals(benutzername) +"||"+
+                    (spielerInRunde.size()-ausgestiegeneSpieler.size() < 2) +"||"+(ablagestapel.peek() != karte && ( karte<ablagestapel.peek() || karte>ablagestapel.peek()+2) )+ "||"+
+                    !handkartenSpieler.get(benutzername).contains(karte)+ "||"+ !spiellaeuft);
             throw new ungueltigerSpielzugException("Spielzug ist ungueltig");
         }
         //Führe Spielzug durch
-        handkartenSpieler.get(benutzername).remove(karte);
+        handkartenSpieler.get(benutzername).remove(handkartenSpieler.get(benutzername).indexOf(karte));
         ablagestapel.push(karte);
         spielzugAbschliessen();
     }
@@ -334,7 +353,8 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
             }
             handkartenSpieler.put(benutzername,ausgeteilteHandkarten);
         }
-        ablagestapel.push(indexNaechsteKarte++);
+        //ablagestapel.push(indexNaechsteKarte++);
+        ablagestapel.push(0);
         while (indexNaechsteKarte < alleSpielkarten.size()-1){
             nachziehstapel.push(alleSpielkarten.get(indexNaechsteKarte++));
         }
@@ -355,9 +375,9 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
             } //Andernfalls wird Spieldurchgang abgeschlossen, nachdem entsprechender Spieler einen Chip abgegeben hat
         }else{
             //nächster Spieler an der Reihe ermitteln
-            amZugIndex = amZugIndex + 1 % spielerInRunde.size();
+            amZugIndex = (amZugIndex + 1) % spielerInRunde.size();
             while(ausgestiegeneSpieler.contains(spielerInRunde.get(amZugIndex))){
-                amZugIndex = amZugIndex + 1 % spielerInRunde.size();
+                amZugIndex =( amZugIndex + 1) % spielerInRunde.size();
             }
         }
     }
@@ -373,7 +393,7 @@ public class Spielrunde extends Chipstapel implements Serializable,spielrundeIF 
             Chipstapel chipstapel = chipstapelSpieler.get(benutzername);
             ArrayList<Integer> handkarten = handkartenSpieler.get(benutzername);
             int minuspunkte = 0;
-            for(Integer handkarte: handkarten){
+            for(Integer handkarte: new ArrayList<Integer>(new HashSet<Integer>(handkarten))){
                 if(handkarte == 0) minuspunkte += 10;
                 else minuspunkte +=handkarte;
             }

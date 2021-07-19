@@ -316,9 +316,8 @@ public class RMIServer implements RMIServerIF, Serializable {
         }
         Spielrunde spielrunde =spielrunden.get(spielraumID);
         spielrunde.chipsTauschen(!einsergegenzehner,benutzername);
-        for(RMIClientIF client: clientliste){
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+        observerManager.dispatch(new Event("spielraum-"+spielraumID, new SpielrundeUpdated("tauschen", spielrunde)));
+
     }
 
     /**
@@ -340,9 +339,12 @@ public class RMIServer implements RMIServerIF, Serializable {
         }
         Spielrunde spielrunde =spielrunden.get(spielraumID);
         spielrunde.chipAbgeben(!einserchip,benutzername);
-        for(RMIClientIF client: clientliste){
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+        observerManager.dispatch(new Event("spielraum-"+spielraumID, new SpielrundeUpdated("abgeben", spielrunde)));
+    }
+
+    @Override
+    public synchronized Spielrunde getSpielrunde(int spielraumID){
+        return spielrunden.get(spielraumID);
     }
 
     /**
@@ -362,15 +364,13 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized void karteAblegen(int karte, String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException, stapelLeerException {
-        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+        if(spielraumID==0 || !spieler.containsKey(spielraumID)){
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }
-        if(!lobby.getSpieler(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Spieler mit angegebenen Benutzernamen befindet sich nicht im Spielraum");
+        if(!spieler.get(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Spieler mit angegebenen Benutzernamen befindet sich nicht im Spielraum");
         Spielrunde spielrunde =spielrunden.get(spielraumID);
         spielrunde.karteAblegen(benutzername,karte);
-        for(RMIClientIF client: clientliste){
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+        observerManager.dispatch(new Event("spielraum-"+spielraumID, new SpielrundeUpdated("ablegen", spielrunde)));
     }
 
     /**
@@ -389,15 +389,14 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized int karteZiehen(String benutzername, int spielraumID)
             throws ungueltigerSpielzugException, ungueltigeSpielraumIDException, ungueltigerBenutzernameException, stapelLeerException, ungueltigeKarteException, RemoteException {
-        if(spielraumID==0 || !lobby.getSpielraum_Ids().contains(spielraumID)){
+        if(spielraumID==0 || !spieler.containsKey(spielraumID)){
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }
-        if(!lobby.getSpieler(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Spieler mit angegebenen Benutzernamen befindet sich nicht im Spielraum");
-        Spielrunde spielrunde =spielrunden.get(spielraumID);
+        if(!spieler.get(spielraumID).contains(benutzername)) throw new ungueltigerBenutzernameException("Spieler mit angegebenen Benutzernamen befindet sich nicht im Spielraum");
+        Spielrunde spielrunde = spielrunden.get(spielraumID);
         int karte = spielrunde.karteZiehen(benutzername);
-        for(RMIClientIF client: clientliste){
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+        observerManager.dispatch(new Event("spielraum-"+spielraumID, new SpielrundeUpdated("ziehen", spielrunde)));
+
         return karte;
     }
 
@@ -413,16 +412,15 @@ public class RMIServer implements RMIServerIF, Serializable {
     @Override
     public synchronized void aussteigen(String benutzername, int spielraumID)
             throws ungueltigeSpielraumIDException, ungueltigerBenutzernameException, RemoteException, ungueltigerSpielzugException {
-        if (spielraumID == 0 || !lobby.getSpielraum_Ids().contains(spielraumID)) {
+        if (spielraumID == 0 || !spieler.containsKey(spielraumID)) {
             throw new ungueltigeSpielraumIDException("Es existiert kein Spielraum mit der übergebenen ID");
         }
-        if (!lobby.getSpieler(spielraumID).contains(benutzername))
+        if (!spieler.get(spielraumID).contains(benutzername))
             throw new ungueltigerBenutzernameException("Spieler mit angegebenen Benutzernamen befindet sich nicht im Spielraum");
         Spielrunde spielrunde = spielrunden.get(spielraumID);
         spielrunde.aussteigen(benutzername);
-        for (RMIClientIF client : clientliste) {
-            client.aktualisiereSpielstatus(spielrunde);
-        }
+        observerManager.dispatch(new Event("spielraum-"+spielraumID, new SpielrundeUpdated("aussteigen", spielrunde)));
+
     }
 
     @Override
